@@ -415,6 +415,8 @@ button, input { font-family: inherit; }
   box-shadow: var(--shadow-sm);
   padding: 18px;
   margin-bottom: 16px;
+  min-width: 0;
+  max-width: 100%;
 }
 .card-title {
   margin: 0 0 10px;
@@ -572,6 +574,7 @@ button, input { font-family: inherit; }
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-width: 0;
 }
 .note-card {
   background: var(--white);
@@ -941,7 +944,7 @@ table.data-table tr.latest-row td { color: var(--red-700); font-weight: 600; }
     padding: 16px 16px 44px;
   }
   .flow-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .svg-viewport {
     max-height: 62vh;
@@ -988,6 +991,25 @@ table.data-table tr.latest-row td { color: var(--red-700); font-weight: 600; }
   .zoom-btn { min-width: 40px; min-height: 40px; }
   .svg-viewport { padding: 10px 6px; max-height: 58vh; }
   .wt-opt-btn { flex: 1 1 100%; }
+  .duty-table-card table.data-table { min-width: 0 !important; width: 100%; }
+  .duty-table-card table.data-table thead { display: none; }
+  .duty-table-card table.data-table,
+  .duty-table-card table.data-table tbody,
+  .duty-table-card table.data-table tr,
+  .duty-table-card table.data-table td { display: block; width: 100%; }
+  .duty-table-card table.data-table tr {
+    border-bottom: 2px solid var(--slate-200);
+    padding: 8px 0;
+  }
+  .duty-table-card table.data-table td {
+    border-bottom: none;
+    padding: 4px 10px;
+  }
+  .duty-table-card table.data-table td:first-child {
+    color: var(--navy-900);
+    font-size: 14.5px;
+    padding-bottom: 2px;
+  }
 }
 </style>
 </head>
@@ -1064,7 +1086,7 @@ const PART1_DUTY = {
     { id: "d3", label: "三、救護案件之確認與派遣", details: "1、非創傷或創傷病例。\n2、救護地點之安全考量。\n3、派遣等級。" },
     { id: "d4", label: "四、出勤前之檢查", details: "1、服裝儀容之整飭。\n2、應勤用具之檢查。\n3、勤前教育提示。" },
     { id: "d5", label: "五、出勤中之作為", details: "1、依派遣員指示前往事故現場。\n2、視需要開啟警報器、警示燈。\n3、交通安全之確保。\n4、無線電出勤之報告。\n5、複習標準作業流程手冊。" },
-    { id: "d6", label: "六、到達現場之作業\n「現場評估」通用流程、「非創傷流程或創傷流程」選用適當之標準作業流程", details: "1、停車位置之選定。\n2、「通用流程」。\n3、急救現場之評估。\n4、感染之控制。\n5、救護裝備器材之取用。\n6、選用「非創傷流程」或「創傷流程」。\n7、傷病患之評估與選用適當之標準作業流程。\n8、緊急急救技術之處置。\n9、暴力傾向傷病患安全戒護之協助與自身安全維護。\n10、特殊意外事故請求支援及現場評估處置與報告。\n11、拒絕醫療/拒絕送醫之簽證確認。", jumps: [{ id: "flow-A", label: "前往 A. 現場評估" }, { id: "flow-B", label: "前往 B. 非創傷" }, { id: "flow-C", label: "前往 C. 創傷" }] },
+    { id: "d6", label: "六、到達現場之作業\n「現場評估」通用流程、「非創傷或創傷流程」\n選用適當之標準作業流程", details: "1、停車位置之選定。\n2、「通用流程」。\n3、急救現場之評估。\n4、感染之控制。\n5、救護裝備器材之取用。\n6、選用「非創傷流程」或「創傷流程」。\n7、傷病患之評估與選用適當之標準作業流程。\n8、緊急急救技術之處置。\n9、暴力傾向傷病患安全戒護之協助與自身安全維護。\n10、特殊意外事故請求支援及現場評估處置與報告。\n11、拒絕醫療/拒絕送醫之簽證確認。", jumps: [{ id: "flow-A", label: "前往 A. 現場評估" }, { id: "flow-B", label: "前往 B. 非創傷" }, { id: "flow-C", label: "前往 C. 創傷" }] },
     { id: "d7", label: "七、送醫途中之處置\n「車內照護」通用流程", details: "1、「車內照護通用流程」。\n2、傷病患病情評估回報，必要時與急救責任醫院連繫。\n3、傷病患送醫途中之照護。\n4、隨行家屬、親友之安撫與指導協助。\n5、隨行家屬、親友與傷患車內之安全維護。", jumps: [{ id: "flow-D", label: "前往 D. 車內照護" }] },
     { id: "d8", label: "八、抵達醫院之處置\n「到院傷病患交接」流程", details: "1、傷病患之交接，病情評估與急救處置之說明。\n2、救護紀錄表之填寫並送交醫護人員確認。\n3、急救器、耗材之交換與回收。\n4、處理總結之續報。", jumps: [{ id: "flow-E", label: "前往 E. 到院傷病患交接" }] },
     { id: "d9", label: "九、返隊之作為", details: "1、返隊時取消警示燈及警報器之使用。\n2、返隊後有關案情之結報。\n3、車輛器材之清潔消毒及除污與耗材之補充。\n4、車輛性能之檢查與油料補充。\n5、通訊器材歸位。\n6、工作紀錄簿之記錄，救護紀錄表及相關紀錄（例如AED）送閱。" }
@@ -2597,18 +2619,17 @@ function renderHistory(main) {
 
 function renderPart1(main) {
   const steps = PART1_DUTY.steps;
-  const svgH = steps.length * 76 + 24;
-  const nodes = steps.map((s, idx) => ({
-    id: s.id,
-    type: "pill",
-    x: 40,
-    y: 16 + idx * 76,
-    w: 440,
-    h: 54,
-    lines: s.label.split("\n")
-  }));
-  const edges = steps.slice(0, -1).map((_, idx) => ({
-    points: [[260, 70 + idx * 76], [260, 92 + idx * 76]]
+  let curY = 16;
+  const nodes = steps.map((s) => {
+    const lines = s.label.split("\n");
+    const h = lines.length >= 3 ? 68 : 54;
+    const node = { id: s.id, type: "pill", x: 30, y: curY, w: 460, h, lines };
+    curY += h + 22;
+    return node;
+  });
+  const svgH = curY + 8;
+  const edges = nodes.slice(0, -1).map((n, idx) => ({
+    points: [[260, n.y + n.h], [260, nodes[idx + 1].y]]
   }));
   const selected = steps.find(s => s.id === state.dutySelectedId) || steps[0];
 
@@ -2655,10 +2676,10 @@ function renderPart1(main) {
           ` : ""}
         </div>
 
-        <div class="card" style="padding:14px;">
+        <div class="card duty-table-card" style="padding:14px;">
           <div class="card-title" style="font-size:15px;">緊急救護勤務作業程序一覽表</div>
           <div class="table-scroll">
-            <table class="data-table" style="min-width:460px;">
+            <table class="data-table" style="min-width:420px;">
               <thead><tr><th style="width:130px;">作業流程</th><th>步驟說明</th></tr></thead>
               <tbody>
                 ${steps.map(s => `
