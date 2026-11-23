@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>宜蘭縣政府消防局｜到院前緊急救護作業程序手冊（114.12.18版）</title>
+<style>
+:root {
+  --navy-950: #091a30;
+  --navy-900: #0f2b4c;
+  --navy-800: #163d6b;
+  --navy-700: #1e508a;
+  --navy-100: #e6eff9;
+  --navy-50: #f2f7fc;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+  --white: #ffffff;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-100: #fee2e2;
+  --red-50: #fef2f2;
+  --amber-500: #f59e0b;
+  --amber-200: #fde68a;
+  --amber-100: #fef3c7;
+  --emtp-bg: #fef08a;
+  --emtp-border: #ca8a04;
+  --emtp-text: #713f12;
+  --teal-700: #0f766e;
+  --teal-600: #0d9488;
+  --teal-100: #ccfbf1;
+  --teal-50: #f0fdfa;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.16);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --header-h: 60px;
+  --sidebar-w: 276px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", "Heiti TC", system-ui, -apple-system, sans-serif;
+  color: var(--slate-800);
+  background: var(--slate-100);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+button, input { font-family: inherit; }
+
+/* ===== Top Header ===== */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: linear-gradient(135deg, var(--navy-950), var(--navy-900));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(9, 26, 48, 0.25);
+}
+
+.menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  font-size: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.menu-btn:hover, .menu-btn:active { background: rgba(255,255,255,0.18); }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  min-width: 0;
+  flex: 1;
+}
+.brand-badge {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 16px; color: #fff;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+.brand-text { min-width: 0; }
+.brand-title {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+.brand-sub {
+  font-size: 11px;
+  color: #cbd5e1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-wrap {
+  position: relative;
+  width: 300px;
+  max-width: 40vw;
+  flex-shrink: 0;
+}
+.search-input {
+  width: 100%;
+  height: 38px;
+  padding: 0 34px 0 12px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: var(--white);
+  font-size: 14px;
+  outline: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.search-input::placeholder { color: rgba(255,255,255,0.7); }
+.search-input:focus {
+  background: var(--white);
+  color: var(--slate-900);
+  border-color: var(--white);
+}
+.search-input:focus::placeholder { color: var(--slate-400); }
+.search-clear {
+  position: absolute;
+  right: 6px; top: 50%;
+  transform: translateY(-50%);
+  width: 28px; height: 28px;
+  border: none; background: transparent;
+  color: inherit; cursor: pointer;
+  display: none; align-items: center; justify-content: center;
+  font-size: 15px; border-radius: 50%;
+}
+.search-clear.show { display: flex; }
+
+.search-toggle-btn {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.08);
+  color: var(--white); font-size: 18px;
+  cursor: pointer; flex-shrink: 0;
+}
+
+.search-results {
+  position: absolute;
+  top: 44px; right: 0;
+  width: 380px; max-width: calc(100vw - 24px);
+  max-height: 70vh; overflow-y: auto;
+  background: var(--white);
+  color: var(--slate-800);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--slate-200);
+  display: none;
+  z-index: 1200;
+}
+.search-results.open { display: block; }
+.search-result-item {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--slate-100);
+  cursor: pointer;
+  min-height: 44px;
+}
+.search-result-item:hover, .search-result-item:active { background: var(--navy-50); }
+.search-result-item:last-child { border-bottom: none; }
+.sr-title { font-weight: 700; font-size: 13px; color: var(--navy-800); display: flex; align-items: center; gap: 6px; }
+.sr-snippet { font-size: 12.5px; color: var(--slate-600); margin-top: 2px; }
+.sr-snippet mark { background: var(--emtp-bg); color: var(--slate-900); padding: 0 2px; border-radius: 2px; }
+.sr-empty { padding: 16px; text-align: center; color: var(--slate-500); font-size: 13px; }
+
+/* ===== Layout Shell ===== */
+.app-shell {
+  display: flex;
+  padding-top: var(--header-h);
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  z-index: 1050;
+}
+.sidebar-backdrop.open { display: block; }
+
+.sidebar {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--white);
+  border-right: 1px solid var(--slate-200);
+  overflow-y: auto;
+  padding: 12px 10px 28px;
+  z-index: 1100;
+  transition: transform 0.22s ease;
+}
+
+.nav-group-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--slate-500);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 12px 10px 6px;
+}
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  min-height: 44px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--slate-700);
+  font-size: 13.5px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  line-height: 1.35;
+}
+.nav-item:hover { background: var(--slate-100); color: var(--navy-900); }
+.nav-item.active {
+  background: var(--navy-100);
+  color: var(--navy-900);
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--navy-700);
+}
+.nav-code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--slate-100);
+  color: var(--navy-800);
+  font-weight: 700;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.nav-item.active .nav-code { background: var(--navy-800); color: var(--white); }
+.nav-label { flex: 1; min-width: 0; }
+.tag-rev {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--red-100);
+  color: var(--red-700);
+  flex-shrink: 0;
+}
+.tag-emtp {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--emtp-bg);
+  color: var(--emtp-text);
+  border: 1px solid #eab308;
+  flex-shrink: 0;
+}
+
+/* ===== Main Content ===== */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-width: 0;
+  padding: 18px 22px 48px;
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.page-title-wrap { min-width: 0; flex: 1; }
+.page-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--slate-500);
+  margin-bottom: 4px;
+}
+.page-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy-950);
+  line-height: 1.3;
+}
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--slate-300);
+  background: var(--white);
+  color: var(--slate-800);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.14s;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+.btn:hover { background: var(--slate-50); border-color: var(--slate-400); }
+.btn-primary {
+  background: var(--navy-800);
+  border-color: var(--navy-800);
+  color: var(--white);
+}
+.btn-primary:hover { background: var(--navy-700); }
+.btn-teal {
+  background: var(--teal-600);
+  border-color: var(--teal-600);
+  color: var(--white);
+}
+.btn-teal:hover { background: var(--teal-700); }
+.btn-danger {
+  background: var(--red-600);
+  border-color: var(--red-600);
+  color: var(--white);
+}
+.btn-sm { min-height: 36px; padding: 4px 10px; font-size: 12.5px; }
+
+.mode-tabs {
+  display: inline-flex;
+  background: var(--slate-200);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  gap: 3px;
+}
+.mode-tab {
+  min-height: 36px;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--slate-700);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mode-tab.active {
+  background: var(--white);
+  color: var(--navy-900);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== Cards & Grids ===== */
+.card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.card-title {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy-900);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, var(--navy-900) 0%, #1d4e89 100%);
+  color: var(--white);
+  border: none;
+  padding: 24px;
+}
+.hero-card h1 { margin: 0 0 8px; font-size: 24px; line-height: 1.35; }
+.hero-card p { margin: 0; color: #dbeafe; font-size: 14px; }
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;
+}
+.hero-pill {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+.quick-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s, border-color 0.12s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  min-height: 92px;
+}
+.quick-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--navy-700);
+}
+.qc-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.qc-code {
+  font-size: 12px; font-weight: 800;
+  padding: 2px 8px; border-radius: 6px;
+  background: var(--navy-100); color: var(--navy-900);
+}
+.qc-name { font-size: 15px; font-weight: 700; color: var(--slate-900); line-height: 1.35; }
+.qc-desc { font-size: 12.5px; color: var(--slate-500); }
+
+/* ===== Flowchart Workspace ===== */
+.flow-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.flow-canvas-card {
+  padding: 0;
+  overflow: hidden;
+}
+.flow-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--slate-50);
+  border-bottom: 1px solid var(--slate-200);
+}
+.flow-hint {
+  font-size: 12px;
+  color: var(--slate-600);
+}
+.zoom-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.zoom-btn {
+  min-width: 36px; min-height: 36px;
+  padding: 0 8px;
+  border: 1px solid var(--slate-300);
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--slate-800);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.zoom-btn:hover { background: var(--slate-100); }
+.zoom-val { font-size: 12px; font-weight: 600; color: var(--slate-600); min-width: 42px; text-align: center; }
+
+.svg-viewport {
+  width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #ffffff;
+  padding: 14px;
+  min-height: 360px;
+  max-height: 78vh;
+  cursor: grab;
+  touch-action: pan-x pan-y;
+}
+.svg-viewport:active { cursor: grabbing; }
+.svg-inner {
+  display: flex;
+  justify-content: center;
+  min-width: fit-content;
+}
+.svg-inner svg {
+  display: block;
+  max-width: none;
+  flex-shrink: 0;
+}
+
+/* SVG Interactive Styles */
+.svg-node { cursor: pointer; transition: filter 0.14s; }
+.svg-node:hover .node-shape { filter: drop-shadow(0 3px 6px rgba(15, 43, 76, 0.22)); stroke-width: 2.4; }
+.svg-node.active-node .node-shape { stroke: #0d9488 !important; stroke-width: 3.2 !important; filter: drop-shadow(0 0 8px rgba(13, 148, 136, 0.38)); }
+.svg-node.visited-node .node-shape { stroke: #1e508a; stroke-width: 2.5; }
+.node-text {
+  font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  fill: #0f172a;
+  pointer-events: none;
+  user-select: none;
+}
+.node-text.red { fill: #b91c1c; }
+.edge-label {
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  fill: #1e3a5f;
+}
+
+/* ===== Notes & Checklists Panel ===== */
+.notes-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.note-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-left: 4px solid var(--navy-700);
+  border-radius: var(--radius-md);
+  padding: 13px 15px;
+  transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
+  scroll-margin-top: 76px;
+}
+.note-card.highlight {
+  background: #f0fdfa;
+  border-color: var(--teal-600);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.18);
+}
+.note-card.rev-note { border-left-color: var(--red-600); }
+.note-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.note-badge {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--navy-100);
+  color: var(--navy-900);
+}
+.note-card.rev-note .note-badge { background: var(--red-100); color: var(--red-700); }
+.note-body {
+  font-size: 13.5px;
+  color: var(--slate-700);
+  white-space: pre-line;
+}
+.note-body .red-txt { color: var(--red-700); font-weight: 700; }
+.note-body .emtp-inline {
+  background: var(--emtp-bg);
+  color: var(--emtp-text);
+  padding: 0 4px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+/* ===== Interactive Checklist ===== */
+.checklist-card {
+  background: var(--white);
+  border: 1px solid #99f6e4;
+  border-radius: var(--radius-md);
+  padding: 14px 15px;
+  background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 60%);
+}
+.cl-title {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--teal-700);
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.cl-sub { font-size: 12px; color: var(--slate-600); margin: 0 0 10px; }
+.cl-group-label {
+  font-size: 12px; font-weight: 700; color: var(--slate-700);
+  margin: 8px 0 4px;
+}
+.cl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 10px;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--slate-200);
+  background: var(--white);
+  margin-bottom: 6px;
+  cursor: pointer;
+  font-size: 13.5px;
+}
+.cl-item:hover { border-color: var(--teal-600); }
+.cl-item input[type="checkbox"] {
+  width: 20px; height: 20px;
+  margin-top: 2px;
+  accent-color: var(--teal-600);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.cl-status {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+}
+.cl-status.info { background: var(--slate-100); color: var(--slate-700); }
+.cl-status.ok { background: var(--teal-100); color: #115e59; }
+.cl-status.warn { background: var(--red-100); color: var(--red-700); }
+
+/* ===== Walkthrough Mode ===== */
+.wt-card {
+  background: var(--white);
+  border: 2px solid var(--navy-700);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-md);
+}
+.wt-trail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.wt-crumb {
+  font-size: 11.5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--slate-100);
+  color: var(--slate-600);
+}
+.wt-step-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy-950);
+  margin: 0 0 8px;
+}
+.wt-step-desc {
+  font-size: 14px;
+  color: var(--slate-700);
+  margin: 0 0 14px;
+  white-space: pre-line;
+}
+.wt-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.wt-opt-btn {
+  min-height: 48px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--navy-700);
+  background: var(--navy-50);
+  color: var(--navy-900);
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 1 1 150px;
+}
+.wt-opt-btn:hover { background: var(--navy-800); color: var(--white); }
+.wt-opt-btn.yes { border-color: var(--teal-600); background: var(--teal-50); color: var(--teal-700); }
+.wt-opt-btn.yes:hover { background: var(--teal-600); color: var(--white); }
+.wt-opt-btn.no { border-color: var(--red-600); background: var(--red-50); color: var(--red-700); }
+.wt-opt-btn.no:hover { background: var(--red-600); color: var(--white); }
+
+/* ===== Tables ===== */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+}
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 580px;
+  background: var(--white);
+  font-size: 13.5px;
+}
+table.data-table th {
+  background: var(--navy-900);
+  color: var(--white);
+  text-align: left;
+  padding: 11px 12px;
+  font-weight: 700;
+}
+table.data-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--slate-200);
+  vertical-align: top;
+  white-space: pre-line;
+}
+table.data-table tr.latest-row { background: var(--red-50); }
+table.data-table tr.latest-row td { color: var(--red-700); font-weight: 600; }
+
+/* ===== Mobile Bottom Sheet ===== */
+.sheet-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  z-index: 1300;
+}
+.sheet-backdrop.open { display: block; }
+.bottom-sheet {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  max-height: 72vh;
+  background: var(--white);
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -8px 30px rgba(15, 23, 42, 0.25);
+  z-index: 1350;
+  transform: translateY(105%);
+  transition: transform 0.24s ease;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.bottom-sheet.open { transform: translateY(0); }
+.sheet-handle {
+  width: 44px; height: 5px;
+  border-radius: 999px;
+  background: var(--slate-300);
+  margin: 10px auto 6px;
+}
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px 10px;
+  border-bottom: 1px solid var(--slate-200);
+}
+.sheet-title { font-size: 15px; font-weight: 800; color: var(--navy-900); }
+.sheet-close {
+  width: 40px; height: 40px;
+  border: none; border-radius: 50%;
+  background: var(--slate-100);
+  color: var(--slate-700);
+  font-size: 18px;
+  cursor: pointer;
+}
+.sheet-body {
+  padding: 14px 16px 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.footer-note {
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 1px solid var(--slate-200);
+  font-size: 12px;
+  color: var(--slate-500);
+  text-align: center;
+}
+
+/* ===== Tablet Breakpoint (768px - 1023px) ===== */
+@media (max-width: 1023px) {
+  .menu-btn { display: inline-flex; }
+  .sidebar {
+    transform: translateX(-102%);
+    box-shadow: var(--shadow-lg);
+    width: 290px;
+    max-width: 84vw;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .main {
+    margin-left: 0;
+    padding: 16px 16px 44px;
+  }
+  .flow-layout {
+    grid-template-columns: 1fr;
+  }
+  .svg-viewport {
+    max-height: 62vh;
+  }
+}
+
+/* ===== Mobile Breakpoint (< 768px) ===== */
+@media (max-width: 767px) {
+  :root { --header-h: 56px; }
+  .topbar { padding: 0 10px; gap: 8px; }
+  .brand-title { font-size: 14px; }
+  .brand-sub { font-size: 10.5px; }
+  .search-toggle-btn { display: inline-flex; }
+  .search-wrap {
+    display: none;
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 12px;
+    background: var(--navy-900);
+    box-shadow: var(--shadow-md);
+    z-index: 1150;
+  }
+  .search-wrap.mobile-open { display: block; }
+  .search-input { height: 42px; font-size: 15px; }
+  .search-results {
+    top: 58px;
+    left: 10px; right: 10px;
+    width: auto;
+    max-width: none;
+  }
+  .main { padding: 12px 10px 44px; }
+  .card { padding: 14px 12px; border-radius: var(--radius-md); }
+  .hero-card { padding: 18px 14px; }
+  .hero-card h1 { font-size: 19px; }
+  .page-title { font-size: 18px; }
+  .page-actions { width: 100%; }
+  .mode-tabs { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+  .mode-tab { min-height: 42px; }
+  .quick-grid { grid-template-columns: 1fr; }
+  .flow-toolbar { padding: 8px 10px; }
+  .zoom-btn { min-width: 40px; min-height: 40px; }
+  .svg-viewport { padding: 10px 6px; max-height: 58vh; }
+  .wt-opt-btn { flex: 1 1 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="開啟目錄選單">☰</button>
+  <div class="brand" id="brandHome" role="button" tabindex="0">
+    <div class="brand-badge">救</div>
+    <div class="brand-text">
+      <div class="brand-title">宜蘭縣到院前緊急救護作業程序手冊</div>
+      <div class="brand-sub">114.12.18 修訂版｜部屬人:宜縣救護義消林浩楨</div>
+    </div>
+  </div>
+  <button class="search-toggle-btn" id="searchToggleBtn" aria-label="搜尋手冊內容">🔍</button>
+  <div class="search-wrap" id="searchWrap">
+    <input type="search" class="search-input" id="searchInput" placeholder="搜尋流程、藥品、劑量、註解（如 TXA、Aspirin、骨針）..." autocomplete="off">
+    <button class="search-clear" id="searchClear" aria-label="清除搜尋">✕</button>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</header>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar" aria-label="手冊目錄"></nav>
+  <main class="main" id="mainContent" tabindex="-1"></main>
+</div>
+
+<div class="sheet-backdrop" id="sheetBackdrop"></div>
+<div class="bottom-sheet" id="bottomSheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-handle"></div>
+  <div class="sheet-header">
+    <div class="sheet-title" id="sheetTitle">節點註解</div>
+    <button class="sheet-close" id="sheetClose" aria-label="關閉">✕</button>
+  </div>
+  <div class="sheet-body" id="sheetBody"></div>
+</div>
+
+<script>
+// ============================================================================
+// 唯一資料來源：宜蘭縣政府消防局救護技術員到院前緊急救護作業程序手冊-1141218.pdf
+// ============================================================================
+const MANUAL_META = {
+  title: "宜蘭縣政府消防局救護技術員到院前緊急救護作業程序手冊",
+  version: "114.12.18 版",
+  sourceFile: "宜蘭縣政府消防局救護技術員到院前緊急救護作業程序手冊-1141218.pdf",
+  introParagraphs: [
+    "「緊急醫療救護法」第27條規定，救護技術員應依緊急傷病患救護作業程序，施行救護。緊急傷病患救護作業程序，其內容應包括緊急傷病判斷、救護人員之通訊聯絡、出勤人員層級人數與應攜帶設備器材、該轄區各種緊急傷病之現場救護及送醫之步驟等。而作業程序就是所謂的「標準作業流程」（Standard Operating Procedure；SOP；Protocols）。",
+    "救護技術員應熟記明瞭，並遵守標準作業流程。在執行救護業務時，依標準作業流程實施救護，不得擅自逾越標準作業流程。標準作業流程，含括各種傷病病情之評估處置流程。執行業務時，應依傷病患之病情，優先處理立即危及生命、最嚴重、最主要之症狀，選擇最適當之標準作業流程。",
+    "所有救護勤務必定包含「現場評估」通用流程、「（非）創傷流程」通用流程、「車內照護」通用流程與到院「傷病患交接」通用流程。「通用流程」在於自我保護及評估是否需要動員更大能量。「非創傷流程」與「創傷流程」希望及早發現心肺功能停止病患與危急個案（ALS case），並儘早處置。例如高速公路油罐車車禍，出勤時先引用「通用常規」自我保護，評估車禍是否有危害氣體外洩，評估傷患數是否需要動員更大能量，再進入「創傷流程」，找出傷患是否為危急個案，須儘早送醫。上救護車後遵循「車內照護通用流程」執行勤務。執行救護應注意異性患者評估及處置，避免造成家屬或患者疑慮。",
+    "EMT出勤如遵照手冊之指示處理，當可避免醫療糾紛。希望這一份救護標準作業流程，能提供給救護同仁執行救護勤務之參考，並依此流程提供民眾最佳之到院前緊急救護服務。"
+  ]
+};
+
+const REVISION_HISTORY = [
+  { date: "104.8.21", content: "訂定「宜蘭縣政府消防局救護技術員到院前緊急救護作業程序手冊」", reason: "開放Epinephrine\n開放D50W", links: [] },
+  { date: "109.1.15", content: "新增 H.「過敏反應及過敏性休克」流程", reason: "新增epinephrine注射預立醫囑。", links: ["flow-H"] },
+  { date: "111.1.1", content: "新增 I.「氣喘」流程", reason: "新增ipratropium, salbutamol吸入劑預立醫囑。", links: ["flow-I"] },
+  { date: "112.1.17", content: "修訂 F.「心肺功能停止」流程", reason: "新增骨針放置預立醫囑。", links: ["flow-F"] },
+  { date: "112.6.14", content: "修訂 F.「心肺功能停止」流程", reason: "新增amiodarone注射及氣管內管放置預立醫囑。", links: ["flow-F", "flow-J"] },
+  { date: "112.12.13", content: "新增 K.「異物哽塞」流程", reason: "開放異物夾magill forceps。", links: ["flow-K"] },
+  { date: "113.7.30", content: "1. 修訂 C.「創傷」通用流程\n2. 修訂 F.「心肺功能停止」流程\n3. 修訂 D.「車內照護」通用流程\n4. 修訂 G.「意識不清」流程", reason: "1. 新增使用止血帶時機；開放骨針使用於創傷病人及tranexamic acid注射預立醫囑。\n2. 修改流程區分可電擊及不可電擊路徑；新增復甦後照護；修改為上車後保持AED開啟。\n3. 新增送醫途中車上電擊處置。\n4. 放寬腦中風之血栓溶解劑及處置之執行時間至4.5小時。", links: ["flow-C", "flow-F", "flow-D", "flow-G"] },
+  { date: "113.12.19", content: "修訂 C.「創傷」通用流程", reason: "調整X大量出血評估及處置為第1個流程。", links: ["flow-C"] },
+  { date: "114.12.18", latest: true, content: "1. 修訂 C.「創傷」通用流程\n2. 新增 L.「疑似缺血性胸痛病人操作流程」\n3. 修訂 H.「過敏反應及過敏性休克」流程。\n4. 修訂 I.「氣喘」流程", reason: "1. 新增tranexamic acid 給藥方式：2g，IV slow push。\n2. 開放使用Aspirin。\n3. 開放食物過敏及藥物過敏施打Epinephrine。\n4. 刪除「每分鐘心跳數120以下」要件。", links: ["flow-C", "flow-L", "flow-H", "flow-I"] }
+];
+
+const PART1_DUTY = {
+  title: "壹、緊急救護勤務作業程序",
+  pages: "手冊頁碼 3–5",
+  steps: [
+    { id: "d1", label: "一、勤務前之準備", details: "1、每日實施各項裝備器、耗材檢查、保養、記錄與補充。\n2、加強各級救護技術員及派遣員之培訓與複訓，強化救護技能與知識。\n3、地勢、交通、醫療機構等相關資料之調查。" },
+    { id: "d2", label: "二、救護案件之受理報案", details: "1、救災救護指揮中心接獲報案，立即了解下列狀況(5W1H2S)：\n  (1) 何地（where）：救護發生地點。\n  (2) 何事（what）：救護種類。\n  (3) 何人（who）：報案人電話及待救人數。\n  (4) 何時（when）：什麼時間發生及發生多久。\n  (5) 何物（why）：現場有無其他危害。\n  (6) 處置狀況（how）：目前處置狀況。\n  (7) 支援的需求（support）。\n  (8) 建議（suggestion）。\n2、受理報案時，如有需要應通報相關主管機關配合派員到場。" },
+    { id: "d3", label: "三、救護案件之確認與派遣", details: "1、非創傷或創傷病例。\n2、救護地點之安全考量。\n3、派遣等級。" },
+    { id: "d4", label: "四、出勤前之檢查", details: "1、服裝儀容之整飭。\n2、應勤用具之檢查。\n3、勤前教育提示。" },
+    { id: "d5", label: "五、出勤中之作為", details: "1、依派遣員指示前往事故現場。\n2、視需要開啟警報器、警示燈。\n3、交通安全之確保。\n4、無線電出勤之報告。\n5、複習標準作業流程手冊。" },
+    { id: "d6", label: "六、到達現場之作業\n「現場評估」通用流程、「非創傷流程或創傷流程」選用適當之標準作業流程", details: "1、停車位置之選定。\n2、「通用流程」。\n3、急救現場之評估。\n4、感染之控制。\n5、救護裝備器材之取用。\n6、選用「非創傷流程」或「創傷流程」。\n7、傷病患之評估與選用適當之標準作業流程。\n8、緊急急救技術之處置。\n9、暴力傾向傷病患安全戒護之協助與自身安全維護。\n10、特殊意外事故請求支援及現場評估處置與報告。\n11、拒絕醫療/拒絕送醫之簽證確認。", jumps: [{ id: "flow-A", label: "前往 A. 現場評估" }, { id: "flow-B", label: "前往 B. 非創傷" }, { id: "flow-C", label: "前往 C. 創傷" }] },
+    { id: "d7", label: "七、送醫途中之處置\n「車內照護」通用流程", details: "1、「車內照護通用流程」。\n2、傷病患病情評估回報，必要時與急救責任醫院連繫。\n3、傷病患送醫途中之照護。\n4、隨行家屬、親友之安撫與指導協助。\n5、隨行家屬、親友與傷患車內之安全維護。", jumps: [{ id: "flow-D", label: "前往 D. 車內照護" }] },
+    { id: "d8", label: "八、抵達醫院之處置\n「到院傷病患交接」流程", details: "1、傷病患之交接，病情評估與急救處置之說明。\n2、救護紀錄表之填寫並送交醫護人員確認。\n3、急救器、耗材之交換與回收。\n4、處理總結之續報。", jumps: [{ id: "flow-E", label: "前往 E. 到院傷病患交接" }] },
+    { id: "d9", label: "九、返隊之作為", details: "1、返隊時取消警示燈及警報器之使用。\n2、返隊後有關案情之結報。\n3、車輛器材之清潔消毒及除污與耗材之補充。\n4、車輛性能之檢查與油料補充。\n5、通訊器材歸位。\n6、工作紀錄簿之記錄，救護紀錄表及相關紀錄（例如AED）送閱。" }
+  ]
+};
+
+const FLOWS = [
+  // ==================== A. 現場評估 ====================
+  {
+    id: "flow-A",
+    code: "A",
+    title: "A.「現場評估」通用流程",
+    shortTitle: "現場評估通用流程",
+    category: "通用流程",
+    pages: "手冊頁碼 7–8",
+    summary: "停車安全、現場安全評估、自我保護、能量評估與大量傷病患支援。",
+    viewBox: [640, 400],
+    nodes: [
+      { id: "a1", type: "pill", x: 185, y: 20, w: 270, h: 78, lines: ["緊急救護現場(註1)", "現場是否安全?(註2)", "自我保護(註3)"], notes: ["註1", "註2", "註3"] },
+      { id: "a2", type: "diamond", x: 170, y: 138, w: 300, h: 92, lines: ["傷病患及嚴重度是", "否超過救護能量?"] },
+      { id: "a3", type: "pill", x: 35, y: 274, w: 250, h: 86, lines: ["非創傷流程", "創傷流程", "特殊傷病患流程(註6)"], notes: ["註6"], jump: "flow-B" },
+      { id: "a4", type: "pill", x: 355, y: 274, w: 250, h: 86, lines: ["請求支援(註4)", "檢傷分類及處置(註5)"], notes: ["註4", "註5"] }
+    ],
+    edges: [
+      { points: [[320, 98], [320, 138]] },
+      { points: [[170, 184], [160, 184], [160, 274]], label: "否（未超過）", labelPos: [108, 174] },
+      { points: [[470, 184], [480, 184], [480, 274]], label: "是（超過能量）", labelPos: [530, 174] }
+    ],
+    notes: [
+      { id: "註1", body: "1、救護車停泊位置應停泊在安全、隨時可開離現場、不受阻礙的位置。\n2、在道路交通事故的現場，當有交通管制人員時，救護車可停在事故現場之正前方處，如無時應停在事故現場正後方之適當位置處，且應於適當距離處放置明顯警告設施或車輛故障標誌於事故地點後方，其放置距離如下：\n  (1) 高速公路：事故地點後方100公尺處。\n  (2) 快速道路或最高速限超過60公里之路段：事故地點之後方80公尺處。\n  (3) 最高速限超過50公里至60公里之路段：事故地點後方50公尺處。\n  (4) 最高速限50公里以下路段：事故地點後方30公尺處。\n  (5) 交通壅塞或行車時速低於10公里以下之路段為事故地點後方5公尺處。" },
+      { id: "註2", body: "只要現場有不安全的疑慮時，應即請求相關單位支援或排除，切勿貿然進入現場或施行救護。現場不安全狀況包括：火災、爆炸、毒化物等災變現場；交通事故現場；暴力事件現場…等。" },
+      { id: "註3", body: "自我保護包括：\n1、常規傳染病感染控制為戴手套及外科口罩；若眼睛可能受污染應配戴護目鏡；若須隔絕血或體液，可穿著隔離衣或袖套；若為新興傳染病或有不明原因感染症之虞應穿著合適防護衣。\n2、在防護措施未完備前，須與病患保持1公尺之安全距離包括：\n  (1) 具攻擊性之患者。\n  (2) 呼吸道傳染病之患者。" },
+      { id: "註4", body: "1、若為大量傷病患事件或不能行動的傷病患人數致現場的救護人員不足以應付時，應通報救災救護指揮中心請求支援。\n2、請求相關單位支援的內容包括：\n  (1) 加派救護車與人員。\n  (2) 動員其他人員或資源（如警察、消防或電力公司人員）。\n  (3) 申請特殊救護或救援工具。\n  (4) 申請直升機運送。\n  (5) 請求醫師到達現場。" },
+      { id: "註5", body: "大量傷病患係指單一事故、災害發生之傷病患人數達15人以上，或預判可能達15人以上時。\n1、現場應依災害之規模及種類，建立現場指揮協調系統，施行救護相關工作；參與急救之救護人員及救護運輸工具設置機關(構)，均應依現場指揮協調系統指揮施行救護。\n2、第一位到現場等級較高或較資深之EMT為現場指揮官（ICS commander），其餘後到的EMT均應聽從其指揮，待上級長官到達後，視情況進行指揮權轉移（Command transfer）。\n3、現場指揮官初期的作為包括：\n  (1) 確保安全（Safety）。\n  (2) 事故資訊（Size-up）。\n  (3) 狀況回報（Send Information）。" },
+      { id: "註6", body: "特殊傷病患係指小兒、孕婦、老人或溺水傷病患等。" }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "a1", title: "到達緊急救護現場：停車、安全與自我保護", desc: "確認救護車停泊於安全且隨時可開離的位置（交通事故依速限於後方 5–100 公尺放置警示標誌），確認現場無火災、爆炸、毒化物、暴力等危害，並完成手套、口罩等感染控制自我保護。", notes: ["註1", "註2", "註3"], options: [{ label: "確認現場安全並完成防護 → 評估救護能量", next: "s2", style: "yes" }] },
+        s2: { nodeId: "a2", title: "傷病患及嚴重度是否超過救護能量？", desc: "判斷現場傷病患人數（如大量傷病患達 15 人以上）或嚴重度是否超出目前現場救護人力。", options: [{ label: "否（未超過救護能量）", next: "s3", style: "yes" }, { label: "是（超過救護能量）", next: "s4", style: "no" }] },
+        s3: { nodeId: "a3", title: "進入非創傷／創傷／特殊傷病患流程", desc: "依傷病患屬性選擇對應標準作業流程（特殊傷病患係指小兒、孕婦、老人或溺水傷病患等）。", notes: ["註6"], jumps: [{ id: "flow-B", label: "前往 B.「非創傷」通用流程" }, { id: "flow-C", label: "前往 C.「創傷」通用流程" }] },
+        s4: { nodeId: "a4", title: "請求支援、檢傷分類及處置", desc: "通報救災救護指揮中心請求支援，依規模建立現場指揮協調系統（ICS），執行確保安全（Safety）、事故資訊（Size-up）、狀況回報（Send Information）。", notes: ["註4", "註5"] }
+      }
+    }
+  },
+
+  // ==================== B. 非創傷 ====================
+  {
+    id: "flow-B",
+    code: "B",
+    title: "B.「非創傷」通用流程",
+    shortTitle: "非創傷通用流程",
+    category: "通用流程",
+    pages: "手冊頁碼 9–10",
+    summary: "意識、呼吸、頸動脈評估，區分 OHCA、危急個案與二度評估。",
+    viewBox: [700, 560],
+    nodes: [
+      { id: "b1", type: "pill", x: 205, y: 16, w: 140, h: 42, lines: ["接觸病人"] },
+      { id: "b2", type: "diamond", x: 185, y: 80, w: 180, h: 66, lines: ["評估意識"] },
+      { id: "b3", type: "diamond", x: 20, y: 180, w: 210, h: 78, lines: ["目視是否有適", "當呼吸(註3)"], notes: ["註3"] },
+      { id: "b4", type: "rect", x: 290, y: 186, w: 185, h: 66, lines: ["初步評估(註1)", "詢問病史(註2)"], notes: ["註1", "註2"] },
+      { id: "b5", type: "diamond", x: 35, y: 294, w: 180, h: 74, lines: ["頸動脈是否", "摸得到"] },
+      { id: "b6", type: "rect", x: 245, y: 311, w: 96, h: 40, lines: ["BVM給氧"] },
+      { id: "b7", type: "diamond", x: 365, y: 294, w: 165, h: 74, lines: ["是否屬於", "危急個案"] },
+      { id: "b8", type: "pill", x: 25, y: 416, w: 200, h: 52, lines: ["「心肺功能停止」流程"], jump: "flow-F" },
+      { id: "b9", type: "rect", x: 315, y: 404, w: 230, h: 66, lines: ["1. 依初步評估施行必要處置", "2. 到院前聯絡急救責任醫院"] },
+      { id: "b10", type: "rect", x: 565, y: 374, w: 120, h: 72, lines: ["到院前完成", "二度評估(註4)"], notes: ["註4"] },
+      { id: "b11", type: "pill", x: 325, y: 496, w: 210, h: 52, lines: ["上擔架床", "「車內照護」通用流程"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[275, 58], [275, 80]] },
+      { points: [[185, 113], [125, 113], [125, 180]], label: "沒有反應", labelPos: [110, 103] },
+      { points: [[365, 113], [382, 113], [382, 186]], label: "有反應", labelPos: [410, 103] },
+      { points: [[230, 219], [290, 219]], label: "是", labelPos: [258, 209] },
+      { points: [[125, 258], [125, 294]], label: "否", labelPos: [108, 278] },
+      { points: [[125, 368], [125, 416]], label: "否", labelPos: [108, 392] },
+      { points: [[215, 331], [245, 331]], label: "是", labelPos: [228, 321] },
+      { points: [[293, 351], [293, 437], [315, 437]] },
+      { points: [[448, 252], [448, 294]] },
+      { points: [[448, 368], [448, 404]], label: "是", labelPos: [462, 386] },
+      { points: [[530, 331], [625, 331], [625, 374]], label: "否", labelPos: [580, 321] },
+      { points: [[430, 470], [430, 496]] },
+      { points: [[625, 446], [625, 522], [535, 522]] }
+    ],
+    notes: [
+      { id: "註1", body: "1、評估呼吸道（A）：\n  以看、聽方式評估呼吸道是否通暢、是否有雜音。如不順暢，以壓額抬下顎法打開呼吸道並去除嘴巴內可見的異物或嘔吐物，必要時給予口咽、鼻咽或聲門上呼吸道(SGA)等輔助呼吸道及抽吸。\n2、評估呼吸（B）：\n  以看、聽方式評估呼吸深、淺、快、慢及有無明顯異常呼吸音、有無使用輔助呼吸肌、出現特殊姿勢(端坐呼吸)；SPO2<94%，COPD或老年人<92%應給予氧氣治療。\n3、評估循環（C）：\n  量測血壓、脈搏及血氧濃度，並評估周邊循環(目視膚色是否蒼白、發紺或異常，觸摸末端肢體是否濕冷，檢查微血管充填時間是否大於2秒)。" },
+      { id: "註2", body: "病患清醒時詢問本人，若無回應，則詢問家屬或身旁之人，病史詢問內容如下：\n1、之前：不舒服的症狀之前在做什麼？\n2、吃：最近一次進食時間？\n3、過：過去疾病史？\n4、藥：長期或近期有無服用任何藥物？\n5、敏：有無對食物或藥物過敏？\n6、感：有無其他感覺不舒服的地方？" },
+      { id: "註3", body: "無適當呼吸即為沒有呼吸或瀕死式呼吸，呼吸<10次/分。" },
+      { id: "註4", body: "二度評估為八大生命徵象評估(意識、呼吸、脈搏、血壓、瞳孔、體溫、膚色、血氧)與身體檢查(頭、頸、胸、腹、上下肢)，救護現場先從與主訴相關部位施行身體檢查(重點式身體檢查)。" }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "b2", title: "接觸病人並評估意識", desc: "確認病患是否有反應。", options: [{ label: "有反應", next: "s4", style: "yes" }, { label: "沒有反應", next: "s2", style: "no" }] },
+        s2: { nodeId: "b3", title: "目視是否有適當呼吸？", desc: "無適當呼吸即為沒有呼吸或瀕死式呼吸，呼吸 < 10 次/分。", notes: ["註3"], options: [{ label: "是（有適當呼吸）", next: "s4", style: "yes" }, { label: "否（無適當呼吸）", next: "s3", style: "no" }] },
+        s3: { nodeId: "b5", title: "頸動脈是否摸得到？", desc: "檢查頸動脈脈搏。", options: [{ label: "是（摸得到）→ BVM給氧", next: "s6", style: "yes" }, { label: "否（摸不到）→ 心肺功能停止流程", next: "s5", style: "no" }] },
+        s4: { nodeId: "b4", title: "初步評估（A/B/C）與詢問病史", desc: "執行呼吸道、呼吸、循環評估，並以「之前吃過藥敏感」詢問病史。", notes: ["註1", "註2"], options: [{ label: "進入危急個案判斷", next: "s7", style: "yes" }] },
+        s5: { nodeId: "b8", title: "立即進入「心肺功能停止」流程", desc: "無反應、無適當呼吸且摸不到頸動脈。", jumps: [{ id: "flow-F", label: "前往 F.「心肺功能停止」流程" }] },
+        s6: { nodeId: "b6", title: "BVM給氧並依初步評估施行必要處置", desc: "給予 BVM 給氧，依初步評估施行必要處置，並到院前聯絡急救責任醫院。", options: [{ label: "上擔架床 → 車內照護", next: "s10", style: "yes" }] },
+        s7: { nodeId: "b7", title: "是否屬於危急個案？", desc: "判斷是否為危急個案（ALS case）。", options: [{ label: "是（危急個案）", next: "s8", style: "no" }, { label: "否（非危急個案）", next: "s9", style: "yes" }] },
+        s8: { nodeId: "b9", title: "1. 依初步評估施行必要處置\n2. 到院前聯絡急救責任醫院", desc: "完成現場必要急救處置並主動聯絡醫院準備。", options: [{ label: "上擔架床 → 車內照護", next: "s10", style: "yes" }] },
+        s9: { nodeId: "b10", title: "到院前完成二度評估", desc: "完成八大生命徵象評估與身體檢查（現場先從與主訴相關部位施行重點式身體檢查）。", notes: ["註4"], options: [{ label: "上擔架床 → 車內照護", next: "s10", style: "yes" }] },
+        s10: { nodeId: "b11", title: "上擔架床 →「車內照護」通用流程", desc: "將傷病患上救護車後銜接車內照護。", jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }] }
+      }
+    }
+  },
+
+  // ==================== C. 創傷 (114.12.18 修訂) ====================
+  {
+    id: "flow-C",
+    code: "C",
+    title: "C.「創傷」通用流程",
+    shortTitle: "創傷通用流程",
+    category: "通用流程",
+    revised: "114.12.18 修訂",
+    pages: "手冊頁碼 11–14",
+    summary: "X大量出血優先、保護頸椎（SPINAL）、XABCDE、骨針(IO)與 TXA 預立醫囑（新增 2g IV slow push）。",
+    viewBox: [720, 680],
+    nodes: [
+      { id: "c1", type: "red", x: 255, y: 14, w: 190, h: 44, lines: ["X大量出血(註1)"], notes: ["註1"] },
+      { id: "c2", type: "rect", x: 250, y: 78, w: 200, h: 42, lines: ["保護頸椎(註2)"], notes: ["註2"] },
+      { id: "c3", type: "diamond", x: 185, y: 140, w: 330, h: 74, lines: ["評估患者意識同時問主訴", "(適時詢問病史及機轉)(註3)"], notes: ["註3"] },
+      { id: "c4", type: "rect", x: 35, y: 202, w: 132, h: 40, lines: ["雙膝頸椎限制"] },
+      { id: "c5", type: "diamond", x: 16, y: 266, w: 170, h: 68, lines: ["目視是否有適當", "呼吸(註5)"], notes: ["註5"] },
+      { id: "c6", type: "diamond", x: 26, y: 368, w: 150, h: 68, lines: ["頸動脈是否", "摸的到?"] },
+      { id: "c7", type: "rect", x: 26, y: 472, w: 150, h: 58, lines: ["「心肺功能停止」", "流程"], jump: "flow-F" },
+      { id: "c8", type: "rect", x: 220, y: 280, w: 165, h: 46, lines: ["清除呼吸道異物單", "項技術"], jump: "flow-K" },
+      { id: "c9", type: "rect", x: 220, y: 378, w: 165, h: 48, lines: ["暢通呼吸道BVM給氧"] },
+      { id: "c10", type: "rect", x: 465, y: 274, w: 225, h: 36, lines: ["A評估呼吸道 (註4)"], notes: ["註4"] },
+      { id: "c11", type: "rect", x: 465, y: 310, w: 225, h: 36, lines: ["B評估呼吸 (註4)"], notes: ["註4"] },
+      { id: "c12", type: "rect", x: 465, y: 346, w: 225, h: 36, lines: ["C評估循環：IO/TXA (註4)"], notes: ["註4"] },
+      { id: "c13", type: "rect", x: 465, y: 382, w: 225, h: 36, lines: ["D評估失能 (註4)"], notes: ["註4"] },
+      { id: "c14", type: "rect", x: 465, y: 418, w: 225, h: 36, lines: ["E評估傷患身體 (註4)"], notes: ["註4"] },
+      { id: "c15", type: "rect", x: 465, y: 454, w: 225, h: 36, lines: ["輔助檢查 (註4)"], notes: ["註4"] },
+      { id: "c16", type: "rect", x: 475, y: 516, w: 205, h: 40, lines: ["是否屬「危急個案」"] },
+      { id: "c17", type: "rect", x: 475, y: 572, w: 205, h: 40, lines: ["上長背板及擔架床"] },
+      { id: "c18", type: "pill", x: 460, y: 626, w: 235, h: 44, lines: ["「車內照護」通用流程"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[350, 58], [350, 78]] },
+      { points: [[350, 120], [350, 140]] },
+      { points: [[185, 177], [101, 177], [101, 202]], label: "沒有反應", labelPos: [130, 166] },
+      { points: [[515, 177], [577, 177], [577, 274]], label: "有反應", labelPos: [604, 210] },
+      { points: [[101, 242], [101, 266]] },
+      { points: [[186, 300], [210, 300], [210, 260], [577, 260], [577, 274]], label: "是", labelPos: [380, 250] },
+      { points: [[101, 334], [101, 368]], label: "否", labelPos: [84, 352] },
+      { points: [[101, 436], [101, 472]], label: "否", labelPos: [84, 454] },
+      { points: [[176, 402], [220, 402]], label: "是", labelPos: [198, 392] },
+      { points: [[465, 292], [385, 292]], label: "有阻塞", labelPos: [425, 282] },
+      { points: [[302, 326], [302, 344], [465, 344]] },
+      { points: [[385, 402], [440, 402], [440, 364], [465, 364]] },
+      { points: [[577, 490], [577, 516]] },
+      { points: [[577, 556], [577, 572]] },
+      { points: [[577, 612], [577, 626]] }
+    ],
+    notes: [
+      { id: "註1", revised: true, body: "X大量出血(eXsan-guinating)：\n應快速查看全身是否有立即可見且持續之外出血情形，若有則直接加壓止血，遇有下列情況，建議使用止血帶：\n(1) 傷口經由持續加壓止血及包紮，仍無法減緩出血。\n(2) 預期傷口加壓止血無效(例如手腕或腳踝以上創傷性截肢)。" },
+      { id: "註2", body: "1、頸椎可能有損傷或無法判定之創傷病患，救護人員在接觸傷患前應先從正面以語言指示方式令頸椎傷患頭頸部須保持不動之姿勢，並依傷患之姿勢給予頸椎保護。\n2、有相關速度或重力之危險創傷機轉情形必須考慮頸椎有損傷，應給予頸椎保護。可參考加拿大頸椎守則判斷。\n3、加拿大頸椎守則：\n  S：骨折大痛\n  P：後頸部中線壓痛\n  I：高速撞擊機轉\n  N：神經學異常\n  A：意識不清（含酒精）\n  L：脖子轉動受限(無法上下左右轉動45度)\n  只要符合SPINAL六項其中一項就需要上頸圈限制傷患頸椎移動。" },
+      { id: "註3", body: "病患清醒時詢問本人，若無回應，則詢問家屬或身旁之人，病史詢問內容如下：\n1、之前：不舒服的症狀之前在做什麼？\n2、吃：最近一次進食時間？\n3、過：過去疾病史？\n4、藥：長期或近期有無服用任何藥物？\n5、敏：有無對食物或藥物過敏？\n6、感：有無其他感覺不舒服的地方？" },
+      { id: "註4", revised: true, body: "1、評估呼吸道（A）：\n  是否通暢、是否有雜音。如不順暢，頸椎受傷傷患以下顎推舉法打開呼吸道，若無法打開時改以壓額抬下顎法打開呼吸道。必要時給予口咽、鼻咽等輔助呼吸道及抽吸。若發現嘴巴內有可見的異物或嘔吐物應先將其去除(要將傷患頭頸軀幹成一直線側翻)，然後再打開呼吸道，如無法清除，則進入『清除呼吸道異物』救護單項技術項目。\n2、評估呼吸（B）：\n  以看、聽方式評估呼吸深、淺、快、慢及有無明顯異常呼吸音(評估時間<10 秒)。\n3、評估循環（C）：\n  (1) 檢查兩側橈動脈或其他動脈點(評估時間<10 秒)，並評估周邊循環(目視膚色是否蒼白、發紺或異常，觸摸末端肢體是否濕冷，檢查微血管充填時間是否大於2秒)。\n  (2) 若有休克現象，需建立靜脈路徑，給予生理食鹽水靜脈輸注。若無法建立靜脈路徑，得使用骨針。\n      骨針(IO)使用須知：\n      A. 必要條件：病人年齡需大於 18 歲。\n      B. 適用時機：經嘗試執行靜脈注射無法成功。\n      C. 禁忌症：a.「施打位置」有骨折。b.「施打位置」有感染或燒燙傷。c.「施打位置」無法定位。d.「施打位置」有開刀過或安裝人工關節、義肢等。e. 48 小時內同一部位不能重複施打。\n  (3) EMTP遇出血性休克患者時，得依預立醫囑給予tranexamic acid注射。\n      使用劑量【以下擇一】（114.12.18 修訂）：\n      a. 抽取1,000mg Tranexamic acid加入 N/S 500 ml，全速滴注。\n      b. 2g，IV slow push。（114.12.18 新增）\n      tranexamic acid 1000mg適應症及禁忌症：\n      (1) 適應症，須全部符合：\n          a. 符合出血性休克之臨床表現。\n          b. 無法使用止血帶或壓迫止血無效之創傷(如胸、腹、骨盆腔、大腿內出血、高度懷疑或肢體軀幹交界處出血)。\n          c. 收縮壓<90mmHg或心跳≧120次/分鐘。\n          d. 創傷發生3小時以內。\n      (2) 禁忌症，需全部排除：\n          a. 正在接受凝血酶(Thrombin)給藥的病人。\n          b. 對tranexamic acid過敏。\n4、評估失能（D）：\n  (1) 檢查昏迷指數（GCS）\n  (2) 檢查眼睛瞳孔大小及是否對光有反應(註：意識清醒之傷病患不需檢查瞳孔)。\n  (3) 比較二側上肢和下肢的感覺和運動功能。\n5、評估傷患身體（E）：\n  (1) 快速視診頭、頸、胸、腹骨盆與肢體是否有穿刺傷、槍傷、臟器外露、大而深的傷口、瘀青、腫脹或變形等；檢查氣管是否偏移、頸靜脈是否怒張或塌陷；按壓頸椎是否異常、壓痛；骨盆是否穩定與疼痛等(骨盆檢查以一次為限)。\n  (2) 視情形將傷患衣物移除。\n6、輔助檢查：\n  初步評估過程中傷患有異常的現象，可採用儀器例如：血壓計、血氧濃度機、血糖機..等輔助檢查，並作重點式身體檢查。例如：傷患胸部有一彈孔，使用血氧監測輔助檢查，並針對胸部做聽診呼吸音，視診胸部起伏是否正常等重點式檢查；SPO2<94%應給予氧氣治療。其他詳細的身體檢查可在救護車上施行，以避免在救護現場耽誤而引起爭議。" },
+      { id: "註5", body: "無適當呼吸即為沒有呼吸或瀕死式呼吸，呼吸<10次/分。" }
+    ],
+    checklists: [
+      {
+        id: "cl-spinal",
+        title: "加拿大頸椎守則（SPINAL）檢核",
+        sub: "依據流程 C（註2）：只要符合下列六項其中一項，就需要上頸圈限制傷患頸椎移動。",
+        mode: "any",
+        items: [
+          "S：骨折大痛",
+          "P：後頸部中線壓痛",
+          "I：高速撞擊機轉",
+          "N：神經學異常",
+          "A：意識不清（含酒精）",
+          "L：脖子轉動受限（無法上下左右轉動45度）"
+        ],
+        msgNone: "尚未勾選任何項目（如無符合 SPINAL 任一項，仍請依現場傷患狀況評估）。",
+        msgMatch: "已符合至少一項 SPINAL 條件：需要上頸圈限制傷患頸椎移動！"
+      },
+      {
+        id: "cl-txa",
+        title: "EMTP Tranexamic acid (TXA) 預立醫囑檢核",
+        sub: "依據流程 C（註4，114.12.18 修訂）：適應症須全部符合，禁忌症需全部排除。",
+        mode: "ind_contra",
+        indications: [
+          "符合出血性休克之臨床表現",
+          "無法使用止血帶或壓迫止血無效之創傷（胸、腹、骨盆腔、大腿內出血、高度懷疑或肢體軀幹交界處出血）",
+          "收縮壓 < 90mmHg 或 心跳 ≧ 120次/分鐘",
+          "創傷發生 3 小時以內"
+        ],
+        contraindications: [
+          "正在接受凝血酶（Thrombin）給藥的病人",
+          "對 tranexamic acid 過敏"
+        ],
+        msgOk: "符合全部適應症且無禁忌症！EMTP 可依預立醫囑擇一給予：\na. 抽取 1,000mg Tranexamic acid 加入 N/S 500 ml，全速滴注。\nb. 2g，IV slow push。（114.12.18 新增）",
+        msgContra: "存在禁忌症，不可給予 Tranexamic acid！",
+        msgIncomplete: "請確認所有適應症均符合，且所有禁忌症均未勾選。"
+      },
+      {
+        id: "cl-io-c",
+        title: "骨針（IO）使用須知與禁忌症檢核",
+        sub: "依據流程 C（註4）：必要條件為年齡 > 18 歲，且經嘗試靜脈注射無法成功。",
+        mode: "ind_contra",
+        indications: [
+          "病人年齡大於 18 歲",
+          "經嘗試執行靜脈注射無法成功"
+        ],
+        contraindications: [
+          "「施打位置」有骨折",
+          "「施打位置」有感染或燒燙傷",
+          "「施打位置」無法定位",
+          "「施打位置」有開刀過或安裝人工關節、義肢等",
+          "48 小時內同一部位曾施打過"
+        ],
+        msgOk: "符合骨針（IO）使用條件且無禁忌症，得使用骨針建立輸液路徑。",
+        msgContra: "存在骨針（IO）禁忌症，該位置不可施打！",
+        msgIncomplete: "請確認必要條件（年齡 > 18 歲、靜脈注射嘗試失敗）與禁忌症排除。"
+      }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "c1", title: "X 大量出血評估與止血", desc: "快速查看全身是否有立即可見且持續之外出血，若有直接加壓止血；持續加壓包紮無效或預期無效（如手腕/腳踝以上創傷性截肢）建議使用止血帶。", notes: ["註1"], options: [{ label: "完成大量出血處置 → 保護頸椎", next: "s2", style: "yes" }] },
+        s2: { nodeId: "c2", title: "保護頸椎（參考 SPINAL 守則）", desc: "接觸傷患前先從正面以語言指示頭頸部保持不動，依危險機轉或 SPINAL 守則給予頸椎保護。", notes: ["註2"], options: [{ label: "評估意識並問主訴", next: "s3", style: "yes" }] },
+        s3: { nodeId: "c3", title: "評估患者意識同時問主訴（病史及機轉）", desc: "確認傷患是否有反應。", notes: ["註3"], options: [{ label: "有反應 → 初步評估 A–E", next: "s6", style: "yes" }, { label: "沒有反應 → 雙膝頸椎限制", next: "s4", style: "no" }] },
+        s4: { nodeId: "c5", title: "雙膝頸椎限制 → 目視是否有適當呼吸？", desc: "無適當呼吸即為沒有呼吸或瀕死式呼吸，呼吸 < 10 次/分。", notes: ["註5"], options: [{ label: "是（有適當呼吸）→ 初步評估", next: "s6", style: "yes" }, { label: "否（無適當呼吸）→ 檢查頸動脈", next: "s5", style: "no" }] },
+        s5: { nodeId: "c6", title: "頸動脈是否摸得到？", desc: "檢查頸動脈脈搏。", options: [{ label: "是 → 暢通呼吸道 BVM 給氧，續評 C–E", next: "s6", style: "yes" }, { label: "否 → 進入心肺功能停止流程", next: "s8", style: "no" }] },
+        s6: { nodeId: "c10", title: "初步評估（A / B / C / D / E）與輔助檢查", desc: "依序評估呼吸道（有阻塞則執行清除異物）、呼吸、循環（休克建 IV/IO、EMTP 評估 TXA）、失能（GCS/瞳孔/肢體感覺運動）、傷患身體與輔助檢查（SpO2<94%給氧）。", notes: ["註4"], options: [{ label: "評估是否屬危急個案並上長背板／擔架床", next: "s7", style: "yes" }] },
+        s7: { nodeId: "c18", title: "上長背板及擔架床 →「車內照護」通用流程", desc: "依危急個案判定儘速後送並銜接車內照護。", jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }] },
+        s8: { nodeId: "c7", title: "立即進入「心肺功能停止」流程", desc: "無反應、無適當呼吸且摸不到頸動脈。", jumps: [{ id: "flow-F", label: "前往 F.「心肺功能停止」流程" }] }
+      }
+    }
+  },
+
+  // ==================== D. 車內照護 ====================
+  {
+    id: "flow-D",
+    code: "D",
+    title: "D.「車內照護」通用流程",
+    shortTitle: "車內照護通用流程",
+    category: "通用流程",
+    pages: "手冊頁碼 15–17",
+    summary: "上車給氧、車上電擊 5 規則、二度評估、無線電報告 4 要項與持續監測頻率。",
+    viewBox: [640, 560],
+    nodes: [
+      { id: "d1", type: "pill", x: 225, y: 16, w: 190, h: 44, lines: ["上救護車(註1)"], notes: ["註1"] },
+      { id: "d2", type: "diamond", x: 215, y: 84, w: 210, h: 74, lines: ["上車前是否", "有頸動脈搏"] },
+      { id: "d3", type: "rect", x: 35, y: 186, w: 230, h: 60, lines: ["持續心肺復甦術及", "使用AED (註4)"], notes: ["註4"] },
+      { id: "d4", type: "rect", x: 375, y: 186, w: 230, h: 48, lines: ["初步評估及處置(註2)"], notes: ["註2"] },
+      { id: "d5", type: "rect", x: 375, y: 262, w: 230, h: 48, lines: ["二度評估及處置(註3)"], notes: ["註3"] },
+      { id: "d6", type: "rect", x: 195, y: 344, w: 250, h: 46, lines: ["無線電報告(註5)"], notes: ["註5"] },
+      { id: "d7", type: "rect", x: 195, y: 416, w: 250, h: 56, lines: ["持續性監測、重新或", "重複評估(註6)"], notes: ["註6"] },
+      { id: "d8", type: "pill", x: 185, y: 498, w: 270, h: 46, lines: ["到院「傷病患交接」流程"], jump: "flow-E" }
+    ],
+    edges: [
+      { points: [[320, 60], [320, 84]] },
+      { points: [[215, 121], [150, 121], [150, 186]], label: "否", labelPos: [175, 111] },
+      { points: [[425, 121], [490, 121], [490, 186]], label: "是", labelPos: [465, 111] },
+      { points: [[490, 234], [490, 262]] },
+      { points: [[150, 246], [150, 367], [195, 367]] },
+      { points: [[490, 310], [490, 367], [445, 367]] },
+      { points: [[320, 390], [320, 416]] },
+      { points: [[320, 472], [320, 498]] }
+    ],
+    notes: [
+      { id: "註1", body: "傷病患上救護車，若有使用氧氣，將給氧設備之導管接至車裝氧氣上，然後關閉攜帶式氧氣筒。駕駛確認車廂之EMT無需協助後，上駕駛座前應先脫除手套，並儘速開車駛離現場，不得延誤後送。" },
+      { id: "註2", body: "初步評估後之處置可能有下列項目：\n1、呼吸道處置：抽吸、清除呼吸道異物、使用口咽呼吸道或鼻咽呼吸道等。\n2、呼吸處置：給予氧氣或袋瓣罩甦醒球人工呼吸等。\n3、外出血控制：將持續出血之傷口加壓止血並包紮等。\n4、現場救護未完成之重點式身體檢查與輔助檢查。\n5、車上電擊：(車內照護流程)\n  (1) OHCA 患者於上車前曾使用AED 電擊：若車上仍無脈搏且AED分析建議電擊時，可不停車，直接施行電擊。\n  (2) OHCA患者但於上車前AED未曾建議電擊：若車上仍無脈搏且AED分析建議電擊時，可視路況尋找安全處停車進行AED 分析（送醫途中以停車1次為限），之後直接送達醫院。\n  (3) 送醫途中車上目擊OHCA 患者：後座人員立即開始CPR，視路況尋找安全處停車，駕駛人員下車協助進行AED 分析（送醫途中以停車1次為限），並視情況給於必要處置，儘速送醫。\n  (4) 如遇路況顛簸，EMT-P 可視狀況決定是否停車再次分析或直接電擊（包含手動與自動電擊）。\n  (5) AED 分析時，暫停自動心肺復甦機，以避免影響判斷。" },
+      { id: "註3", body: "二度評估包括生命徵象(意識或昏迷指數、呼吸、脈搏、血壓、瞳孔、體溫、膚色與血氧濃度)評估及身體檢查。" },
+      { id: "註4", body: "原則上OHCA患者若於現場已接受電擊，開車前建議再次分析心律以決定是否需要再次電擊。\n應於CPR每5循環或約2分鐘檢查脈搏以決定是否繼續CPR，被授權可實施高級生命救護處置(Advanced Life Support, ALS)的高級救護技術員得視裝備及需要監測心律，再決定後續處置。" },
+      { id: "註5", body: "無線電報告應包含下列事項：\n1、自我介紹、傷病患性別、大約年齡、主訴與主要問題。\n2、對傷病患已做之主要處置。\n3、傷病患目前的異常生命徵象。\n4、大約多久到達醫院。\n危急個案(包含疑似腦中風、缺血性胸痛發作或重大創傷)得於離開現場後主動告知接收醫院，請醫院先行準備。" },
+      { id: "註6", body: "1、抵達醫院前應持續監測傷病患之生命徵象。\n2、危急個案應至少每5分鐘測量1次，且要持續血氧濃度監測。\n3、非危急個案至少每15分鐘測量1次，視傷病患需要或病情有變化時(如意識改變)，應重新評估傷病患，並再以無線電告知接收之急救責任醫院。\n4、送醫途中傷病患轉為OHCA時，應立即通知駕駛停車，並於車上完成到院前心肺功能停止患者救護流程。\n5、送醫途中有新的且有意義的發現，應主動回報後送醫院。\n6、給予袋瓣罩甦醒球人工呼吸或心肺復甦術之傷病患應約每2分鐘重新評估呼吸或頸動脈搏。" }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "d1", title: "上救護車準備", desc: "接至車裝氧氣並關閉攜帶式氧氣筒；駕駛確認無需協助後脫除手套並儘速駛離現場。", notes: ["註1"], options: [{ label: "確認上車前是否有頸動脈搏", next: "s2", style: "yes" }] },
+        s2: { nodeId: "d2", title: "上車前是否有頸動脈搏？", desc: "依有無頸動脈搏決定車內照護路徑。", options: [{ label: "是（有脈搏）", next: "s4", style: "yes" }, { label: "否（無脈搏／OHCA）", next: "s3", style: "no" }] },
+        s3: { nodeId: "d3", title: "持續心肺復甦術及使用 AED", desc: "開車前若現場曾電擊建議再次分析心律；每 5 循環或約 2 分鐘評估脈搏與心律（注意車上電擊 5 項規則）。", notes: ["註4", "註2"], options: [{ label: "無線電報告後送醫院", next: "s5", style: "yes" }] },
+        s4: { nodeId: "d4", title: "初步評估及處置 → 二度評估及處置", desc: "完成呼吸道、呼吸、止血、重點身體檢查與完整生命徵象評估。", notes: ["註2", "註3"], options: [{ label: "無線電報告後送醫院", next: "s5", style: "yes" }] },
+        s5: { nodeId: "d6", title: "無線電報告（4 要項）與持續監測", desc: "回報：1. 自我介紹/性別/年齡/主訴 2. 主要處置 3. 異常生命徵象 4. 預計到達時間。危急個案每 5 分鐘、非危急每 15 分鐘、CPR/BVM 每 2 分鐘重新評估。", notes: ["註5", "註6"], jumps: [{ id: "flow-E", label: "抵達醫院 → E.「到院傷病患交接」流程" }] }
+      }
+    }
+  },
+
+  // ==================== E. 到院傷病患交接 ====================
+  {
+    id: "flow-E",
+    code: "E",
+    title: "E.「到院傷病患交接」流程",
+    shortTitle: "到院傷病患交接流程",
+    category: "通用流程",
+    pages: "手冊頁碼 18–19",
+    summary: "急診前 50–100 公尺降音、下車前頸動脈確認、病情與財務交接、紀錄表與醫療廢棄物處理。",
+    viewBox: [640, 480],
+    nodes: [
+      { id: "e1", type: "pill", x: 225, y: 16, w: 190, h: 44, lines: ["到達急診(註1)"], notes: ["註1"] },
+      { id: "e2", type: "diamond", x: 205, y: 84, w: 230, h: 78, lines: ["下車前是否有", "頸動脈脈搏？"] },
+      { id: "e3", type: "rect", x: 35, y: 192, w: 225, h: 56, lines: ["持續心肺復甦術", "並直入急救室"] },
+      { id: "e4", type: "rect", x: 380, y: 192, w: 225, h: 56, lines: ["急診檢傷站櫃台檢傷"] },
+      { id: "e5", type: "rect", x: 185, y: 278, w: 270, h: 108, lines: ["傷病患交接(註2)", "救護紀錄表填寫(註3)", "清洗消毒救護器材(註4)", "丟棄醫療廢棄物(註5)"], notes: ["註2", "註3", "註4", "註5"] },
+      { id: "e6", type: "pill", x: 220, y: 416, w: 200, h: 46, lines: ["離開醫院返隊"] }
+    ],
+    edges: [
+      { points: [[320, 60], [320, 84]] },
+      { points: [[205, 123], [147, 123], [147, 192]], label: "否", labelPos: [170, 113] },
+      { points: [[435, 123], [492, 123], [492, 192]], label: "是", labelPos: [470, 113] },
+      { points: [[147, 248], [147, 332], [185, 332]] },
+      { points: [[492, 248], [492, 332], [455, 332]] },
+      { points: [[320, 386], [320, 416]] }
+    ],
+    notes: [
+      { id: "註1", body: "1、到達急診前50-100公尺時，應視交通情形關閉或調低警鳴器音量。\n2、救護車停放於醫院急診室指定之停車位置並熄火。\n3、除非傷病患要求自行下車，救護人員應讓傷病患躺在擔架床上，並小心將其由後車門移出。傷病患要求自行下車時，救護人員亦應在旁保護並引導其從側門下車。\n4、下救護車前，應整備所有使用中之救護裝備，並同時對傷病患做最後審視，盡可能延續所有施行中之處置，直到救護車送至急診檢傷站，然後協助換至急診推床；施行心肺復甦術之傷病患應直入急診急救室，並視狀況給予急診醫護人員必要協助；若為危急個案或生命徵象急不穩定之傷病患應協同急診醫護人員送入急救室或重傷病區。" },
+      { id: "註2", body: "傷病患交接項目有：\n1、病(傷)情交接：與急診醫護人員交接傷病患病情，包括主要問題(創傷機轉)、重要病史、評估及處置。\n2、財務交接：對意識不清且無家屬之傷病患，若有從傷病患掉落之財務或移除之首飾，如皮包、手錶、金鍊、戒指、手鐲等，應記錄在救護紀錄表上，並與急診醫護人員或掛號人員點交。" },
+      { id: "註3", body: "依「消防機關救護紀錄表填寫作業原則」完成救護紀錄表之填寫，註記傷病患急診檢傷分類等級，再請醫護人員簽章確認。" },
+      { id: "註4", body: "將接觸傷病患體液或血液之救護器材做初步清洗及消毒。" },
+      { id: "註5", body: "救護技術員處置傷病患之醫療廢棄物(如紗布、手套、生理食鹽水、包裝袋等)不能丟棄於現場，應分類攜至於救護車上之一般性及感染性垃圾桶內，到達醫院後再將醫療廢棄物丟至醫院染污處置桶內，無染污之一般性垃圾應依分類丟棄。" }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "e1", title: "到達急診室準備下車", desc: "距離急診 50–100 公尺調低或關閉警鳴器，停妥指定位置熄火，整備裝備並最後審視病患。", notes: ["註1"], options: [{ label: "確認下車前是否有頸動脈脈搏", next: "s2", style: "yes" }] },
+        s2: { nodeId: "e2", title: "下車前是否有頸動脈脈搏？", desc: "決定直入急救室或至急診檢傷站櫃台檢傷。", options: [{ label: "是 → 急診檢傷站櫃台檢傷", next: "s4", style: "yes" }, { label: "否 → 持續 CPR 並直入急救室", next: "s3", style: "no" }] },
+        s3: { nodeId: "e3", title: "持續心肺復甦術並直入急救室", desc: "施行 CPR 之傷病患直入急診急救室，並給予急診醫護人員必要協助。", options: [{ label: "完成交接、紀錄與清消", next: "s5", style: "yes" }] },
+        s4: { nodeId: "e4", title: "急診檢傷站櫃台檢傷", desc: "協助換至急診推床（危急個案協同送入急救室或重傷病區）。", options: [{ label: "完成交接、紀錄與清消", next: "s5", style: "yes" }] },
+        s5: { nodeId: "e5", title: "傷病患交接、紀錄表填寫、器材清消、丟棄廢棄物", desc: "完成病情與財務交接、請醫護人員簽章確認救護紀錄表、清消接觸體液血液器材、依規定丟棄感染性與一般垃圾，隨即離開醫院返隊。", notes: ["註2", "註3", "註4", "註5"] }
+      }
+    }
+  },
+
+  // ==================== F. 心肺功能停止 ====================
+  {
+    id: "flow-F",
+    code: "F",
+    title: "F.「心肺功能停止」流程",
+    shortTitle: "心肺功能停止流程",
+    category: "危急與特殊流程",
+    emtp: true,
+    pages: "手冊頁碼 20–22",
+    summary: "區分可電擊／不可電擊心律雙路徑、EMTP Epinephrine／Amiodarone／進階呼吸道、骨針(IO)與 ROSC 復甦後照護。",
+    viewBox: [740, 740],
+    nodes: [
+      { id: "f1", type: "pill", x: 235, y: 12, w: 270, h: 74, lines: ["開始CPR(註1、2)", "使用AED(註3)", "P: 使用電擊器"], notes: ["註1", "註2", "註3"], badge: "P" },
+      { id: "f2", type: "diamond", x: 205, y: 106, w: 330, h: 66, lines: ["AED是否電擊？(註4)", "是否為可電擊心律？"], notes: ["註4"] },
+      // 左路：可電擊
+      { id: "f3", type: "rect", x: 75, y: 196, w: 220, h: 72, lines: ["⚡ 去顫", "CPR 2分鐘(註5)", "建議輸液管路(註6)"], notes: ["註5", "註6"] },
+      { id: "f4", type: "diamond", x: 40, y: 290, w: 290, h: 62, lines: ["AED是否電擊？", "是否為可電擊心律？"] },
+      { id: "f5", type: "emtp", x: 75, y: 376, w: 220, h: 98, lines: ["⚡ 去顫｜CPR 2分鐘", "建立進階呼吸道(註7)", "P: 每3-5分鐘給予", "epinephrine 1mg IVP"], notes: ["註7"], badge: "P" },
+      { id: "f6", type: "diamond", x: 40, y: 494, w: 290, h: 62, lines: ["AED是否電擊？", "是否為可電擊心律？"] },
+      { id: "f7", type: "emtp", x: 75, y: 576, w: 220, h: 76, lines: ["⚡ 去顫｜CPR 2分鐘", "P: 給予 amiodarone", "300mg IVP"], notes: ["註6"], badge: "P" },
+      // 右路：不可電擊
+      { id: "f8", type: "emtp", x: 430, y: 190, w: 270, h: 108, lines: ["CPR 2分鐘(註5)", "建議輸液管路(註6)", "P: 每3-5分鐘給予", "epinephrine 1mg IVP", "建立進階呼吸道(註7)"], notes: ["註5", "註6", "註7"], badge: "P" },
+      { id: "f9", type: "diamond", x: 420, y: 318, w: 290, h: 62, lines: ["AED是否電擊？", "是否為可電擊心律？"] },
+      { id: "f10", type: "rect", x: 465, y: 406, w: 200, h: 42, lines: ["CPR 2分鐘"] },
+      { id: "f11", type: "diamond", x: 420, y: 472, w: 290, h: 62, lines: ["AED是否電擊？", "是否為可電擊心律？"] },
+      // 底部匯聚
+      { id: "f12", type: "pill", x: 215, y: 668, w: 310, h: 64, lines: ["上車前確定建立進階呼吸道及輸液管路", "若ROSC則復甦後照護(註8)", "D.「車內照護」通用流程"], notes: ["註8"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[370, 86], [370, 106]] },
+      { points: [[205, 139], [185, 139], [185, 196]], label: "是", labelPos: [170, 128] },
+      { points: [[535, 139], [565, 139], [565, 196]], label: "否", labelPos: [560, 128] },
+      // 左路主線
+      { points: [[185, 268], [185, 290]] },
+      { points: [[185, 352], [185, 376]], label: "是", labelPos: [168, 365] },
+      { points: [[185, 474], [185, 494]] },
+      { points: [[185, 556], [185, 576]], label: "是", labelPos: [168, 567] },
+      { points: [[185, 652], [185, 660], [370, 660], [370, 668]] },
+      // 左路「否」匯入底部
+      { points: [[40, 321], [16, 321], [16, 700], [215, 700]], label: "否", labelPos: [25, 310] },
+      { points: [[40, 525], [16, 525]], label: "否", labelPos: [25, 514] },
+      // 右路主線
+      { points: [[565, 292], [565, 318]] },
+      { points: [[565, 380], [565, 406]], label: "否", labelPos: [548, 394] },
+      { points: [[565, 448], [565, 472]] },
+      { points: [[565, 534], [565, 700], [525, 700]], label: "否", labelPos: [548, 600] },
+      // 右路「是」切回左路去顫
+      { points: [[420, 349], [370, 349], [370, 425], [295, 425]], label: "是", labelPos: [392, 338] },
+      { points: [[420, 503], [370, 503], [370, 425]], label: "是", labelPos: [392, 493] }
+    ],
+    notes: [
+      { id: "註1", body: "無意識、10秒內評估無適當呼吸及沒有摸到頸動脈搏。" },
+      { id: "註2", body: "若有機械式壓胸裝置，可考慮裝設使用，如人力足夠，應在離開現場前架設並離開現場。使用機械式壓胸裝置後，應注意每兩分鐘需重新評估心律及脈搏。" },
+      { id: "註3", body: "一人開始施行胸部按壓，另一人應在不中斷CPR下盡速使用AED，患者如已使用PAD (公眾自動體外心臟電擊去顫器)，本局救護人員到場接手後，仍應更換為救護車上之AED，避免造成該公共場所無AED可使用。" },
+      { id: "註4", body: "應在AED語音指示至聽到不要碰觸「病人」時，所有人應中斷任何碰觸病人的動作，若要電擊去顫時應再次確認無任何人碰觸到患者。準備離開前，應依 AED 語音指示判斷執行電擊或不電擊後，將患者搬運上車，保持AED開機，每2分鐘評估患者脈搏及心律，必要時得停靠安全處重新評估心律，以決定是否執行電擊。" },
+      { id: "註5", body: "去顫或不去顫後都要立即胸部按壓，重新開始5循環或約2分鐘的CPR。" },
+      { id: "註6", body: "1、救護人員一人持續進行CPR，另一人嘗試建立周邊血管路徑(IV/IO)。\n2、EMTP遇有心臟停止之病患得依據事先訂定之醫囑，於建立周邊血管路徑(IV/IO)後，每3至5分鐘給予Epinephrine 1mg IV push之處置。另經AED電擊二次，倘若以上用藥效果不彰，則可考慮給予Amiodarone (第一次300mg靜脈快速注射，然後視必要每次150mg靜脈快速注射)。\n3、骨針(IO)使用須知：\n  (1) 必要條件：病人年齡需大於 18 歲。\n  (2) 適用時機：經嘗試執行靜脈注射無法成功。\n  (3) 禁忌症：\n      1、「施打位置」有骨折。\n      2、「施打位置」有感染或燒燙傷。\n      3、「施打位置」無法定位。\n      4、「施打位置」有開刀過或安裝人工關節、義肢等。\n      5、48 小時內同一部位不能重複施打。" },
+      { id: "註7", body: "1、救護人員一人持續進行CPR，另一人應施行袋瓣罩甦醒球，給予氧氣並建立聲門上呼吸道，若聲門上呼吸道無法置入，次選擇才為口咽(需註明原因)。\n2、如救護人員皆為EMT-1出勤，則建立口咽呼吸道。\n3、進階呼吸道(限EMTP操作)：\n   建立氣管內管以一次為限，若建立失敗後，應立即考慮其他輔助呼吸道。" },
+      { id: "註8", body: "1、依患者意識、口鼻分泌物、嘔吐物等，評估患者呼吸道，若無法確保且病患未被建立進階呼吸道，應使用替代或進階呼吸道。\n2、若已確保病人呼吸道，仍無適當呼吸或呼吸動力不足，應給予正壓給氧；若有適當呼吸，應依照血氧濃度給予氧氣。\n3、ROSC後應測病人脈搏、血壓，若患者收縮壓小於90mmHg，應給予生理食鹽水500-1000毫升快速滴注。如無法測量血壓，得以動脈點測量替代。\n4、ROSC後得執行12導程心電圖。" }
+    ],
+    checklists: [
+      {
+        id: "cl-io-f",
+        title: "OHCA 骨針（IO）使用須知與禁忌症檢核",
+        sub: "依據流程 F（註6）：必要條件年齡 > 18 歲、靜脈注射嘗試無法成功。",
+        mode: "ind_contra",
+        indications: [
+          "病人年齡大於 18 歲",
+          "經嘗試執行靜脈注射無法成功"
+        ],
+        contraindications: [
+          "「施打位置」有骨折",
+          "「施打位置」有感染或燒燙傷",
+          "「施打位置」無法定位",
+          "「施打位置」有開刀過或安裝人工關節、義肢等",
+          "48 小時內同一部位曾施打過"
+        ],
+        msgOk: "符合骨針（IO）條件且無禁忌症，得放置骨針以利給藥與輸液。",
+        msgContra: "存在禁忌症，該部位不可施打骨針！",
+        msgIncomplete: "請確認必要條件與排除所有禁忌症。"
+      }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "f1", title: "開始 CPR、使用 AED（P: 使用電擊器）", desc: "確認無意識、10 秒內無適當呼吸及無頸動脈搏。一人持續壓胸，另一人盡速使用車上 AED（已使用 PAD 者應更換為車上 AED）。", notes: ["註1", "註2", "註3"], options: [{ label: "分析心律：AED 是否建議電擊？", next: "s2", style: "yes" }] },
+        s2: { nodeId: "f2", title: "第一次分析：是否為可電擊心律？", desc: "AED 提示不要碰觸病人時全員離開。", notes: ["註4"], options: [{ label: "是（可電擊心律）", next: "s3", style: "no" }, { label: "否（不可電擊心律）", next: "s7", style: "yes" }] },
+        s3: { nodeId: "f3", title: "⚡ 第 1 次去顫 → CPR 2 分鐘 → 建議輸液管路", desc: "立即恢復胸部按壓 5 循環或約 2 分鐘，另一人建立周邊血管路徑（IV/IO）。", notes: ["註5", "註6"], options: [{ label: "2 分鐘後再次分析心律", next: "s4", style: "yes" }] },
+        s4: { nodeId: "f4", title: "第二次分析：是否仍為可電擊心律？", desc: "評估心律決定後續路徑。", options: [{ label: "是（可電擊）", next: "s5", style: "no" }, { label: "否（不可電擊／ROSC）→ 上車前確認", next: "s10", style: "yes" }] },
+        s5: { nodeId: "f5", title: "⚡ 第 2 次去顫 → CPR 2 分鐘 → 進階呼吸道 → P: Epinephrine 1mg IVP", desc: "建立進階呼吸道（EMTP 氣管內管以 1 次為限），EMTP 每 3–5 分鐘給予 Epinephrine 1mg IVP。", notes: ["註7"], options: [{ label: "2 分鐘後第三次分析心律", next: "s6", style: "yes" }] },
+        s6: { nodeId: "f6", title: "第三次分析：是否仍為可電擊心律？", desc: "經 AED 電擊二次後若用藥效果不彰，評估第 3 次去顫與 Amiodarone。", options: [{ label: "是 → ⚡ 第 3 次去顫 + P: Amiodarone 300mg IVP", next: "s6b", style: "no" }, { label: "否 → 上車前確認與後送", next: "s10", style: "yes" }] },
+        s6b: { nodeId: "f7", title: "⚡ 去顫 → CPR 2 分鐘 → P: Amiodarone 300mg IVP", desc: "第一次 300mg 靜脈快速注射，視必要每次 150mg 靜脈快速注射。", notes: ["註6"], options: [{ label: "完成 2 分鐘 CPR → 上車前確認", next: "s10", style: "yes" }] },
+        s7: { nodeId: "f8", title: "不可電擊路徑：CPR 2 分鐘、輸液管路、P: Epinephrine 1mg IVP、進階呼吸道", desc: "持續高品質 CPR，建立 IV/IO，EMTP 盡速每 3–5 分鐘給予 Epinephrine 1mg IVP 並建立進階呼吸道。", notes: ["註5", "註6", "註7"], options: [{ label: "2 分鐘後重新分析心律", next: "s8", style: "yes" }] },
+        s8: { nodeId: "f9", title: "重新分析：是否轉為可電擊心律？", desc: "確認是否可電擊。", options: [{ label: "是（轉為可電擊）→ 切入去顫路徑", next: "s5", style: "no" }, { label: "否 → 續做 CPR 2 分鐘", next: "s9", style: "yes" }] },
+        s9: { nodeId: "f11", title: "CPR 2 分鐘後再次分析：是否轉為可電擊心律？", desc: "再次評估心律。", options: [{ label: "是（轉為可電擊）→ 切入去顫路徑", next: "s5", style: "no" }, { label: "否 → 上車前確認與後送", next: "s10", style: "yes" }] },
+        s10: { nodeId: "f12", title: "上車前確定建立進階呼吸道及輸液管路／ROSC 復甦後照護", desc: "搬運上車保持 AED 開機；若 ROSC 則評估呼吸道/給氧，SBP<90mmHg 給予 N/S 500–1000ml 快速滴注，得執行 12 導程心電圖。", notes: ["註8"], jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }, { id: "flow-J", label: "參考 J.「成人氣管內管插管」流程 (EMTP)" }] }
+      }
+    }
+  }
+];
+
+FLOWS.push(
+  // ==================== G. 意識不清 ====================
+  {
+    id: "flow-G",
+    code: "G",
+    title: "G.「意識不清」流程",
+    shortTitle: "意識不清流程",
+    category: "危急與特殊流程",
+    pages: "手冊頁碼 23–24",
+    summary: "急性意識改變（GCS<14）、低血糖（<60mg/dL 或 Low）處置、神經學檢查與疑似腦中風 <4.5 小時後送原則。",
+    viewBox: [640, 440],
+    nodes: [
+      { id: "g1", type: "pill", x: 185, y: 14, w: 270, h: 72, lines: ["非創傷現場救護流程發現有", "突發或原因不明之意識不清", "(註1)"], notes: ["註1"] },
+      { id: "g2", type: "diamond", x: 185, y: 112, w: 270, h: 76, lines: ["量測血糖值是否＜60mg", "/dL或顯示\"Low\""] },
+      { id: "g3", type: "rect", x: 25, y: 226, w: 265, h: 68, lines: ["檢查瞳孔大小等重點式身體檢查(註3)", "量測血壓及血氧等輔助檢查"], notes: ["註3"] },
+      { id: "g4", type: "rect", x: 350, y: 226, w: 265, h: 68, lines: ["給予口服葡萄糖或", "葡萄糖水靜脈注射(註2)"], notes: ["註2"] },
+      { id: "g5", type: "pill", x: 35, y: 344, w: 245, h: 52, lines: ["「車內照護」通用流程(註4)"], notes: ["註4"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[320, 86], [320, 112]] },
+      { points: [[185, 150], [157, 150], [157, 226]], label: "否", labelPos: [162, 140] },
+      { points: [[455, 150], [482, 150], [482, 226]], label: "是", labelPos: [478, 140] },
+      { points: [[157, 294], [157, 344]] },
+      { points: [[482, 294], [482, 370], [280, 370]] }
+    ],
+    notes: [
+      { id: "註1", body: "係指病患急性意識改變(GCS＜14)或送達醫院前意識變差者，長期臥床病患意識與平常相同時則不屬於急性意識改變。" },
+      { id: "註2", body: "1、給予口服葡萄糖：\n  (1) 意識清楚且無嘔吐反應者給予果汁或含糖食物。\n  (2) 意識不清者，將糖粉塗抹於病患牙齦或舌下。\n2、儘量建立靜脈輸液，給予D10W治療(限EMT2以上)。\n3、EMTP得依據事先訂定之醫囑，給予D50W 2支(每支20ml)靜脈注射。" },
+      { id: "註3", body: "至少要評估昏迷指數、眼睛瞳孔大小及是否對光反應，並比較二側上肢和下肢感覺和運動功能等簡易神經學檢查。" },
+      { id: "註4", body: "若疑似腦中風，此時應詢問最近一次神經正常的時間，若症狀發生＜4.5小時，建議轉送至車程時間＜30分鐘內且有能力施行血栓溶解劑治療之中度級以上急救責任醫院。" }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "g1", title: "確認是否為急性意識改變", desc: "急性意識改變（GCS < 14）或送達醫院前意識變差者（長期臥床與平常相同者不屬之）。", notes: ["註1"], options: [{ label: "量測血糖值", next: "s2", style: "yes" }] },
+        s2: { nodeId: "g2", title: "量測血糖值是否 < 60 mg/dL 或顯示 \"Low\"？", desc: "判讀血糖檢驗結果。", options: [{ label: "是（低血糖）", next: "s3", style: "no" }, { label: "否（非低血糖）", next: "s4", style: "yes" }] },
+        s3: { nodeId: "g4", title: "給予口服葡萄糖或葡萄糖水靜脈注射", desc: "意識清楚無嘔吐給果汁/含糖食物；意識不清塗抹糖粉於牙齦或舌下；限 EMT2 以上給予 D10W；EMTP 得依預立醫囑給予 D50W 2 支（每支 20ml）IV。", notes: ["註2"], options: [{ label: "進入車內照護（並注意腦中風評估）", next: "s5", style: "yes" }] },
+        s4: { nodeId: "g3", title: "檢查瞳孔大小等重點身體檢查與輔助檢查", desc: "至少評估 GCS、瞳孔大小與對光反應、雙側上下肢感覺與運動功能，並量測血壓與血氧。", notes: ["註3"], options: [{ label: "進入車內照護（並確認疑似腦中風時間）", next: "s5", style: "yes" }] },
+        s5: { nodeId: "g5", title: "「車內照護」通用流程（疑似腦中風注意 < 4.5 小時）", desc: "疑似腦中風應詢問最近一次神經正常時間，若症狀發生 < 4.5 小時，建議轉送至車程 < 30 分鐘內且具血栓溶解劑治療能力之中度級以上急救責任醫院。", notes: ["註4"], jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }] }
+      }
+    }
+  },
+
+  // ==================== H. 過敏反應及過敏性休克 (114.12.18 修訂) ====================
+  {
+    id: "flow-H",
+    code: "H",
+    title: "H.「過敏反應及過敏性休克」流程",
+    shortTitle: "過敏反應及過敏性休克",
+    category: "危急與特殊流程",
+    revised: "114.12.18 修訂",
+    emtp: true,
+    pages: "手冊頁碼 25–26",
+    summary: "高濃度氧氣維持 SpO2≥94%、穩定／不穩定評估，114.12.18 開放食物及藥物過敏性休克施打 Epinephrine 0.3mg IM。",
+    viewBox: [640, 560],
+    nodes: [
+      { id: "h1", type: "pill", x: 255, y: 12, w: 180, h: 42, lines: ["過敏反應"] },
+      { id: "h2", type: "rect", x: 235, y: 74, w: 220, h: 48, lines: ["初步評估與急救", "病史詢問"] },
+      { id: "h3", type: "rect", x: 195, y: 142, w: 300, h: 52, lines: ["必要時建立輔助呼吸道及抽吸", "氧氣治療(註1)以維持SPO2≥94%"], notes: ["註1"] },
+      { id: "h4", type: "rect", x: 235, y: 214, w: 220, h: 40, lines: ["考慮建立靜脈路徑"] },
+      { id: "h5", type: "diamond", x: 225, y: 274, w: 240, h: 66, lines: ["是否穩定?(註2)"], notes: ["註2"] },
+      { id: "h6", type: "emtp", x: 24, y: 279, w: 165, h: 56, lines: ["BVM人工呼吸", "Epinephrine(註3)"], notes: ["註3"], badge: "P" },
+      { id: "h7", type: "rect", x: 205, y: 374, w: 280, h: 54, lines: ["依初步評估施行必要之處置", "必要時到院前聯絡急救責任醫院"] },
+      { id: "h8", type: "rect", x: 255, y: 448, w: 180, h: 38, lines: ["上擔架床"] },
+      { id: "h9", type: "pill", x: 230, y: 504, w: 230, h: 44, lines: ["「車內照護」通用流程"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[345, 54], [345, 74]] },
+      { points: [[345, 122], [345, 142]] },
+      { points: [[345, 194], [345, 214]] },
+      { points: [[345, 254], [345, 274]] },
+      { points: [[225, 307], [189, 307]], label: "否", labelPos: [206, 297] },
+      { points: [[106, 335], [106, 356], [345, 356], [345, 374]] },
+      { points: [[345, 340], [345, 374]], label: "是", labelPos: [360, 358] },
+      { points: [[345, 428], [345, 448]] },
+      { points: [[345, 486], [345, 504]] }
+    ],
+    notes: [
+      { id: "註1", body: "給予高濃度的氧氣使SPO2≥94%，考慮使用純氧面罩(15公升/分)。" },
+      { id: "註2", body: "1、穩定的病患：表現出輕微的呼吸困難現象，收縮壓≥90mm/Hg及正常皮膚表現。\n2、不穩定的病患：表現意識不清、皮膚濕冷，有呼吸道衰竭，近乎呼吸道阻塞(上呼吸道喘鳴音或嚴重的呼吸窘迫)，收縮壓<90mm/Hg。" },
+      { id: "註3", revised: true, body: "1、快速輸注生理食鹽水，可考慮2條大口徑靜脈管路輸液並予以加壓輸入。\n2、【114.12.18 修訂】確認因食物、藥物、動物或植物作用導致過敏性休克(因過敏而導致全身血管擴張導致血壓下降、咽喉水腫、而引發循環衰竭與呼吸衰竭，若不及時治療，將快速導致死亡之傷病患)，EMTP得給予腎上腺素，若有使用，到院後EMTP應主動告知醫護人員；救護紀錄表應詳實記載，並交由醫療指導醫師核簽：成人 0.3mg 肌肉注射。" }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "h2", title: "初步評估、急救與病史詢問", desc: "確認過敏反應誘因，建立輔助呼吸道/抽吸並給予高濃度氧氣（純氧面罩 15L/min）維持 SpO2≥94%，考慮建立靜脈路徑。", notes: ["註1"], options: [{ label: "評估病患是否穩定", next: "s2", style: "yes" }] },
+        s2: { nodeId: "h5", title: "病患是否穩定？", desc: "穩定：輕微呼吸困難、SBP≥90mmHg、正常皮膚。\n不穩定：意識不清、皮膚濕冷、呼吸道衰竭/阻塞（喘鳴或嚴重呼吸窘迫）、SBP<90mmHg。", notes: ["註2"], options: [{ label: "是（穩定）", next: "s4", style: "yes" }, { label: "否（不穩定／過敏性休克）", next: "s3", style: "no" }] },
+        s3: { nodeId: "h6", title: "BVM 人工呼吸、快速輸液與 EMTP Epinephrine 0.3mg IM", desc: "快速輸注生理食鹽水（可考慮 2 條大口徑靜脈管路加壓輸入）；確認因食物、藥物、動物或植物作用導致過敏性休克，EMTP 得給予腎上腺素成人 0.3mg 肌肉注射，到院主動告知並由醫療指導醫師核簽。", notes: ["註3"], options: [{ label: "續做必要處置與聯絡醫院", next: "s4", style: "yes" }] },
+        s4: { nodeId: "h7", title: "依初步評估施行必要處置 → 上擔架床 → 車內照護", desc: "必要時到院前聯絡急救責任醫院。", jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }] }
+      }
+    }
+  },
+
+  // ==================== I. 氣喘 (114.12.18 修訂) ====================
+  {
+    id: "flow-I",
+    code: "I",
+    title: "I.「氣喘」流程(註1)",
+    shortTitle: "氣喘流程",
+    category: "危急與特殊流程",
+    revised: "114.12.18 修訂",
+    emtp: true,
+    pages: "手冊頁碼 27–28",
+    summary: "協助病患吸入短效支氣管擴張劑、症狀惡化處置，114.12.18 刪除心跳120以下要件之氣霧治療 5 項檢核清單。",
+    viewBox: [640, 560],
+    nodes: [
+      { id: "i1", type: "pill", x: 205, y: 12, w: 230, h: 52, lines: ["「非創傷通用流程」", "意識清醒，主訴氣喘"], notes: ["註1"] },
+      { id: "i2", type: "rect", x: 205, y: 84, w: 230, h: 40, lines: ["初步評估及輔助檢查"] },
+      { id: "i3", type: "rect", x: 115, y: 144, w: 410, h: 74, lines: ["1. 呼吸道不暢通，應建立輔助呼吸道或給予抽吸。", "2. 依SpO2給予氧氣治療。", "3. 病患有吸入型短效支氣管擴張劑時，可協助使用。"] },
+      { id: "i4", type: "diamond", x: 205, y: 238, w: 230, h: 60, lines: ["症狀是否惡化?"] },
+      { id: "i5", type: "rect", x: 145, y: 318, w: 350, h: 42, lines: ["意識改變且SpO2<90%，則以BVM人工呼吸"] },
+      { id: "i6", type: "emtp", x: 165, y: 382, w: 310, h: 72, lines: ["1. 依初步評估施行必要處置。", "2. 儘速送醫。", "3. 上車後可給予氣霧治療。(註2)"], notes: ["註2"], badge: "P" },
+      { id: "i7", type: "rect", x: 230, y: 470, w: 180, h: 32, lines: ["上擔架床"] },
+      { id: "i8", type: "pill", x: 205, y: 514, w: 230, h: 38, lines: ["「車內照護」通用流程"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[320, 64], [320, 84]] },
+      { points: [[320, 124], [320, 144]] },
+      { points: [[320, 218], [320, 238]] },
+      { points: [[320, 298], [320, 318]], label: "是", labelPos: [336, 309] },
+      { points: [[320, 360], [320, 382]] },
+      { points: [[205, 268], [95, 268], [95, 372], [320, 372], [320, 382]], label: "否", labelPos: [140, 258] },
+      { points: [[320, 454], [320, 470]] },
+      { points: [[320, 502], [320, 514]] }
+    ],
+    notes: [
+      { id: "註1", body: "氣喘是一種慢性的支氣管炎症，其致病機轉是由於抗原或其他刺激物刺激支氣管，引起發炎細胞反應，而引起支氣管平滑肌收縮、黏膜下水腫、炎症細胞浸潤，造成氣道管徑變窄，阻力增加，而有喘鳴及氣促的臨床表現。" },
+      { id: "註2", revised: true, body: "氣霧治療（114.12.18 修訂：已刪除「每分鐘心跳數120以下」要件）：\n一、EMT-P遇有氣喘或呼吸困難患者時應先確認清單選項皆符合要件後得依預立醫療流程給予氣霧治療：\n  □ 呼吸道暢通無異物\n  □ 呼吸動力足夠\n  □ 呼吸聲有哮鳴音\n  □ 大於1歲(1-2歲劑量減半使用)\n  □ 無氣霧治療藥物過敏\n二、車上利用小型噴霧器給予 2.5mg Albuterol 溶於 0.9% saline solution，可以 Ipratropium 0.5mg 混和至 4ml 氣霧吸入治療，氧氣流量設定為 6 公升/分鐘。1至2歲病患給予 1/2 上述藥物劑量，但仍使用 N/S 稀釋至總量 4ml。此治療應與運送同時進行，EMT-P不可因試圖給予此治療而延遲送醫。" }
+    ],
+    checklists: [
+      {
+        id: "cl-asthma",
+        title: "EMTP 氣霧治療 5 項要件檢核清單（原手冊檢核表）",
+        sub: "依據流程 I（註2，114.12.18 修訂版）：請先確認下列 5 項要件皆符合後勾選。",
+        mode: "all",
+        items: [
+          "呼吸道暢通無異物",
+          "呼吸動力足夠",
+          "呼吸聲有哮鳴音",
+          "大於 1 歲（1–2 歲劑量減半使用）",
+          "無氣霧治療藥物過敏"
+        ],
+        msgIncomplete: "尚有要件未符合，須 5 項全部符合後方得依預立醫療流程給予氣霧治療。",
+        msgAll: "5 項要件全部符合！EMT-P 可於車上與運送同時進行氣霧治療：\n• 2.5mg Albuterol 溶於 0.9% N/S，可與 Ipratropium 0.5mg 混和至總量 4ml\n• 氧氣流量設定為 6 公升/分鐘（1–2 歲給予 1/2 劑量，仍稀釋至 4ml）\n• 不可因試圖給予此治療而延遲送醫。"
+      }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "i3", title: "初步評估、輔助檢查與基本處置", desc: "1. 呼吸道不暢通建立輔助呼吸道或抽吸。\n2. 依 SpO2 給予氧氣治療。\n3. 病患有吸入型短效支氣管擴張劑時可協助使用。", notes: ["註1"], options: [{ label: "評估症狀是否惡化", next: "s2", style: "yes" }] },
+        s2: { nodeId: "i4", title: "症狀是否惡化？", desc: "觀察意識變化與血氧狀態。", options: [{ label: "是（意識改變且 SpO2 < 90%）", next: "s3", style: "no" }, { label: "否（未惡化）", next: "s4", style: "yes" }] },
+        s3: { nodeId: "i5", title: "以 BVM 人工呼吸", desc: "意識改變且 SpO2 < 90%，立即以 BVM 人工呼吸並儘速送醫。", options: [{ label: "進行必要處置、儘速送醫與上車氣霧評估", next: "s4", style: "yes" }] },
+        s4: { nodeId: "i6", title: "必要處置、儘速送醫、上車後可給予氣霧治療（EMT-P）", desc: "EMT-P 確認 5 項要件皆符合後，車上以 6L/min 氧氣給予 Albuterol 2.5mg (+ Ipratropium 0.5mg) 混和至 4ml 氣霧治療（與運送同時進行，不可延遲送醫）。", notes: ["註2"], jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }] }
+      }
+    }
+  },
+
+  // ==================== J. 成人氣管內管插管 ====================
+  {
+    id: "flow-J",
+    code: "J",
+    title: "J.「成人氣管內管插管」流程（僅限本局EMTP）",
+    shortTitle: "成人氣管內管插管(EMTP)",
+    category: "危急與特殊流程",
+    emtp: true,
+    pages: "手冊頁碼 29–30",
+    summary: "僅限 OHCA 患者且備有 Et-CO2 或 EDD，嘗試至多一次且小於 30 秒，失敗改置入聲門上呼吸道。",
+    viewBox: [680, 620],
+    nodes: [
+      { id: "j1", type: "pill", x: 245, y: 12, w: 260, h: 52, lines: ["符合插管適應症(註1)且", "無相關禁忌症"], notes: ["註1"], badge: "P" },
+      { id: "j2", type: "rect", x: 265, y: 80, w: 220, h: 36, lines: ["插管前準備"] },
+      { id: "j3", type: "rect", x: 265, y: 132, w: 220, h: 36, lines: ["插入氣管內管（<30秒）"] },
+      { id: "j4", type: "rect", x: 255, y: 184, w: 240, h: 36, lines: ["袋瓣罩甦醒球人工呼吸"] },
+      { id: "j5", type: "diamond", x: 205, y: 238, w: 340, h: 62, lines: ["以聽診察看是否有呼吸聲", "及胸部是否有起伏"] },
+      { id: "j6", type: "diamond", x: 185, y: 320, w: 380, h: 74, lines: ["使用食道監測器(EDD)或考慮進階", "呼吸道波形二氧化碳濃度監測", "顯示插管位置正確"] },
+      { id: "j7", type: "rect", x: 18, y: 318, w: 140, h: 76, lines: ["移除氣管內管重", "新正壓給氧通氣", "(註2)"], notes: ["註2"] },
+      { id: "j8", type: "rect", x: 30, y: 446, w: 116, h: 52, lines: ["置入聲門上", "呼吸道"] },
+      { id: "j9", type: "rect", x: 255, y: 414, w: 240, h: 36, lines: ["固定氣管內管"] },
+      { id: "j10", type: "rect", x: 255, y: 466, w: 240, h: 36, lines: ["袋瓣罩甦醒球人工呼吸"] },
+      { id: "j11", type: "rect", x: 280, y: 518, w: 190, h: 34, lines: ["上擔架床"] },
+      { id: "j12", type: "pill", x: 255, y: 566, w: 240, h: 42, lines: ["「車內照護」通用流程"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[375, 64], [375, 80]] },
+      { points: [[375, 116], [375, 132]] },
+      { points: [[375, 168], [375, 184]] },
+      { points: [[375, 220], [375, 238]] },
+      { points: [[375, 300], [375, 320]], label: "是", labelPos: [390, 311] },
+      { points: [[205, 269], [88, 269], [88, 318]], label: "否", labelPos: [145, 259] },
+      { points: [[185, 357], [158, 357]], label: "否", labelPos: [172, 347] },
+      { points: [[88, 394], [88, 446]] },
+      { points: [[146, 472], [255, 484]] },
+      { points: [[375, 394], [375, 414]], label: "是", labelPos: [390, 405] },
+      { points: [[375, 450], [375, 466]] },
+      { points: [[375, 502], [375, 518]] },
+      { points: [[375, 552], [375, 566]] }
+    ],
+    notes: [
+      { id: "註1", body: "適應症及禁忌症：\n1. 僅限用於心肺功能停止(OHCA)患者，除使用聲門上輔助呼吸道(I-gel)，另得選擇氣管內管插管(Endo)。\n2. 須於備有Capnography(Et-CO2，潮氣末二氧化碳監測設備)或食道偵測器(EDD)實施插管位置確認之前提下方可施行。\n3. 禁忌症：重病末期傷病患已預立「不施行心肺復甦術意願書」或「選擇安寧緩和醫療意願書」。\n4. 注意事項：\n  (一) 嘗試氣管內插管，至多一次，插管失敗，改施行聲門上呼吸道置入。\n  (二) 插管時間應小於30秒。\n  (三) 插管之間或插管失敗後應給予袋瓣罩(Bag-Valve-Mask)正壓給氣。\n  (四) 插管後，應評估確認氣管內管位置，包含初級確認及次級確認兩種技術。初級確認包括：插管時看到聲帶並從中插入，用聽診器確認五點位置，二側胸部有擴張，氣管內管有水氣。次級確認使用Et-CO2 或食道偵測器(EDD)。\n  (五) 移動傷病患後，運送傷患途中及到院後，應保持警覺、持續評估及確認氣管內管位置。" },
+      { id: "註2", body: "嘗試氣管內插管，至多一次，插管失敗，改施行聲門上呼吸道置入。" }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "j1", title: "確認符合適應症且無禁忌症（限 EMTP）", desc: "僅限 OHCA 患者、須備有 Et-CO2 或 EDD、確認無 DNR／安寧緩和醫療意願書禁忌症。", notes: ["註1"], options: [{ label: "插管前準備 → 插入氣管內管（<30秒）→ BVM 人工呼吸", next: "s2", style: "yes" }] },
+        s2: { nodeId: "j5", title: "初級確認：聽診是否有呼吸聲及胸部起伏？", desc: "確認插管見聲帶通過、五點聽診、兩側胸部擴張、管內水氣。", options: [{ label: "是 → 進行次級確認（EDD / Et-CO2）", next: "s3", style: "yes" }, { label: "否 → 立即移除氣管內管", next: "s4", style: "no" }] },
+        s3: { nodeId: "j6", title: "次級確認：EDD 或波形二氧化碳監測（Et-CO2）位置是否正確？", desc: "以儀器確認氣管內管位於氣管內。", options: [{ label: "是 → 固定氣管內管並持續 BVM", next: "s5", style: "yes" }, { label: "否 → 立即移除氣管內管", next: "s4", style: "no" }] },
+        s4: { nodeId: "j7", title: "移除氣管內管、重新正壓給氧通氣 → 改置入聲門上呼吸道", desc: "嘗試氣管內插管至多一次，失敗即改施行聲門上呼吸道置入並以 BVM 人工呼吸。", notes: ["註2"], options: [{ label: "上擔架床 → 車內照護", next: "s6", style: "yes" }] },
+        s5: { nodeId: "j9", title: "固定氣管內管 → BVM 人工呼吸 → 上擔架床", desc: "移動與運送途中應持續警覺並確認氣管內管位置。", options: [{ label: "進入車內照護", next: "s6", style: "yes" }] },
+        s6: { nodeId: "j12", title: "「車內照護」通用流程", desc: "持續監測氣管內管位置與心肺復甦照護。", jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }] }
+      }
+    }
+  },
+
+  // ==================== K. 異物哽塞 ====================
+  {
+    id: "flow-K",
+    code: "K",
+    title: "K.「異物哽塞」流程",
+    shortTitle: "異物哽塞流程",
+    category: "危急與特殊流程",
+    emtp: true,
+    pages: "手冊頁碼 31–32",
+    summary: "清醒嚴重阻塞（哈姆立克法）、輕度阻塞鼓勵咳出、無意識胸部按壓與 EMTP 喉鏡/異物夾（Magill forceps）處置。",
+    viewBox: [720, 620],
+    nodes: [
+      { id: "k1", type: "pill", x: 265, y: 12, w: 200, h: 40, lines: ["主訴呼吸道哽塞"] },
+      { id: "k2", type: "diamond", x: 270, y: 70, w: 190, h: 56, lines: ["患者清醒?"] },
+      { id: "k3", type: "rect", x: 24, y: 60, w: 205, h: 76, lines: ["*有明顯可見之異物則", "先以手指清除之", "*徒手維持呼吸道暢通", "並進行通氣測試"] },
+      { id: "k4", type: "diamond", x: 265, y: 146, w: 200, h: 60, lines: ["嚴重阻塞?(註1)"], notes: ["註1"] },
+      { id: "k5", type: "rect", x: 525, y: 146, w: 170, h: 60, lines: ["鼓勵患者咳出異物", "(註3)"], notes: ["註3"] },
+      { id: "k6", type: "diamond", x: 40, y: 162, w: 175, h: 56, lines: ["通氣有阻力?"] },
+      { id: "k7", type: "rect", x: 255, y: 226, w: 220, h: 38, lines: ["哈姆立克法"] },
+      { id: "k8", type: "emtp", x: 24, y: 242, w: 205, h: 112, lines: ["開始胸部按壓5個循環或", "2分鐘並使用AED", "(EMTP以喉鏡查看並嘗", "試以異物夾夾出異物)", "(註2)"], notes: ["註2"], badge: "P" },
+      { id: "k9", type: "rect", x: 255, y: 286, w: 220, h: 54, lines: ["若發現異物，", "以手指掏出方法排除異物"] },
+      { id: "k10", type: "rect", x: 255, y: 364, w: 230, h: 54, lines: ["考慮發生 OHCA 之可能，評估有", "無自發性呼吸及評估脈搏"] },
+      { id: "k11", type: "rect", x: 245, y: 444, w: 250, h: 42, lines: ["依初步評估施行必要處置(註4)"], notes: ["註4"] },
+      { id: "k12", type: "rect", x: 280, y: 504, w: 180, h: 34, lines: ["上擔架床"] },
+      { id: "k13", type: "pill", x: 255, y: 554, w: 230, h: 42, lines: ["「車內照護」通用流程"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[365, 52], [365, 70]] },
+      { points: [[270, 98], [229, 98]], label: "否", labelPos: [250, 88] },
+      { points: [[365, 126], [365, 146]], label: "是", labelPos: [380, 138] },
+      { points: [[465, 176], [525, 176]], label: "否", labelPos: [492, 166] },
+      { points: [[365, 206], [365, 226]], label: "是", labelPos: [380, 218] },
+      { points: [[127, 136], [127, 162]] },
+      { points: [[127, 218], [127, 242]], label: "是", labelPos: [142, 232] },
+      { points: [[40, 190], [10, 190], [10, 391], [255, 391]], label: "否", labelPos: [22, 180] },
+      { points: [[229, 313], [255, 313]] },
+      { points: [[365, 264], [365, 286]] },
+      { points: [[365, 340], [365, 364]] },
+      { points: [[365, 418], [365, 444]] },
+      { points: [[610, 206], [610, 465], [495, 465]] },
+      { points: [[365, 486], [365, 504]] },
+      { points: [[365, 538], [365, 554]] }
+    ],
+    notes: [
+      { id: "註1", body: "清醒患者可依照下列情形判斷為「嚴重呼吸道阻塞」：\n一、咳嗽聲逐漸減弱或沒有咳嗽。\n二、呼吸更加困難或沒有呼吸。\n三、呼吸時有高頻雜音(喘鳴聲Stridor；頸部出現吸氣期的高頻雜音)。\n四、發紺。\n五、不能說話。\n六、全身癱軟。" },
+      { id: "註2", body: "患者無意識且呼吸道阻塞則直接進行與CPR同方式之胸部按壓：\n一、胸部按壓時應持續觀察口中是否出現異物，如有可見異物應將患者頭轉側並以手指掏除異物，並給予通氣測試確認異物是否完全排除。\n二、胸部按壓五循環或兩分鐘後如未排除異物，可能惡化為OHCA，應檢查頸動脈並考慮啟動AED或手動去顫器，參考「F心肺功能停止流程」並立即後送。\n\nEMTP 進階異物哽塞處置：\n一、EMT-P可考慮以喉鏡查看是否有可見異物，如有則以異物夾將之夾出。\n二、患者OHCA時，EMT-P可考慮參考「F心肺功能停止流程」及「J成人氣管內管插管流程」。" },
+      { id: "註3", body: "患者持續無法自主咳出異物時：\n一、患者持續無法自主咳出異物時，若症狀惡化成「嚴重呼吸道阻塞」，則給予實施「哈姆立克法」。\n二、若持續無法咳出異物而意識改變，則給予通氣測試。\n三、若持續無法咳出異物且無上述兩種情形，則應儘速送醫。" },
+      { id: "註4", body: "依初步評估考慮可給予之必要處置：\n一、清除口咽異物，需要時，可直接抽吸。\n二、患者若出現呼吸動力不足，則給予袋瓣式甦醒球正壓給氧，並每1分鐘重新評估頸動脈及呼吸。\n三、曾經或正在發生之呼吸道阻塞之傷病患，氧氣治療方式應以NRM為首選，給高濃度氧氣治療。" }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "k2", title: "主訴呼吸道哽塞：患者是否清醒？", desc: "先判斷患者意識狀態。", options: [{ label: "是（清醒）", next: "s2", style: "yes" }, { label: "否（無意識）", next: "s5", style: "no" }] },
+        s2: { nodeId: "k4", title: "是否為嚴重呼吸道阻塞？", desc: "判斷 6 項指標：咳嗽減弱或無咳嗽、呼吸更困難/無呼吸、吸氣高頻喘鳴聲（Stridor）、發紺、不能說話、全身癱軟。", notes: ["註1"], options: [{ label: "是（嚴重阻塞）→ 哈姆立克法", next: "s3", style: "no" }, { label: "否（非嚴重阻塞）→ 鼓勵咳出", next: "s4", style: "yes" }] },
+        s3: { nodeId: "k7", title: "施行哈姆立克法 → 發現異物以手指掏出", desc: "排除異物後仍須考慮發生 OHCA 之可能，評估自發性呼吸與脈搏。", options: [{ label: "評估呼吸脈搏與初步處置", next: "s7", style: "yes" }] },
+        s4: { nodeId: "k5", title: "鼓勵患者咳出異物", desc: "若持續無法咳出：惡化為嚴重阻塞→哈姆立克法；意識改變→通氣測試；無上述情形→儘速送醫。", notes: ["註3"], options: [{ label: "進行初步處置並送醫", next: "s7", style: "yes" }] },
+        s5: { nodeId: "k6", title: "清除明顯可見異物 → 徒手維持呼吸道並通氣測試：通氣有阻力？", desc: "判斷通氣是否存在阻力。", options: [{ label: "是（有阻力）→ 胸部按壓與 EMTP 喉鏡/異物夾", next: "s6", style: "no" }, { label: "否（無阻力）→ 評估呼吸脈搏", next: "s7", style: "yes" }] },
+        s6: { nodeId: "k8", title: "開始胸部按壓 5 循環或 2 分鐘並使用 AED（EMTP 喉鏡/異物夾）", desc: "持續觀察口中異物並轉側掏除；EMTP 可考慮喉鏡查看並以異物夾夾出。2 分鐘未排除則檢查頸動脈並參考「F 心肺功能停止流程」立即後送。", notes: ["註2"], options: [{ label: "評估自發性呼吸、脈搏與必要處置", next: "s7", style: "yes" }] },
+        s7: { nodeId: "k11", title: "依初步評估施行必要處置（NRM 高濃度氧氣首選）", desc: "必要時抽吸；呼吸動力不足以 BVM 正壓給氧並每 1 分鐘重評頸動脈及呼吸；氧氣治療以 NRM 為首選。", notes: ["註4"], jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }, { id: "flow-F", label: "若為 OHCA → F.「心肺功能停止」流程" }] }
+      }
+    }
+  },
+
+  // ==================== L. 疑似缺血性胸痛 (114.12.18 新增) ====================
+  {
+    id: "flow-L",
+    code: "L",
+    title: "L.「疑似缺血性胸痛病人操作流程」流程",
+    shortTitle: "疑似缺血性胸痛流程",
+    category: "危急與特殊流程",
+    revised: "114.12.18 新增",
+    emtp: true,
+    pages: "手冊頁碼 33–34",
+    summary: "114.12.18 全新流程：執行心電圖、病史風險評估、EMT2+ 協助 NTG 舌下錠與 EMTP 預立醫囑 Aspirin 300–325mg。",
+    viewBox: [640, 510],
+    nodes: [
+      { id: "l1", type: "pill", x: 215, y: 12, w: 210, h: 42, lines: ["非創傷，主訴胸痛"] },
+      { id: "l2", type: "rect", x: 170, y: 74, w: 300, h: 72, lines: ["1、依非創傷流程完成初步評估及處置", "2、病史詢問(註1)", "3、執行心電圖"], notes: ["註1"] },
+      { id: "l3", type: "diamond", x: 170, y: 168, w: 300, h: 64, lines: ["懷疑缺血性胸痛?"] },
+      { id: "l4", type: "emtp", x: 130, y: 256, w: 380, h: 62, lines: ["協助給予病人硝化甘油片(NTG)舌下含片(註2)", "P：依預立醫囑給予Aspirin 300至325mg(註3)"], notes: ["註2", "註3"], badge: "P" },
+      { id: "l5", type: "rect", x: 170, y: 344, w: 300, h: 72, lines: ["1、完成初步評估必要處置", "2、若懷疑缺血性胸痛則送至", "「急性冠心症急救責任醫院」"] },
+      { id: "l6", type: "pill", x: 205, y: 442, w: 230, h: 44, lines: ["「車內照護」通用流程"], jump: "flow-D" }
+    ],
+    edges: [
+      { points: [[320, 54], [320, 74]] },
+      { points: [[320, 146], [320, 168]] },
+      { points: [[320, 232], [320, 256]], label: "是", labelPos: [336, 245] },
+      { points: [[470, 200], [565, 200], [565, 380], [470, 380]], label: "否", labelPos: [525, 190] },
+      { points: [[320, 318], [320, 344]] },
+      { points: [[320, 416], [320, 442]] }
+    ],
+    notes: [
+      { id: "註1", revised: true, body: "病史詢問應包含疼痛位置、性質、合併症狀、症狀開始時間、風險因子，重點如下列：\n一、缺血性胸痛的典型症狀：絞緊或壓迫性胸痛、移轉痛(如移轉至下巴、肩膀或上臂等)。\n二、非典型症狀：噁心、嘔吐、呼吸急促、暈眩、上腹痛等。常見於糖尿病病人、老年人、婦女等族群。\n三、常見合併症狀：出汗、面色蒼白、口唇青紫、噁心、嘔吐、心悸、短暫的意識喪失。\n四、風險因子：糖尿病、高血壓、高血脂症、吸煙、早發性冠狀動脈疾病家族史及冠狀動脈疾病過往史等。" },
+      { id: "註2", revised: true, body: "協助給予NTG舌下錠，重點如下：\n一、限EMT2以上才能協助給予。\n二、使病人躺或坐，以避免使用時低血壓導致病人跌倒。\n三、取出病人既有的NTG舌下錠一顆，放置病人舌下，不須咀嚼。\n四、若使用後症狀沒有緩解每五分鐘可再給予一次，包含患者自行服用至多3次。\n五、NTG舌下錠禁忌症：\n  (一) 收縮壓<90mmHg。\n  (二) 脈搏<50次/分鐘或≧100次/分鐘。\n  (三) 服用中西壯陽藥者。\n  (四) 對NTG過敏者。\n  (五) 疑似右心衰竭者，如：頸靜脈怒張、下肢嚴重水腫或心電圖顯示下心壁梗塞。" },
+      { id: "註3", revised: true, body: "給予aspirin之預立醫囑（114.12.18 新增）：\n一、限EMTP才能給予。\n二、aspirin 300-325mg PO，為加速達到血中劑量，可嚼碎或打開膠囊口服。\n三、適應症：符合缺血性胸痛症狀。\n四、禁忌症：\n  (一) 病人對阿斯匹林類過敏。\n  (二) 疑似活動性出血，如：體表出血點、大片瘀血等。" }
+    ],
+    checklists: [
+      {
+        id: "cl-ntg",
+        title: "NTG 舌下錠禁忌症檢核（限 EMT2 以上協助給予）",
+        sub: "依據流程 L（註2）：勾選任一禁忌症即不可協助給予病人既有之 NTG 舌下錠。",
+        mode: "contra_only",
+        items: [
+          "收縮壓 < 90 mmHg",
+          "脈搏 < 50 次/分鐘 或 ≧ 100 次/分鐘",
+          "服用中西壯陽藥者",
+          "對 NTG 過敏者",
+          "疑似右心衰竭者（如：頸靜脈怒張、下肢嚴重水腫或心電圖顯示下心壁梗塞）"
+        ],
+        msgSafe: "目前未勾選任何禁忌症：EMT2 以上可使病人躺或坐，協助取出病人既有 NTG 舌下錠 1 顆置於舌下（不須咀嚼），每 5 分鐘可再給一次，含自服至多 3 次。",
+        msgWarn: "存在 NTG 禁忌症！不可協助給予硝化甘油片（NTG）！"
+      },
+      {
+        id: "cl-aspirin",
+        title: "EMTP Aspirin 300–325mg 預立醫囑檢核（114.12.18 新增）",
+        sub: "依據流程 L（註3）：限 EMTP 給予，須符合適應症並排除所有禁忌症。",
+        mode: "ind_contra",
+        indications: [
+          "符合缺血性胸痛症狀"
+        ],
+        contraindications: [
+          "病人對阿斯匹林類過敏",
+          "疑似活動性出血（如：體表出血點、大片瘀血等）"
+        ],
+        msgOk: "符合適應症且無禁忌症！EMTP 可依預立醫囑給予 Aspirin 300–325mg PO（為加速達到血中劑量，可嚼碎或打開膠囊口服）。",
+        msgContra: "存在禁忌症，不可給予 Aspirin！",
+        msgIncomplete: "請先確認符合缺血性胸痛症狀且排除所有禁忌症。"
+      }
+    ],
+    walkthrough: {
+      start: "s1",
+      steps: {
+        s1: { nodeId: "l2", title: "非創傷主訴胸痛：初步評估、病史詢問與心電圖", desc: "1. 依非創傷流程完成初步評估及處置。\n2. 詢問疼痛位置、性質、合併症狀、開始時間與風險因子（注意非典型症狀）。\n3. 執行心電圖。", notes: ["註1"], options: [{ label: "是否懷疑缺血性胸痛？", next: "s2", style: "yes" }] },
+        s2: { nodeId: "l3", title: "懷疑缺血性胸痛？", desc: "綜合症狀、風險因子與心電圖結果判斷。", options: [{ label: "是（懷疑缺血性胸痛）", next: "s3", style: "no" }, { label: "否（非缺血性胸痛）", next: "s4", style: "yes" }] },
+        s3: { nodeId: "l4", title: "協助 NTG 舌下含片（EMT2+）與 P: Aspirin 300–325mg（EMTP）", desc: "確認無禁忌症後：EMT2+ 使病人躺/坐協助給予既有 NTG 舌下含片（每 5 分鐘至多 3 次）；EMTP 依預立醫囑給予 Aspirin 300–325mg PO（可嚼碎或打開膠囊）。", notes: ["註2", "註3"], options: [{ label: "送至「急性冠心症急救責任醫院」", next: "s4", style: "yes" }] },
+        s4: { nodeId: "l5", title: "完成必要處置並後送 →「車內照護」通用流程", desc: "若懷疑缺血性胸痛，送至「急性冠心症急救責任醫院」並於離開現場後主動無線電告知接收醫院先行準備。", jumps: [{ id: "flow-D", label: "前往 D.「車內照護」通用流程" }] }
+      }
+    }
+  }
+);
+
+// ============================================================================
+// 應用程式狀態與核心引擎
+// ============================================================================
+const state = {
+  currentPage: "home",
+  historyStack: [],
+  flowMode: "chart", // "chart" | "walkthrough"
+  zoom: 1,
+  activeNodeId: null,
+  wtStep: null,
+  wtTrail: [],
+  dutySelectedId: "d1"
+};
+
+const $ = (sel) => document.querySelector(sel);
+const escapeHtml = (s) => String(s)
+  .replace(/&/g, "&amp;")
+  .replace(/</g, "&lt;")
+  .replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;");
+
+// ===== 側邊欄與抽屜控制 =====
+function renderSidebar() {
+  const nav = $("#sidebar");
+  const generalFlows = FLOWS.filter(f => f.category === "通用流程");
+  const specialFlows = FLOWS.filter(f => f.category !== "通用流程");
+
+  const mkBtn = (id, code, label, extra = "") => `
+    <button class="nav-item ${state.currentPage === id ? "active" : ""}" data-page="${id}">
+      <span class="nav-code">${code}</span>
+      <span class="nav-label">${label}</span>
+      ${extra}
+    </button>`;
+
+  let html = `
+    <div class="nav-group-label">手冊總覽</div>
+    ${mkBtn("home", "首", "手冊總則與快速導覽")}
+    ${mkBtn("history", "修", "修改歷程 (104–114)", '<span class="tag-rev">114.12.18</span>')}
+    ${mkBtn("part1", "壹", "緊急救護勤務作業程序")}
+    <div class="nav-group-label">貳、通用流程（A–E）</div>
+    ${generalFlows.map(f => mkBtn(
+      f.id, f.code, f.shortTitle,
+      (f.revised ? `<span class="tag-rev">${f.revised.includes("新增") ? "新增" : "修訂"}</span>` : "")
+    )).join("")}
+    <div class="nav-group-label">貳、危急與特殊流程（F–L）</div>
+    ${specialFlows.map(f => mkBtn(
+      f.id, f.code, f.shortTitle,
+      (f.revised ? `<span class="tag-rev">${f.revised.includes("新增") ? "新增" : "修訂"}</span>` : "") +
+      (f.emtp ? `<span class="tag-emtp">P</span>` : "")
+    )).join("")}
+  `;
+  nav.innerHTML = html;
+  nav.querySelectorAll(".nav-item").forEach(btn => {
+    btn.addEventListener("click", () => {
+      navigate(btn.dataset.page);
+      closeSidebar();
+    });
+  });
+}
+
+function openSidebar() {
+  $("#sidebar").classList.add("open");
+  $("#sidebarBackdrop").classList.add("open");
+}
+function closeSidebar() {
+  $("#sidebar").classList.remove("open");
+  $("#sidebarBackdrop").classList.remove("open");
+}
+
+// ===== 手機版 Bottom Sheet =====
+function openBottomSheet(title, html) {
+  $("#sheetTitle").textContent = title;
+  $("#sheetBody").innerHTML = html;
+  $("#sheetBackdrop").classList.add("open");
+  $("#bottomSheet").classList.add("open");
+}
+function closeBottomSheet() {
+  $("#sheetBackdrop").classList.remove("open");
+  $("#bottomSheet").classList.remove("open");
+}
+
+// ===== 頁面切換 =====
+function navigate(pageId, opts = {}) {
+  if (!opts.isBack && state.currentPage && state.currentPage !== pageId) {
+    state.historyStack.push(state.currentPage);
+    if (state.historyStack.length > 20) state.historyStack.shift();
+  }
+  state.currentPage = pageId;
+  state.flowMode = opts.mode || "chart";
+  state.activeNodeId = null;
+  state.zoom = 1;
+
+  const flow = FLOWS.find(f => f.id === pageId);
+  if (flow && flow.walkthrough) {
+    state.wtStep = flow.walkthrough.start;
+    state.wtTrail = [flow.walkthrough.start];
+  } else {
+    state.wtStep = null;
+    state.wtTrail = [];
+  }
+
+  renderSidebar();
+  renderPage(opts.highlightNote || null);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function goBack() {
+  if (state.historyStack.length > 0) {
+    const prev = state.historyStack.pop();
+    navigate(prev, { isBack: true });
+  }
+}
+
+// ===== 主內容渲染 =====
+function renderPage(highlightNoteId = null) {
+  const main = $("#mainContent");
+  if (state.currentPage === "home") {
+    renderHome(main);
+  } else if (state.currentPage === "history") {
+    renderHistory(main);
+  } else if (state.currentPage === "part1") {
+    renderPart1(main);
+  } else {
+    const flow = FLOWS.find(f => f.id === state.currentPage);
+    if (flow) renderFlow(main, flow, highlightNoteId);
+  }
+}
+
+function renderHome(main) {
+  const generalFlows = FLOWS.filter(f => f.category === "通用流程");
+  const specialFlows = FLOWS.filter(f => f.category !== "通用流程");
+
+  const mkQuick = (f) => `
+    <button class="quick-card" data-jump="${f.id}">
+      <div class="qc-top">
+        <span class="qc-code">流程 ${f.code}</span>
+        <div style="display:flex;gap:4px;">
+          ${f.revised ? `<span class="tag-rev">${f.revised}</span>` : ""}
+          ${f.emtp ? `<span class="tag-emtp">含 EMTP</span>` : ""}
+        </div>
+      </div>
+      <div class="qc-name">${escapeHtml(f.shortTitle)}</div>
+      <div class="qc-desc">${escapeHtml(f.summary)}</div>
+    </button>`;
+
+  main.innerHTML = `
+    <div class="card hero-card">
+      <h1>${escapeHtml(MANUAL_META.title)}</h1>
+      <p>互動式流程圖、逐步決策引導、預立醫囑檢核表與全文檢索系統（100% 依據 114.12.18 版官方 PDF 手冊製作）</p>
+      <div class="hero-meta">
+        <span class="hero-pill">版本：${MANUAL_META.version}</span>
+        <span class="hero-pill">涵蓋 壹、勤務程序 ＋ 貳、流程 A–L</span>
+        <span class="hero-pill">支援桌機 / 平板 / 手機自適應操作</span>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--red-600);background:var(--red-50);">
+      <div class="card-title" style="color:var(--red-700);">114.12.18 最新修訂重點（點擊直達）</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <button class="btn btn-sm" data-jump="flow-C">C. 創傷：新增 TXA 2g IV slow push</button>
+        <button class="btn btn-sm" data-jump="flow-L">L. 新增：疑似缺血性胸痛（開放 Aspirin）</button>
+        <button class="btn btn-sm" data-jump="flow-H">H. 過敏性休克：開放食物/藥物過敏施打 Epinephrine</button>
+        <button class="btn btn-sm" data-jump="flow-I">I. 氣喘：刪除每分鐘心跳 120 以下要件</button>
+        <button class="btn btn-sm btn-primary" data-jump="history">檢視完整修改歷程 →</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">通用流程（A–E）與勤務作業程序</div>
+      <div class="quick-grid">
+        <button class="quick-card" data-jump="part1">
+          <div class="qc-top"><span class="qc-code">壹</span><span class="qc-desc">頁碼 3–5</span></div>
+          <div class="qc-name">緊急救護勤務作業程序</div>
+          <div class="qc-desc">勤務前準備至返隊 9 步驟與 5W1H2S 報案受理一覽表。</div>
+        </button>
+        ${generalFlows.map(mkQuick).join("")}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">危急個案與特殊處置流程（F–L）</div>
+      <div class="quick-grid">
+        ${specialFlows.map(mkQuick).join("")}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">貳、現場救護標準作業流程總則（手冊頁碼 6）</div>
+      ${MANUAL_META.introParagraphs.map(p => `<p style="margin:0 0 10px;font-size:14px;color:var(--slate-700);">${escapeHtml(p)}</p>`).join("")}
+    </div>
+
+    <div class="footer-note">資料來源：${escapeHtml(MANUAL_META.sourceFile)}｜本網頁僅作手冊數位化查詢輔助，實際勤務請依最新公告規範與醫療指導醫師醫囑執行。</div>
+  `;
+
+  main.querySelectorAll("[data-jump]").forEach(el => {
+    el.addEventListener("click", () => navigate(el.dataset.jump));
+  });
+}
+
+function renderHistory(main) {
+  main.innerHTML = `
+    <div class="page-header">
+      <div class="page-title-wrap">
+        <div class="page-kicker">手冊頁碼 2｜104.8.21 – 114.12.18</div>
+        <h2 class="page-title">修改歷程</h2>
+      </div>
+      <div class="page-actions">
+        ${state.historyStack.length ? `<button class="btn btn-sm" id="backBtn">← 返回</button>` : ""}
+      </div>
+    </div>
+
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div class="table-scroll" style="border:none;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width:110px;">日期</th>
+              <th style="width:36%;">修改內容</th>
+              <th>修改原因</th>
+              <th style="width:140px;">快速跳轉</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${REVISION_HISTORY.slice().reverse().map(r => `
+              <tr class="${r.latest ? "latest-row" : ""}">
+                <td><strong>${escapeHtml(r.date)}</strong>${r.latest ? '<div class="tag-rev" style="margin-top:4px;display:inline-block;">最新</div>' : ""}</td>
+                <td>${escapeHtml(r.content)}</td>
+                <td>${escapeHtml(r.reason)}</td>
+                <td>
+                  <div style="display:flex;flex-wrap:wrap;gap:4px;">
+                    ${r.links.map(lid => {
+                      const fl = FLOWS.find(x => x.id === lid);
+                      return fl ? `<button class="btn btn-sm" data-jump="${lid}">流程 ${fl.code}</button>` : "";
+                    }).join("") || '<span style="color:var(--slate-400);font-size:12px;">—</span>'}
+                  </div>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+  const backBtn = $("#backBtn");
+  if (backBtn) backBtn.addEventListener("click", goBack);
+  main.querySelectorAll("[data-jump]").forEach(el => {
+    el.addEventListener("click", () => navigate(el.dataset.jump));
+  });
+}
+
+function renderPart1(main) {
+  const steps = PART1_DUTY.steps;
+  const svgH = steps.length * 76 + 24;
+  const nodes = steps.map((s, idx) => ({
+    id: s.id,
+    type: "pill",
+    x: 40,
+    y: 16 + idx * 76,
+    w: 440,
+    h: 54,
+    lines: s.label.split("\n")
+  }));
+  const edges = steps.slice(0, -1).map((_, idx) => ({
+    points: [[260, 70 + idx * 76], [260, 92 + idx * 76]]
+  }));
+  const selected = steps.find(s => s.id === state.dutySelectedId) || steps[0];
+
+  main.innerHTML = `
+    <div class="page-header">
+      <div class="page-title-wrap">
+        <div class="page-kicker">${PART1_DUTY.pages}</div>
+        <h2 class="page-title">${PART1_DUTY.title}</h2>
+      </div>
+      <div class="page-actions">
+        ${state.historyStack.length ? `<button class="btn btn-sm" id="backBtn">← 返回</button>` : ""}
+      </div>
+    </div>
+
+    <div class="flow-layout">
+      <div class="card flow-canvas-card">
+        <div class="flow-toolbar">
+          <span class="flow-hint">點擊任一步驟可檢視對應作業細項</span>
+          <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomOut">−</button>
+            <span class="zoom-val" id="zoomVal">100%</span>
+            <button class="zoom-btn" id="zoomIn">＋</button>
+            <button class="zoom-btn" id="zoomFit">符合寬度</button>
+          </div>
+        </div>
+        <div class="svg-viewport" id="svgViewport">
+          <div class="svg-inner" id="svgInner">
+            ${buildFlowSvg([520, svgH], nodes, edges, state.dutySelectedId, [])}
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-panel">
+        <div class="note-card highlight" id="dutyDetailCard">
+          <div class="note-head">
+            <span class="note-badge">步驟詳情</span>
+          </div>
+          <div style="font-weight:800;font-size:15px;color:var(--navy-900);margin-bottom:8px;white-space:pre-line;">${escapeHtml(selected.label)}</div>
+          <div class="note-body">${escapeHtml(selected.details)}</div>
+          ${selected.jumps ? `
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              ${selected.jumps.map(j => `<button class="btn btn-sm btn-primary" data-jump="${j.id}">${escapeHtml(j.label)} ↗</button>`).join("")}
+            </div>
+          ` : ""}
+        </div>
+
+        <div class="card" style="padding:14px;">
+          <div class="card-title" style="font-size:15px;">緊急救護勤務作業程序一覽表</div>
+          <div class="table-scroll">
+            <table class="data-table" style="min-width:460px;">
+              <thead><tr><th style="width:130px;">作業流程</th><th>步驟說明</th></tr></thead>
+              <tbody>
+                ${steps.map(s => `
+                  <tr style="${s.id === selected.id ? "background:var(--teal-50);" : ""}">
+                    <td><strong>${escapeHtml(s.label.split("\n")[0])}</strong></td>
+                    <td>${escapeHtml(s.details)}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  bindZoomControls(520, svgH);
+  const backBtn = $("#backBtn");
+  if (backBtn) backBtn.addEventListener("click", goBack);
+  main.querySelectorAll("[data-jump]").forEach(el => {
+    el.addEventListener("click", () => navigate(el.dataset.jump));
+  });
+  main.querySelectorAll(".svg-node").forEach(el => {
+    el.addEventListener("click", () => {
+      state.dutySelectedId = el.dataset.nodeId;
+      const st = steps.find(s => s.id === state.dutySelectedId);
+      if (window.innerWidth < 1024 && st) {
+        openBottomSheet(st.label.split("\n")[0], `
+          <div class="note-body">${escapeHtml(st.details)}</div>
+          ${st.jumps ? `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">${st.jumps.map(j => `<button class="btn btn-sm btn-primary" data-sheet-jump="${j.id}">${escapeHtml(j.label)} ↗</button>`).join("")}</div>` : ""}
+        `);
+        $("#sheetBody").querySelectorAll("[data-sheet-jump]").forEach(b => {
+          b.addEventListener("click", () => { closeBottomSheet(); navigate(b.dataset.sheetJump); });
+        });
+      }
+      renderPart1(main);
+    });
+  });
+}
+
+// ===== 流程頁（A–L）渲染 =====
+function renderFlow(main, flow, highlightNoteId = null) {
+  const isWT = state.flowMode === "walkthrough";
+  const visitedNodes = isWT && flow.walkthrough
+    ? state.wtTrail.map(sid => flow.walkthrough.steps[sid]?.nodeId).filter(Boolean)
+    : [];
+  const activeId = isWT && flow.walkthrough
+    ? flow.walkthrough.steps[state.wtStep]?.nodeId
+    : state.activeNodeId;
+
+  main.innerHTML = `
+    <div class="page-header">
+      <div class="page-title-wrap">
+        <div class="page-kicker">
+          <span>${escapeHtml(flow.category)}</span>
+          <span>•</span>
+          <span>${escapeHtml(flow.pages)}</span>
+          ${flow.revised ? `<span class="tag-rev">${escapeHtml(flow.revised)}</span>` : ""}
+          ${flow.emtp ? `<span class="tag-emtp">含 EMTP 預立醫囑</span>` : ""}
+        </div>
+        <h2 class="page-title">${escapeHtml(flow.title)}</h2>
+      </div>
+      <div class="page-actions">
+        ${state.historyStack.length ? `<button class="btn btn-sm" id="backBtn">← 返回上一頁</button>` : ""}
+        <div class="mode-tabs" role="tablist">
+          <button class="mode-tab ${!isWT ? "active" : ""}" id="tabChart">全景流程圖</button>
+          <button class="mode-tab ${isWT ? "active" : ""}" id="tabWT">逐步決策引導</button>
+        </div>
+      </div>
+    </div>
+
+    ${isWT ? renderWalkthroughCard(flow) : ""}
+
+    <div class="flow-layout">
+      <div class="card flow-canvas-card">
+        <div class="flow-toolbar">
+          <span class="flow-hint">點擊節點查看註解，含 ↗ 符號可跳轉至關聯流程</span>
+          <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomOut" aria-label="縮小">−</button>
+            <span class="zoom-val" id="zoomVal">100%</span>
+            <button class="zoom-btn" id="zoomIn" aria-label="放大">＋</button>
+            <button class="zoom-btn" id="zoomFit">符合寬度</button>
+          </div>
+        </div>
+        <div class="svg-viewport" id="svgViewport">
+          <div class="svg-inner" id="svgInner">
+            ${buildFlowSvg(flow.viewBox, flow.nodes, flow.edges, activeId, visitedNodes)}
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-panel" id="notesPanel">
+        ${(flow.checklists || []).map(cl => renderChecklistHtml(cl)).join("")}
+        ${flow.notes.map(n => `
+          <div class="note-card ${n.revised ? "rev-note" : ""} ${highlightNoteId === n.id ? "highlight" : ""}" id="note-${n.id}" data-note-id="${n.id}">
+            <div class="note-head">
+              <span class="note-badge">（${escapeHtml(n.id)}）</span>
+              ${n.revised ? `<span class="tag-rev">114.12.18 修訂／新增</span>` : ""}
+            </div>
+            <div class="note-body">${formatNoteBody(n.body)}</div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+
+    <div class="footer-note">資料來源：${escapeHtml(MANUAL_META.sourceFile)}（${escapeHtml(flow.pages)}）</div>
+  `;
+
+  bindZoomControls(flow.viewBox[0], flow.viewBox[1]);
+  bindChecklists(flow.checklists || []);
+
+  const backBtn = $("#backBtn");
+  if (backBtn) backBtn.addEventListener("click", goBack);
+  $("#tabChart").addEventListener("click", () => { state.flowMode = "chart"; renderFlow(main, flow); });
+  $("#tabWT").addEventListener("click", () => {
+    state.flowMode = "walkthrough";
+    if (!state.wtStep && flow.walkthrough) {
+      state.wtStep = flow.walkthrough.start;
+      state.wtTrail = [flow.walkthrough.start];
+    }
+    renderFlow(main, flow);
+  });
+
+  if (isWT) bindWalkthroughEvents(main, flow);
+
+  // SVG 節點點擊事件
+  main.querySelectorAll(".svg-node").forEach(el => {
+    el.addEventListener("click", () => {
+      const node = flow.nodes.find(n => n.id === el.dataset.nodeId);
+      if (!node) return;
+      state.activeNodeId = node.id;
+      main.querySelectorAll(".svg-node").forEach(x => x.classList.remove("active-node"));
+      el.classList.add("active-node");
+
+      const matchedNotes = (node.notes || []).map(nid => flow.notes.find(x => x.id === nid)).filter(Boolean);
+
+      // 若為純跳轉節點且無註解，直接跳轉
+      if (node.jump && matchedNotes.length === 0) {
+        navigate(node.jump);
+        return;
+      }
+
+      // 高亮對應註解
+      main.querySelectorAll(".note-card").forEach(c => c.classList.remove("highlight"));
+      matchedNotes.forEach(n => {
+        const card = $(`#note-${CSS.escape(n.id)}`);
+        if (card) card.classList.add("highlight");
+      });
+
+      // 手機／平板直向（< 1024px）彈出 Bottom Sheet 快速閱讀
+      if (window.innerWidth < 1024 && (matchedNotes.length > 0 || node.jump)) {
+        const targetFlow = node.jump ? FLOWS.find(f => f.id === node.jump) : null;
+        const bodyHtml = `
+          ${matchedNotes.map(n => `
+            <div class="note-card ${n.revised ? "rev-note" : ""}" style="margin-bottom:10px;">
+              <div class="note-head"><span class="note-badge">（${escapeHtml(n.id)}）</span>${n.revised ? '<span class="tag-rev">114.12.18</span>' : ''}</div>
+              <div class="note-body">${formatNoteBody(n.body)}</div>
+            </div>
+          `).join("")}
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+            ${targetFlow ? `<button class="btn btn-primary" id="sheetJumpBtn" style="flex:1;">前往 ${escapeHtml(targetFlow.title)} ↗</button>` : ""}
+            ${matchedNotes.length ? `<button class="btn" id="sheetScrollBtn" style="flex:1;">捲動至下方完整註解</button>` : ""}
+          </div>
+        `;
+        openBottomSheet(node.lines.join(" "), bodyHtml);
+        const jb = $("#sheetJumpBtn");
+        if (jb && targetFlow) jb.addEventListener("click", () => { closeBottomSheet(); navigate(targetFlow.id); });
+        const sb = $("#sheetScrollBtn");
+        if (sb && matchedNotes[0]) sb.addEventListener("click", () => {
+          closeBottomSheet();
+          const card = $(`#note-${CSS.escape(matchedNotes[0].id)}`);
+          if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      } else if (matchedNotes.length > 0) {
+        const firstCard = $(`#note-${CSS.escape(matchedNotes[0].id)}`);
+        if (firstCard) firstCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
+  });
+
+  if (highlightNoteId) {
+    setTimeout(() => {
+      const card = $(`#note-${CSS.escape(highlightNoteId)}`);
+      if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 80);
+  }
+}
+
+function formatNoteBody(text) {
+  let s = escapeHtml(text);
+  s = s.replace(/(【114\.12\.18[^】]*】|2g，IV slow push。（114\.12\.18 新增）)/g, '<span class="red-txt">$1</span>');
+  s = s.replace(/(EMTP|EMT-P|EMT2|EMT-1)/g, '<span class="emtp-inline">$1</span>');
+  return s;
+}
+
+// ===== 逐步決策引導卡片 =====
+function renderWalkthroughCard(flow) {
+  if (!flow.walkthrough) return "";
+  const step = flow.walkthrough.steps[state.wtStep] || flow.walkthrough.steps[flow.walkthrough.start];
+  const stepNotes = (step.notes || []).map(nid => flow.notes.find(x => x.id === nid)).filter(Boolean);
+
+  return `
+    <div class="wt-card" id="wtCard">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+        <span class="note-badge" style="background:var(--navy-800);color:#fff;">逐步決策引導模式（第 ${state.wtTrail.length} 步）</span>
+        <div style="display:flex;gap:6px;">
+          ${state.wtTrail.length > 1 ? `<button class="btn btn-sm" id="wtPrevBtn">← 上一步</button>` : ""}
+          <button class="btn btn-sm" id="wtResetBtn">↻ 重新開始</button>
+        </div>
+      </div>
+      <div class="wt-trail">
+        ${state.wtTrail.map((sid, idx) => {
+          const st = flow.walkthrough.steps[sid];
+          return `<span class="wt-crumb">${idx + 1}. ${escapeHtml((st?.title || "").slice(0, 14))}${(st?.title || "").length > 14 ? "…" : ""}</span>`;
+        }).join("")}
+      </div>
+      <h3 class="wt-step-title">${escapeHtml(step.title)}</h3>
+      <p class="wt-step-desc">${escapeHtml(step.desc)}</p>
+
+      ${stepNotes.length ? `
+        <div style="margin-bottom:14px;">
+          ${stepNotes.map(n => `
+            <div class="note-card ${n.revised ? "rev-note" : ""}" style="margin-bottom:8px;background:var(--slate-50);">
+              <div class="note-head"><span class="note-badge">參考（${escapeHtml(n.id)}）</span></div>
+              <div class="note-body">${formatNoteBody(n.body)}</div>
+            </div>
+          `).join("")}
+        </div>
+      ` : ""}
+
+      <div class="wt-options">
+        ${(step.options || []).map((opt, idx) => `
+          <button class="wt-opt-btn ${opt.style || ""}" data-wt-next="${opt.next}" data-opt-idx="${idx}">${escapeHtml(opt.label)}</button>
+        `).join("")}
+        ${(step.jumps || []).map(j => `
+          <button class="wt-opt-btn yes" data-wt-jump="${j.id}">${escapeHtml(j.label)} ↗</button>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function bindWalkthroughEvents(main, flow) {
+  const prevBtn = $("#wtPrevBtn");
+  if (prevBtn) prevBtn.addEventListener("click", () => {
+    if (state.wtTrail.length > 1) {
+      state.wtTrail.pop();
+      state.wtStep = state.wtTrail[state.wtTrail.length - 1];
+      renderFlow(main, flow);
+    }
+  });
+  const resetBtn = $("#wtResetBtn");
+  if (resetBtn) resetBtn.addEventListener("click", () => {
+    state.wtStep = flow.walkthrough.start;
+    state.wtTrail = [flow.walkthrough.start];
+    renderFlow(main, flow);
+  });
+  main.querySelectorAll("[data-wt-next]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const next = btn.dataset.wtNext;
+      state.wtStep = next;
+      state.wtTrail.push(next);
+      renderFlow(main, flow);
+    });
+  });
+  main.querySelectorAll("[data-wt-jump]").forEach(btn => {
+    btn.addEventListener("click", () => navigate(btn.dataset.wtJump, { mode: "walkthrough" }));
+  });
+}
+
+// ===== 互動式檢核清單 =====
+function renderChecklistHtml(cl) {
+  let body = "";
+  if (cl.mode === "ind_contra") {
+    body = `
+      <div class="cl-group-label" style="color:var(--teal-700);">✔ 適應症／必要條件（須全部符合）</div>
+      ${cl.indications.map((txt, i) => `
+        <label class="cl-item"><input type="checkbox" data-cl="${cl.id}" data-group="ind" value="${i}"><span>${escapeHtml(txt)}</span></label>
+      `).join("")}
+      <div class="cl-group-label" style="color:var(--red-700);">✖ 禁忌症（須全部排除；如有請勾選）</div>
+      ${cl.contraindications.map((txt, i) => `
+        <label class="cl-item"><input type="checkbox" data-cl="${cl.id}" data-group="contra" value="${i}"><span>${escapeHtml(txt)}</span></label>
+      `).join("")}
+    `;
+  } else {
+    body = cl.items.map((txt, i) => `
+      <label class="cl-item"><input type="checkbox" data-cl="${cl.id}" data-group="item" value="${i}"><span>${escapeHtml(txt)}</span></label>
+    `).join("");
+  }
+
+  return `
+    <div class="checklist-card" id="box-${cl.id}">
+      <div class="cl-title">
+        <span>☑ ${escapeHtml(cl.title)}</span>
+        <button class="btn btn-sm" data-cl-reset="${cl.id}" style="min-height:30px;padding:2px 8px;font-size:11.5px;">清除</button>
+      </div>
+      <p class="cl-sub">${escapeHtml(cl.sub)}</p>
+      ${body}
+      <div class="cl-status info" id="status-${cl.id}"></div>
+    </div>
+  `;
+}
+
+function bindChecklists(checklists) {
+  const evalCl = (cl) => {
+    const statusEl = $(`#status-${cl.id}`);
+    if (!statusEl) return;
+    if (cl.mode === "any") {
+      const checked = document.querySelectorAll(`input[data-cl="${cl.id}"]:checked`).length;
+      statusEl.className = `cl-status ${checked > 0 ? "warn" : "info"}`;
+      statusEl.textContent = checked > 0 ? cl.msgMatch : cl.msgNone;
+    } else if (cl.mode === "all") {
+      const total = cl.items.length;
+      const checked = document.querySelectorAll(`input[data-cl="${cl.id}"]:checked`).length;
+      statusEl.className = `cl-status ${checked === total ? "ok" : "info"}`;
+      statusEl.style.whiteSpace = "pre-line";
+      statusEl.textContent = checked === total ? cl.msgAll : `${cl.msgIncomplete}（目前符合 ${checked}/${total} 項）`;
+    } else if (cl.mode === "contra_only") {
+      const checked = document.querySelectorAll(`input[data-cl="${cl.id}"]:checked`).length;
+      statusEl.className = `cl-status ${checked > 0 ? "warn" : "ok"}`;
+      statusEl.textContent = checked > 0 ? cl.msgWarn : cl.msgSafe;
+    } else if (cl.mode === "ind_contra") {
+      const indTotal = cl.indications.length;
+      const indChecked = document.querySelectorAll(`input[data-cl="${cl.id}"][data-group="ind"]:checked`).length;
+      const contraChecked = document.querySelectorAll(`input[data-cl="${cl.id}"][data-group="contra"]:checked`).length;
+      statusEl.style.whiteSpace = "pre-line";
+      if (contraChecked > 0) {
+        statusEl.className = "cl-status warn";
+        statusEl.textContent = cl.msgContra;
+      } else if (indChecked === indTotal) {
+        statusEl.className = "cl-status ok";
+        statusEl.textContent = cl.msgOk;
+      } else {
+        statusEl.className = "cl-status info";
+        statusEl.textContent = `${cl.msgIncomplete}（適應症已符合 ${indChecked}/${indTotal} 項）`;
+      }
+    }
+  };
+
+  checklists.forEach(cl => {
+    evalCl(cl);
+    document.querySelectorAll(`input[data-cl="${cl.id}"]`).forEach(inp => {
+      inp.addEventListener("change", () => evalCl(cl));
+    });
+    const resetBtn = document.querySelector(`[data-cl-reset="${cl.id}"]`);
+    if (resetBtn) resetBtn.addEventListener("click", () => {
+      document.querySelectorAll(`input[data-cl="${cl.id}"]`).forEach(inp => { inp.checked = false; });
+      evalCl(cl);
+    });
+  });
+}
+
+// ===== SVG 流程圖建構引擎 =====
+function buildFlowSvg(viewBox, nodes, edges, activeNodeId, visitedNodes) {
+  const [vw, vh] = viewBox;
+  const edgeSvg = edges.map(e => {
+    const pts = e.points.map(p => `${p[0]},${p[1]}`).join(" ");
+    let labelSvg = "";
+    if (e.label && e.labelPos) {
+      const [lx, ly] = e.labelPos;
+      labelSvg = `
+        <rect x="${lx - 26}" y="${ly - 11}" width="52" height="17" rx="4" fill="#ffffff" opacity="0.92"></rect>
+        <text x="${lx}" y="${ly + 2}" text-anchor="middle" class="edge-label">${escapeHtml(e.label)}</text>
+      `;
+    }
+    return `<polyline points="${pts}" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow)" stroke-linejoin="round" />${labelSvg}`;
+  }).join("");
+
+  const nodeSvg = nodes.map(n => {
+    const cx = n.x + n.w / 2;
+    const cy = n.y + n.h / 2;
+    let fill = "#ffffff", stroke = "#1e3a5f", strokeW = 1.6;
+    if (n.type === "pill") { fill = "#f2f7fc"; stroke = "#0f2b4c"; strokeW = 1.9; }
+    if (n.type === "diamond") { fill = "#f8fafc"; stroke = "#1e508a"; strokeW = 1.8; }
+    if (n.type === "emtp") { fill = "#fef9c3"; stroke = "#ca8a04"; strokeW = 2; }
+    if (n.type === "red") { fill = "#fef2f2"; stroke = "#dc2626"; strokeW = 2; }
+
+    let shape = "";
+    if (n.type === "diamond") {
+      const pts = `${cx},${n.y} ${n.x + n.w},${cy} ${cx},${n.y + n.h} ${n.x},${cy}`;
+      shape = `<polygon class="node-shape" points="${pts}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" />`;
+    } else if (n.type === "pill") {
+      shape = `<rect class="node-shape" x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="${Math.min(24, n.h / 2)}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" />`;
+    } else {
+      shape = `<rect class="node-shape" x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="7" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" />`;
+    }
+
+    const lineH = 17;
+    const startY = cy - ((n.lines.length - 1) * lineH) / 2 + 4.5;
+    const textSvg = n.lines.map((line, i) => `
+      <text x="${cx}" y="${startY + i * lineH}" text-anchor="middle" class="node-text ${n.type === "red" ? "red" : ""}">${escapeHtml(line)}</text>
+    `).join("");
+
+    const badgeSvg = n.badge ? `
+      <rect x="${n.x + 6}" y="${n.y - 10}" width="22" height="18" rx="4" fill="#facc15" stroke="#a16207" stroke-width="1" />
+      <text x="${n.x + 17}" y="${n.y + 3}" text-anchor="middle" style="font-size:11px;font-weight:800;fill:#713f12;">${escapeHtml(n.badge)}</text>
+    ` : "";
+
+    const jumpSvg = n.jump ? `
+      <rect x="${n.x + n.w - 26}" y="${n.y - 10}" width="22" height="18" rx="4" fill="#0f2b4c" />
+      <text x="${n.x + n.w - 15}" y="${n.y + 3}" text-anchor="middle" style="font-size:11px;font-weight:700;fill:#ffffff;">↗</text>
+    ` : "";
+
+    const cls = [
+      "svg-node",
+      activeNodeId === n.id ? "active-node" : "",
+      visitedNodes.includes(n.id) ? "visited-node" : ""
+    ].filter(Boolean).join(" ");
+
+    return `<g class="${cls}" data-node-id="${n.id}" role="button" tabindex="0">${shape}${textSvg}${badgeSvg}${jumpSvg}</g>`;
+  }).join("");
+
+  return `
+    <svg xmlns="http://www.w3.org/2000/svg" width="${vw}" height="${vh}" viewBox="0 0 ${vw} ${vh}">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+        </marker>
+      </defs>
+      ${edgeSvg}
+      ${nodeSvg}
+    </svg>
+  `;
+}
+
+// ===== 流程圖縮放與拖曳控制（桌機／平板／手機自適應） =====
+function bindZoomControls(svgWidth, svgHeight) {
+  const viewport = $("#svgViewport");
+  const inner = $("#svgInner");
+  const valEl = $("#zoomVal");
+  if (!viewport || !inner) return;
+  const svg = inner.querySelector("svg");
+
+  const applyZoom = (z) => {
+    state.zoom = Math.max(0.42, Math.min(1.8, z));
+    if (svg) {
+      svg.style.width = `${Math.round(svgWidth * state.zoom)}px`;
+      svg.style.height = `${Math.round(svgHeight * state.zoom)}px`;
+    }
+    if (valEl) valEl.textContent = `${Math.round(state.zoom * 100)}%`;
+  };
+
+  const fitWidth = () => {
+    const avail = Math.max(240, viewport.clientWidth - 24);
+    const ratio = Math.min(1, avail / svgWidth);
+    applyZoom(ratio);
+  };
+
+  // 初始載入自動符合螢幕寬度（確保手機／平板不會被裁切）
+  fitWidth();
+
+  const btnIn = $("#zoomIn"), btnOut = $("#zoomOut"), btnFit = $("#zoomFit");
+  if (btnIn) btnIn.addEventListener("click", () => applyZoom(state.zoom + 0.15));
+  if (btnOut) btnOut.addEventListener("click", () => applyZoom(state.zoom - 0.15));
+  if (btnFit) btnFit.addEventListener("click", fitWidth);
+
+  // 滑鼠拖曳平移
+  let isDown = false, startX = 0, startY = 0, scrollL = 0, scrollT = 0;
+  viewport.addEventListener("mousedown", (e) => {
+    if (e.target.closest(".svg-node")) return;
+    isDown = true;
+    startX = e.pageX - viewport.offsetLeft;
+    startY = e.pageY - viewport.offsetTop;
+    scrollL = viewport.scrollLeft;
+    scrollT = viewport.scrollTop;
+  });
+  window.addEventListener("mouseup", () => { isDown = false; });
+  viewport.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    viewport.scrollLeft = scrollL - (e.pageX - viewport.offsetLeft - startX);
+    viewport.scrollTop = scrollT - (e.pageY - viewport.offsetTop - startY);
+  });
+}
+
+// ===== 全文即時搜尋索引 =====
+const SEARCH_INDEX = (() => {
+  const list = [];
+  REVISION_HISTORY.forEach(r => {
+    list.push({ page: "history", title: `修改歷程｜${r.date}`, text: `${r.content} ${r.reason}` });
+  });
+  PART1_DUTY.steps.forEach(s => {
+    list.push({ page: "part1", title: `壹、勤務作業程序｜${s.label.split("\n")[0]}`, text: `${s.label} ${s.details}` });
+  });
+  FLOWS.forEach(f => {
+    list.push({ page: f.id, title: f.title, text: `${f.title} ${f.summary} ${f.nodes.map(n => n.lines.join(" ")).join(" ")}` });
+    f.notes.forEach(n => {
+      list.push({ page: f.id, noteId: n.id, title: `${f.title}（${n.id}）`, text: n.body });
+    });
+  });
+  return list;
+})();
+
+function runSearch(q) {
+  const box = $("#searchResults");
+  const clearBtn = $("#searchClear");
+  const kw = q.trim();
+  clearBtn.classList.toggle("show", kw.length > 0);
+  if (!kw) {
+    box.classList.remove("open");
+    box.innerHTML = "";
+    return;
+  }
+  const kwLower = kw.toLowerCase();
+  const hits = SEARCH_INDEX.filter(item =>
+    item.title.toLowerCase().includes(kwLower) || item.text.toLowerCase().includes(kwLower)
+  ).slice(0, 18);
+
+  if (hits.length === 0) {
+    box.innerHTML = `<div class="sr-empty">找不到與「${escapeHtml(kw)}」相符的手冊內容</div>`;
+  } else {
+    const re = new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+    box.innerHTML = hits.map((h, i) => {
+      const idx = h.text.toLowerCase().indexOf(kwLower);
+      const start = Math.max(0, idx - 22);
+      const rawSnippet = (start > 0 ? "…" : "") + h.text.slice(start, start + 76) + (start + 76 < h.text.length ? "…" : "");
+      const snippet = escapeHtml(rawSnippet).replace(re, m => `<mark>${m}</mark>`);
+      return `
+        <div class="search-result-item" data-sr-idx="${i}">
+          <div class="sr-title">${escapeHtml(h.title)}</div>
+          <div class="sr-snippet">${snippet}</div>
+        </div>
+      `;
+    }).join("");
+    box.querySelectorAll(".search-result-item").forEach(el => {
+      el.addEventListener("click", () => {
+        const hit = hits[Number(el.dataset.srIdx)];
+        box.classList.remove("open");
+        $("#searchWrap").classList.remove("mobile-open");
+        navigate(hit.page, { highlightNote: hit.noteId || null });
+      });
+    });
+  }
+  box.classList.add("open");
+}
+
+// ===== 初始化事件綁定 =====
+$("#menuBtn").addEventListener("click", () => {
+  $("#sidebar").classList.contains("open") ? closeSidebar() : openSidebar();
+});
+$("#sidebarBackdrop").addEventListener("click", closeSidebar);
+$("#brandHome").addEventListener("click", () => { navigate("home"); closeSidebar(); });
+$("#sheetBackdrop").addEventListener("click", closeBottomSheet);
+$("#sheetClose").addEventListener("click", closeBottomSheet);
+
+$("#searchToggleBtn").addEventListener("click", () => {
+  const wrap = $("#searchWrap");
+  wrap.classList.toggle("mobile-open");
+  if (wrap.classList.contains("mobile-open")) $("#searchInput").focus();
+});
+$("#searchInput").addEventListener("input", (e) => runSearch(e.target.value));
+$("#searchClear").addEventListener("click", () => {
+  $("#searchInput").value = "";
+  runSearch("");
+  $("#searchInput").focus();
+});
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("#searchWrap") && !e.target.closest("#searchToggleBtn")) {
+    $("#searchResults").classList.remove("open");
+  }
+});
+
+// 啟動頁面（支援安全讀取 URL hash，例如 #flow-F，不影響 Google 協作平台內嵌）
+try {
+  const initHash = (window.location.hash || "").replace(/^#/, "");
+  if (initHash && (initHash === "home" || initHash === "history" || initHash === "part1" || FLOWS.some(f => f.id === initHash))) {
+    state.currentPage = initHash;
+    const initFlow = FLOWS.find(f => f.id === initHash);
+    if (initFlow && initFlow.walkthrough) {
+      state.wtStep = initFlow.walkthrough.start;
+      state.wtTrail = [initFlow.walkthrough.start];
+    }
+  }
+} catch (e) {}
+renderSidebar();
+renderPage();
+</script>
+</body>
+</html>
