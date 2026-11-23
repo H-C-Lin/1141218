@@ -619,60 +619,163 @@ button, input { font-family: inherit; }
   font-weight: 700;
 }
 
-/* ===== Interactive Checklist ===== */
-.checklist-card {
+/* ===== Quiz / Exam Mode ===== */
+.quiz-level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.quiz-level-card {
   background: var(--white);
-  border: 1px solid #99f6e4;
+  border: 2px solid var(--slate-200);
   border-radius: var(--radius-md);
-  padding: 14px 15px;
-  background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 60%);
-}
-.cl-title {
-  font-size: 14.5px;
-  font-weight: 800;
-  color: var(--teal-700);
-  margin: 0 0 4px;
+  padding: 16px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.14s;
   display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.quiz-level-card:hover { border-color: var(--navy-700); background: var(--navy-50); }
+.quiz-level-card.selected {
+  border-color: var(--navy-800);
+  background: var(--navy-50);
+  box-shadow: 0 0 0 3px rgba(30, 80, 138, 0.15);
+}
+.ql-badge {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  width: fit-content;
+}
+.ql-badge.emt1 { background: #dbeafe; color: #1e40af; }
+.ql-badge.emt2 { background: #ccfbf1; color: #115e59; }
+.ql-badge.emtp { background: var(--emtp-bg); color: var(--emtp-text); border: 1px solid #eab308; }
+.ql-title { font-size: 16px; font-weight: 800; color: var(--navy-950); }
+.ql-desc { font-size: 12.5px; color: var(--slate-600); line-height: 1.45; }
+.ql-count { font-size: 12px; font-weight: 700; color: var(--navy-700); margin-top: auto; padding-top: 4px; }
+
+.quiz-pill-row {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 14px;
 }
-.cl-sub { font-size: 12px; color: var(--slate-600); margin: 0 0 10px; }
-.cl-group-label {
-  font-size: 12px; font-weight: 700; color: var(--slate-700);
-  margin: 8px 0 4px;
+.quiz-pill {
+  min-height: 42px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--slate-300);
+  background: var(--white);
+  color: var(--slate-700);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
 }
-.cl-item {
+.quiz-pill.selected {
+  background: var(--navy-800);
+  border-color: var(--navy-800);
+  color: var(--white);
+}
+
+.quiz-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--slate-200);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--navy-700), var(--teal-600));
+  transition: width 0.25s ease;
+}
+.quiz-q-text {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--navy-950);
+  margin: 0 0 16px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.quiz-opt {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  padding: 8px 10px;
-  min-height: 44px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--slate-200);
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--slate-300);
   background: var(--white);
-  margin-bottom: 6px;
+  color: var(--slate-800);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-align: left;
   cursor: pointer;
-  font-size: 13.5px;
+  transition: all 0.14s;
+  line-height: 1.45;
 }
-.cl-item:hover { border-color: var(--teal-600); }
-.cl-item input[type="checkbox"] {
-  width: 20px; height: 20px;
-  margin-top: 2px;
-  accent-color: var(--teal-600);
+.quiz-opt:hover:not(:disabled) { border-color: var(--navy-700); background: var(--navy-50); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-opt-key {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--slate-100);
+  color: var(--navy-900);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800;
   flex-shrink: 0;
-  cursor: pointer;
 }
-.cl-status {
-  margin-top: 10px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 700;
+.quiz-opt.correct { border-color: var(--teal-600); background: var(--teal-50); color: #115e59; }
+.quiz-opt.correct .quiz-opt-key { background: var(--teal-600); color: var(--white); }
+.quiz-opt.wrong { border-color: var(--red-600); background: var(--red-50); color: var(--red-700); }
+.quiz-opt.wrong .quiz-opt-key { background: var(--red-600); color: var(--white); }
+
+.quiz-feedback {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--teal-600);
+  background: var(--teal-50);
 }
-.cl-status.info { background: var(--slate-100); color: var(--slate-700); }
-.cl-status.ok { background: var(--teal-100); color: #115e59; }
-.cl-status.warn { background: var(--red-100); color: var(--red-700); }
+.quiz-feedback.wrong {
+  border-left-color: var(--red-600);
+  background: var(--red-50);
+}
+.quiz-score-hero {
+  text-align: center;
+  padding: 22px 16px;
+  background: linear-gradient(135deg, var(--navy-900), #1d4e89);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  margin-bottom: 16px;
+}
+.quiz-score-num { font-size: 42px; font-weight: 900; line-height: 1.15; }
+.quiz-wrong-item {
+  border: 1px solid #fecaca;
+  border-left: 4px solid var(--red-600);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  background: var(--white);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 767px) {
+  .quiz-level-grid { grid-template-columns: 1fr; }
+  .quiz-q-text { font-size: 16px; }
+}
 
 /* ===== Walkthrough Mode ===== */
 .wt-card {
@@ -1125,63 +1228,6 @@ const FLOWS = [
       { id: "註4", revised: true, body: "1、評估呼吸道（A）：\n  是否通暢、是否有雜音。如不順暢，頸椎受傷傷患以下顎推舉法打開呼吸道，若無法打開時改以壓額抬下顎法打開呼吸道。必要時給予口咽、鼻咽等輔助呼吸道及抽吸。若發現嘴巴內有可見的異物或嘔吐物應先將其去除(要將傷患頭頸軀幹成一直線側翻)，然後再打開呼吸道，如無法清除，則進入『清除呼吸道異物』救護單項技術項目。\n2、評估呼吸（B）：\n  以看、聽方式評估呼吸深、淺、快、慢及有無明顯異常呼吸音(評估時間<10 秒)。\n3、評估循環（C）：\n  (1) 檢查兩側橈動脈或其他動脈點(評估時間<10 秒)，並評估周邊循環(目視膚色是否蒼白、發紺或異常，觸摸末端肢體是否濕冷，檢查微血管充填時間是否大於2秒)。\n  (2) 若有休克現象，需建立靜脈路徑，給予生理食鹽水靜脈輸注。若無法建立靜脈路徑，得使用骨針。\n      骨針(IO)使用須知：\n      A. 必要條件：病人年齡需大於 18 歲。\n      B. 適用時機：經嘗試執行靜脈注射無法成功。\n      C. 禁忌症：a.「施打位置」有骨折。b.「施打位置」有感染或燒燙傷。c.「施打位置」無法定位。d.「施打位置」有開刀過或安裝人工關節、義肢等。e. 48 小時內同一部位不能重複施打。\n  (3) EMTP遇出血性休克患者時，得依預立醫囑給予tranexamic acid注射。\n      使用劑量【以下擇一】（114.12.18 修訂）：\n      a. 抽取1,000mg Tranexamic acid加入 N/S 500 ml，全速滴注。\n      b. 2g，IV slow push。（114.12.18 新增）\n      tranexamic acid 1000mg適應症及禁忌症：\n      (1) 適應症，須全部符合：\n          a. 符合出血性休克之臨床表現。\n          b. 無法使用止血帶或壓迫止血無效之創傷(如胸、腹、骨盆腔、大腿內出血、高度懷疑或肢體軀幹交界處出血)。\n          c. 收縮壓<90mmHg或心跳≧120次/分鐘。\n          d. 創傷發生3小時以內。\n      (2) 禁忌症，需全部排除：\n          a. 正在接受凝血酶(Thrombin)給藥的病人。\n          b. 對tranexamic acid過敏。\n4、評估失能（D）：\n  (1) 檢查昏迷指數（GCS）\n  (2) 檢查眼睛瞳孔大小及是否對光有反應(註：意識清醒之傷病患不需檢查瞳孔)。\n  (3) 比較二側上肢和下肢的感覺和運動功能。\n5、評估傷患身體（E）：\n  (1) 快速視診頭、頸、胸、腹骨盆與肢體是否有穿刺傷、槍傷、臟器外露、大而深的傷口、瘀青、腫脹或變形等；檢查氣管是否偏移、頸靜脈是否怒張或塌陷；按壓頸椎是否異常、壓痛；骨盆是否穩定與疼痛等(骨盆檢查以一次為限)。\n  (2) 視情形將傷患衣物移除。\n6、輔助檢查：\n  初步評估過程中傷患有異常的現象，可採用儀器例如：血壓計、血氧濃度機、血糖機..等輔助檢查，並作重點式身體檢查。例如：傷患胸部有一彈孔，使用血氧監測輔助檢查，並針對胸部做聽診呼吸音，視診胸部起伏是否正常等重點式檢查；SPO2<94%應給予氧氣治療。其他詳細的身體檢查可在救護車上施行，以避免在救護現場耽誤而引起爭議。" },
       { id: "註5", body: "無適當呼吸即為沒有呼吸或瀕死式呼吸，呼吸<10次/分。" }
     ],
-    checklists: [
-      {
-        id: "cl-spinal",
-        title: "加拿大頸椎守則（SPINAL）檢核",
-        sub: "依據流程 C（註2）：只要符合下列六項其中一項，就需要上頸圈限制傷患頸椎移動。",
-        mode: "any",
-        items: [
-          "S：骨折大痛",
-          "P：後頸部中線壓痛",
-          "I：高速撞擊機轉",
-          "N：神經學異常",
-          "A：意識不清（含酒精）",
-          "L：脖子轉動受限（無法上下左右轉動45度）"
-        ],
-        msgNone: "尚未勾選任何項目（如無符合 SPINAL 任一項，仍請依現場傷患狀況評估）。",
-        msgMatch: "已符合至少一項 SPINAL 條件：需要上頸圈限制傷患頸椎移動！"
-      },
-      {
-        id: "cl-txa",
-        title: "EMTP Tranexamic acid (TXA) 預立醫囑檢核",
-        sub: "依據流程 C（註4，114.12.18 修訂）：適應症須全部符合，禁忌症需全部排除。",
-        mode: "ind_contra",
-        indications: [
-          "符合出血性休克之臨床表現",
-          "無法使用止血帶或壓迫止血無效之創傷（胸、腹、骨盆腔、大腿內出血、高度懷疑或肢體軀幹交界處出血）",
-          "收縮壓 < 90mmHg 或 心跳 ≧ 120次/分鐘",
-          "創傷發生 3 小時以內"
-        ],
-        contraindications: [
-          "正在接受凝血酶（Thrombin）給藥的病人",
-          "對 tranexamic acid 過敏"
-        ],
-        msgOk: "符合全部適應症且無禁忌症！EMTP 可依預立醫囑擇一給予：\na. 抽取 1,000mg Tranexamic acid 加入 N/S 500 ml，全速滴注。\nb. 2g，IV slow push。（114.12.18 新增）",
-        msgContra: "存在禁忌症，不可給予 Tranexamic acid！",
-        msgIncomplete: "請確認所有適應症均符合，且所有禁忌症均未勾選。"
-      },
-      {
-        id: "cl-io-c",
-        title: "骨針（IO）使用須知與禁忌症檢核",
-        sub: "依據流程 C（註4）：必要條件為年齡 > 18 歲，且經嘗試靜脈注射無法成功。",
-        mode: "ind_contra",
-        indications: [
-          "病人年齡大於 18 歲",
-          "經嘗試執行靜脈注射無法成功"
-        ],
-        contraindications: [
-          "「施打位置」有骨折",
-          "「施打位置」有感染或燒燙傷",
-          "「施打位置」無法定位",
-          "「施打位置」有開刀過或安裝人工關節、義肢等",
-          "48 小時內同一部位曾施打過"
-        ],
-        msgOk: "符合骨針（IO）使用條件且無禁忌症，得使用骨針建立輸液路徑。",
-        msgContra: "存在骨針（IO）禁忌症，該位置不可施打！",
-        msgIncomplete: "請確認必要條件（年齡 > 18 歲、靜脈注射嘗試失敗）與禁忌症排除。"
-      }
-    ],
     walkthrough: {
       start: "s1",
       steps: {
@@ -1352,28 +1398,6 @@ const FLOWS = [
       { id: "註7", body: "1、救護人員一人持續進行CPR，另一人應施行袋瓣罩甦醒球，給予氧氣並建立聲門上呼吸道，若聲門上呼吸道無法置入，次選擇才為口咽(需註明原因)。\n2、如救護人員皆為EMT-1出勤，則建立口咽呼吸道。\n3、進階呼吸道(限EMTP操作)：\n   建立氣管內管以一次為限，若建立失敗後，應立即考慮其他輔助呼吸道。" },
       { id: "註8", body: "1、依患者意識、口鼻分泌物、嘔吐物等，評估患者呼吸道，若無法確保且病患未被建立進階呼吸道，應使用替代或進階呼吸道。\n2、若已確保病人呼吸道，仍無適當呼吸或呼吸動力不足，應給予正壓給氧；若有適當呼吸，應依照血氧濃度給予氧氣。\n3、ROSC後應測病人脈搏、血壓，若患者收縮壓小於90mmHg，應給予生理食鹽水500-1000毫升快速滴注。如無法測量血壓，得以動脈點測量替代。\n4、ROSC後得執行12導程心電圖。" }
     ],
-    checklists: [
-      {
-        id: "cl-io-f",
-        title: "OHCA 骨針（IO）使用須知與禁忌症檢核",
-        sub: "依據流程 F（註6）：必要條件年齡 > 18 歲、靜脈注射嘗試無法成功。",
-        mode: "ind_contra",
-        indications: [
-          "病人年齡大於 18 歲",
-          "經嘗試執行靜脈注射無法成功"
-        ],
-        contraindications: [
-          "「施打位置」有骨折",
-          "「施打位置」有感染或燒燙傷",
-          "「施打位置」無法定位",
-          "「施打位置」有開刀過或安裝人工關節、義肢等",
-          "48 小時內同一部位曾施打過"
-        ],
-        msgOk: "符合骨針（IO）條件且無禁忌症，得放置骨針以利給藥與輸液。",
-        msgContra: "存在禁忌症，該部位不可施打骨針！",
-        msgIncomplete: "請確認必要條件與排除所有禁忌症。"
-      }
-    ],
     walkthrough: {
       start: "s1",
       steps: {
@@ -1521,23 +1545,6 @@ FLOWS.push(
     notes: [
       { id: "註1", body: "氣喘是一種慢性的支氣管炎症，其致病機轉是由於抗原或其他刺激物刺激支氣管，引起發炎細胞反應，而引起支氣管平滑肌收縮、黏膜下水腫、炎症細胞浸潤，造成氣道管徑變窄，阻力增加，而有喘鳴及氣促的臨床表現。" },
       { id: "註2", revised: true, body: "氣霧治療（114.12.18 修訂：已刪除「每分鐘心跳數120以下」要件）：\n一、EMT-P遇有氣喘或呼吸困難患者時應先確認清單選項皆符合要件後得依預立醫療流程給予氣霧治療：\n  □ 呼吸道暢通無異物\n  □ 呼吸動力足夠\n  □ 呼吸聲有哮鳴音\n  □ 大於1歲(1-2歲劑量減半使用)\n  □ 無氣霧治療藥物過敏\n二、車上利用小型噴霧器給予 2.5mg Albuterol 溶於 0.9% saline solution，可以 Ipratropium 0.5mg 混和至 4ml 氣霧吸入治療，氧氣流量設定為 6 公升/分鐘。1至2歲病患給予 1/2 上述藥物劑量，但仍使用 N/S 稀釋至總量 4ml。此治療應與運送同時進行，EMT-P不可因試圖給予此治療而延遲送醫。" }
-    ],
-    checklists: [
-      {
-        id: "cl-asthma",
-        title: "EMTP 氣霧治療 5 項要件檢核清單（原手冊檢核表）",
-        sub: "依據流程 I（註2，114.12.18 修訂版）：請先確認下列 5 項要件皆符合後勾選。",
-        mode: "all",
-        items: [
-          "呼吸道暢通無異物",
-          "呼吸動力足夠",
-          "呼吸聲有哮鳴音",
-          "大於 1 歲（1–2 歲劑量減半使用）",
-          "無氣霧治療藥物過敏"
-        ],
-        msgIncomplete: "尚有要件未符合，須 5 項全部符合後方得依預立醫療流程給予氣霧治療。",
-        msgAll: "5 項要件全部符合！EMT-P 可於車上與運送同時進行氣霧治療：\n• 2.5mg Albuterol 溶於 0.9% N/S，可與 Ipratropium 0.5mg 混和至總量 4ml\n• 氧氣流量設定為 6 公升/分鐘（1–2 歲給予 1/2 劑量，仍稀釋至 4ml）\n• 不可因試圖給予此治療而延遲送醫。"
-      }
     ],
     walkthrough: {
       start: "s1",
@@ -1703,39 +1710,6 @@ FLOWS.push(
       { id: "註2", revised: true, body: "協助給予NTG舌下錠，重點如下：\n一、限EMT2以上才能協助給予。\n二、使病人躺或坐，以避免使用時低血壓導致病人跌倒。\n三、取出病人既有的NTG舌下錠一顆，放置病人舌下，不須咀嚼。\n四、若使用後症狀沒有緩解每五分鐘可再給予一次，包含患者自行服用至多3次。\n五、NTG舌下錠禁忌症：\n  (一) 收縮壓<90mmHg。\n  (二) 脈搏<50次/分鐘或≧100次/分鐘。\n  (三) 服用中西壯陽藥者。\n  (四) 對NTG過敏者。\n  (五) 疑似右心衰竭者，如：頸靜脈怒張、下肢嚴重水腫或心電圖顯示下心壁梗塞。" },
       { id: "註3", revised: true, body: "給予aspirin之預立醫囑（114.12.18 新增）：\n一、限EMTP才能給予。\n二、aspirin 300-325mg PO，為加速達到血中劑量，可嚼碎或打開膠囊口服。\n三、適應症：符合缺血性胸痛症狀。\n四、禁忌症：\n  (一) 病人對阿斯匹林類過敏。\n  (二) 疑似活動性出血，如：體表出血點、大片瘀血等。" }
     ],
-    checklists: [
-      {
-        id: "cl-ntg",
-        title: "NTG 舌下錠禁忌症檢核（限 EMT2 以上協助給予）",
-        sub: "依據流程 L（註2）：勾選任一禁忌症即不可協助給予病人既有之 NTG 舌下錠。",
-        mode: "contra_only",
-        items: [
-          "收縮壓 < 90 mmHg",
-          "脈搏 < 50 次/分鐘 或 ≧ 100 次/分鐘",
-          "服用中西壯陽藥者",
-          "對 NTG 過敏者",
-          "疑似右心衰竭者（如：頸靜脈怒張、下肢嚴重水腫或心電圖顯示下心壁梗塞）"
-        ],
-        msgSafe: "目前未勾選任何禁忌症：EMT2 以上可使病人躺或坐，協助取出病人既有 NTG 舌下錠 1 顆置於舌下（不須咀嚼），每 5 分鐘可再給一次，含自服至多 3 次。",
-        msgWarn: "存在 NTG 禁忌症！不可協助給予硝化甘油片（NTG）！"
-      },
-      {
-        id: "cl-aspirin",
-        title: "EMTP Aspirin 300–325mg 預立醫囑檢核（114.12.18 新增）",
-        sub: "依據流程 L（註3）：限 EMTP 給予，須符合適應症並排除所有禁忌症。",
-        mode: "ind_contra",
-        indications: [
-          "符合缺血性胸痛症狀"
-        ],
-        contraindications: [
-          "病人對阿斯匹林類過敏",
-          "疑似活動性出血（如：體表出血點、大片瘀血等）"
-        ],
-        msgOk: "符合適應症且無禁忌症！EMTP 可依預立醫囑給予 Aspirin 300–325mg PO（為加速達到血中劑量，可嚼碎或打開膠囊口服）。",
-        msgContra: "存在禁忌症，不可給予 Aspirin！",
-        msgIncomplete: "請先確認符合缺血性胸痛症狀且排除所有禁忌症。"
-      }
-    ],
     walkthrough: {
       start: "s1",
       steps: {
@@ -1749,6 +1723,326 @@ FLOWS.push(
 );
 
 // ============================================================================
+// 分級流程抽考題庫（100% 源自 114.12.18 版官方 PDF 手冊）
+// level: "EMT-1" (初級基礎) | "EMT-2" (中級進階) | "EMT-P" (高級預立醫囑/進階)
+// ============================================================================
+const QUIZ_BANK = [
+  // ---------- EMT-1 初級救護技術員（20 題） ----------
+  {
+    id: "q1", level: "EMT-1", flowId: "part1", flowLabel: "壹、緊急救護勤務作業程序",
+    q: "救災救護指揮中心接獲報案時，應立即了解之狀況口訣「5W1H2S」中，2S 指的是什麼？",
+    options: ["支援的需求（support）與建議（suggestion）", "安全（safety）與現場大小（size-up）", "速度（speed）與穩定度（stability）", "症狀（symptom）與嚴重度（severity）"],
+    answer: 0,
+    explain: "手冊頁碼 4（壹、緊急救護勤務作業程序一覽表）：二、救護案件之受理報案 5W1H2S 包含 (7) 支援的需求（support）、(8) 建議（suggestion）。"
+  },
+  {
+    id: "q2", level: "EMT-1", flowId: "flow-A", flowLabel: "A.「現場評估」通用流程",
+    q: "在高速公路發生道路交通事故且無交通管制人員時，救護車應停在事故現場正後方，並於事故地點後方多少公尺處放置明顯警告設施或故障標誌？",
+    options: ["100 公尺處", "80 公尺處", "50 公尺處", "30 公尺處"],
+    answer: 0,
+    explain: "手冊頁碼 7（流程 A 註1）：高速公路為事故地點後方 100 公尺處；快速道路或最高速限超過 60 公里為 80 公尺；超過 50 至 60 公里為 50 公尺；50 公里以下為 30 公尺；時速低於 10 公里或壅塞為 5 公尺。"
+  },
+  {
+    id: "q3", level: "EMT-1", flowId: "flow-A", flowLabel: "A.「現場評估」通用流程",
+    q: "在防護措施未完備前，針對「具攻擊性之患者」或「呼吸道傳染病之患者」，救護人員須與病患保持至少多少安全距離？",
+    options: ["1 公尺", "0.5 公尺", "3 公尺", "5 公尺"],
+    answer: 0,
+    explain: "手冊頁碼 8（流程 A 註3）：在防護措施未完備前，須與具攻擊性之患者及呼吸道傳染病之患者保持 1 公尺之安全距離。"
+  },
+  {
+    id: "q4", level: "EMT-1", flowId: "flow-A", flowLabel: "A.「現場評估」通用流程",
+    q: "依「現場評估」通用流程定義，單一事故或災害發生之傷病患人數達多少人以上（或預判可能達此人數）即屬「大量傷病患」？",
+    options: ["15 人以上", "10 人以上", "20 人以上", "30 人以上"],
+    answer: 0,
+    explain: "手冊頁碼 8（流程 A 註5）：大量傷病患係指單一事故、災害發生之傷病患人數達 15 人以上，或預判可能達 15 人以上時；第一位到場等級較高或較資深之 EMT 為現場指揮官（ICS commander）。"
+  },
+  {
+    id: "q5", level: "EMT-1", flowId: "flow-B", flowLabel: "B.「非創傷」通用流程",
+    q: "在「非創傷」通用流程中，一般病患與 COPD／老年人分別在血氧濃度（SpO2）低於多少時應給予氧氣治療？",
+    options: ["一般 < 94%，COPD 或老年人 < 92%", "一般 < 95%，COPD 或老年人 < 90%", "一般 < 92%，COPD 或老年人 < 88%", "皆為 < 90% 才給予氧氣"],
+    answer: 0,
+    explain: "手冊頁碼 9（流程 B 註1）：評估呼吸（B）時，SpO2 < 94%，COPD 或老年人 < 92% 應給予氧氣治療。"
+  },
+  {
+    id: "q6", level: "EMT-1", flowId: "flow-B", flowLabel: "B.「非創傷」通用流程",
+    q: "非創傷與創傷流程中，所謂「無適當呼吸」的定義為何？",
+    options: ["沒有呼吸或瀕死式呼吸，呼吸 < 10 次/分", "呼吸 < 12 次/分或 > 24 次/分", "僅指完全沒有呼吸", "血氧低於 90% 即屬無適當呼吸"],
+    answer: 0,
+    explain: "手冊頁碼 10（流程 B 註3）與頁碼 14（流程 C 註5）：無適當呼吸即為沒有呼吸或瀕死式呼吸，呼吸 < 10 次/分。"
+  },
+  {
+    id: "q7", level: "EMT-1", flowId: "flow-B", flowLabel: "B.「非創傷」通用流程",
+    q: "非創傷病患沒有反應、目視無適當呼吸，但「摸得到頸動脈」時，下一步應優先施行何項處置？",
+    options: ["BVM 給氧，並依初步評估施行必要處置及到院前聯絡急救責任醫院", "立即開始胸部按壓並貼上 AED", "直接上擔架床等待到院後再給氧", "僅給予鼻導管低流量氧氣"],
+    answer: 0,
+    explain: "手冊頁碼 9（流程 B 流程圖）：沒有反應 → 無適當呼吸 → 頸動脈摸得到 → BVM 給氧 → 1. 依初步評估施行必要處置 2. 到院前聯絡急救責任醫院。"
+  },
+  {
+    id: "q8", level: "EMT-1", flowId: "flow-C", flowLabel: "C.「創傷」通用流程",
+    q: "依最新修訂之「創傷」通用流程，接觸創傷病患的第 1 個優先評估與處置項目為何？",
+    options: ["X 大量出血（eXsanguinating）", "A 評估呼吸道", "D 評估昏迷指數（GCS）", "上長背板與擔架床"],
+    answer: 0,
+    explain: "手冊頁碼 11（流程 C 註1）與修改歷程 113.12.19：調整 X 大量出血評估及處置為第 1 個流程；若持續加壓包紮仍無法減緩出血或預期無效（如手腕/腳踝以上創傷性截肢），建議使用止血帶。"
+  },
+  {
+    id: "q9", level: "EMT-1", flowId: "flow-C", flowLabel: "C.「創傷」通用流程",
+    q: "關於「加拿大頸椎守則（SPINAL）」，需要符合六項中的幾項就需要上頸圈限制傷患頸椎移動？",
+    options: ["只要符合六項其中一項即需上頸圈", "需符合三項以上", "需六項全部符合", "僅限意識不清（A）才需上頸圈"],
+    answer: 0,
+    explain: "手冊頁碼 12（流程 C 註2）：SPINAL（骨折大痛、後頸部中線壓痛、高速撞擊機轉、神經學異常、意識不清含酒精、脖子轉動受限無法上下左右轉動45度），只要符合六項其中一項就需要上頸圈。"
+  },
+  {
+    id: "q10", level: "EMT-1", flowId: "flow-C", flowLabel: "C.「創傷」通用流程",
+    q: "創傷通用流程中，針對頸椎可能受傷之傷患，若呼吸道不順暢應優先採用何種手法打開呼吸道？且骨盆檢查以幾次為限？",
+    options: ["優先以下顎推舉法（無法打開才改壓額抬下顎法）；骨盆檢查以 1 次為限", "優先以壓額抬下顎法；骨盆檢查可反覆確認 3 次", "直接插入鼻咽呼吸道不須打開呼吸道；骨盆檢查以 2 次為限", "優先以壓額抬下顎法；不須檢查骨盆"],
+    answer: 0,
+    explain: "手冊頁碼 12、14（流程 C 註4）：頸椎受傷傷患以下顎推舉法打開呼吸道，若無法打開時改以壓額抬下顎法；評估傷患身體（E）時，骨盆穩定與疼痛檢查以一次為限。"
+  },
+  {
+    id: "q11", level: "EMT-1", flowId: "flow-D", flowLabel: "D.「車內照護」通用流程",
+    q: "在「車內照護」通用流程中，危急個案與非危急個案在抵達醫院前，應至少每幾分鐘測量一次生命徵象？",
+    options: ["危急個案每 5 分鐘（並持續血氧監測）；非危急個案每 15 分鐘", "危急個案每 10 分鐘；非危急個案每 20 分鐘", "危急個案每 3 分鐘；非危急個案每 10 分鐘", "皆為每 15 分鐘測量 1 次即可"],
+    answer: 0,
+    explain: "手冊頁碼 16–17（流程 D 註6）：危急個案應至少每 5 分鐘測量 1 次且持續血氧濃度監測；非危急個案至少每 15 分鐘測量 1 次；給予 BVM 人工呼吸或 CPR 者約每 2 分鐘重新評估呼吸或頸動脈搏。"
+  },
+  {
+    id: "q12", level: "EMT-1", flowId: "flow-D", flowLabel: "D.「車內照護」通用流程",
+    q: "OHCA 患者若於「上車前曾使用 AED 電擊」，送醫途中車上仍無脈搏且 AED 分析建議電擊時，應如何處置？",
+    options: ["可不停車，直接施行電擊", "必須立即停車才能電擊", "不可再電擊，直接加速送醫", "必須關閉 AED 改以純壓胸"],
+    answer: 0,
+    explain: "手冊頁碼 15–16（流程 D 註2）：OHCA 患者於上車前曾使用 AED 電擊，若車上仍無脈搏且 AED 分析建議電擊時，可不停車，直接施行電擊（若上車前未曾建議電擊，則視路況找安全處停車分析，送醫途中以停車 1 次為限）。"
+  },
+  {
+    id: "q13", level: "EMT-1", flowId: "flow-E", flowLabel: "E.「到院傷病患交接」流程",
+    q: "救護車抵達醫院急診室前多少公尺時，應視交通情形關閉或調低警鳴器音量？",
+    options: ["50–100 公尺", "10–20 公尺", "200–300 公尺", "停妥熄火後再關閉"],
+    answer: 0,
+    explain: "手冊頁碼 18（流程 E 註1）：到達急診前 50–100 公尺時，應視交通情形關閉或調低警鳴器音量；並停放於指定停車位置熄火。"
+  },
+  {
+    id: "q14", level: "EMT-1", flowId: "flow-F", flowLabel: "F.「心肺功能停止」流程",
+    q: "到達 OHCA 現場時，若患者已被民眾貼上公眾 AED（PAD），救護人員接手後應如何處理？且若出勤人員皆為 EMT-1，應建立何種呼吸道？",
+    options: ["應更換為救護車上之 AED；皆為 EMT-1 出勤則建立口咽呼吸道", "繼續沿用公眾 PAD 至醫院即可；皆為 EMT-1 出勤則建立氣管內管", "不可更換 PAD；不須建立任何輔助呼吸道", "更換為車上 AED；皆為 EMT-1 出勤則建立聲門上呼吸道"],
+    answer: 0,
+    explain: "手冊頁碼 21–22（流程 F 註3、註7）：已使用 PAD 者接手後仍應更換為救護車上之 AED，避免造成公共場所無 AED 可用；如救護人員皆為 EMT-1 出勤，則建立口咽呼吸道。"
+  },
+  {
+    id: "q15", level: "EMT-1", flowId: "flow-G", flowLabel: "G.「意識不清」流程",
+    q: "「意識不清」流程中，血糖值低於多少即須給予低血糖處置？且若懷疑腦中風，症狀發生小於幾小時建議轉送至車程小於 30 分鐘內具血栓溶解劑能力之中度級以上急救責任醫院？",
+    options: ["血糖 < 60 mg/dL（或顯示 Low）；腦中風症狀發生 < 4.5 小時", "血糖 < 70 mg/dL；腦中風症狀發生 < 3 小時", "血糖 < 50 mg/dL；腦中風症狀發生 < 6 小時", "血糖 < 80 mg/dL；腦中風症狀發生 < 2 小時"],
+    answer: 0,
+    explain: "手冊頁碼 23–24（流程 G 流程圖、註4）：量測血糖值 < 60 mg/dL 或顯示 Low 即給予口服葡萄糖／靜脈注射；疑似腦中風症狀發生 < 4.5 小時，建議轉送車程 < 30 分鐘內具血栓溶解劑治療能力之中度級以上急救責任醫院。"
+  },
+  {
+    id: "q16", level: "EMT-1", flowId: "flow-H", flowLabel: "H.「過敏反應及過敏性休克」流程",
+    q: "在「過敏反應及過敏性休克」流程中，為維持病患 SpO2 ≥ 94%，註解建議考慮使用何種給氧方式？",
+    options: ["純氧面罩（15 公升/分）", "鼻導管（2 公升/分）", "一般氧氣面罩（5 公升/分）", "不給予氧氣"],
+    answer: 0,
+    explain: "手冊頁碼 25（流程 H 註1）：給予高濃度的氧氣使 SpO2 ≥ 94%，考慮使用純氧面罩（15 公升/分）。"
+  },
+  {
+    id: "q17", level: "EMT-1", flowId: "flow-I", flowLabel: "I.「氣喘」流程",
+    q: "主訴氣喘之病患若於評估過程中「症狀惡化」，出現何種條件時應立即以 BVM 人工呼吸？",
+    options: ["意識改變且 SpO2 < 90%", "僅輕微喘鳴但意識清楚", "收縮壓 > 140 mmHg", "心跳 > 100 次/分"],
+    answer: 0,
+    explain: "手冊頁碼 27（流程 I 流程圖）：症狀是否惡化 → 是 → 意識改變且 SpO2 < 90%，則以 BVM 人工呼吸。"
+  },
+  {
+    id: "q18", level: "EMT-1", flowId: "flow-K", flowLabel: "K.「異物哽塞」流程",
+    q: "對於清醒的異物哽塞患者，下列何者「不是」手冊列舉之「嚴重呼吸道阻塞」判斷指標？",
+    options: ["能大聲用力咳嗽且可清楚對話", "咳嗽聲逐漸減弱或沒有咳嗽", "呼吸時有吸氣期高頻喘鳴聲（Stridor）", "發紺、不能說話或全身癱軟"],
+    answer: 0,
+    explain: "手冊頁碼 31（流程 K 註1）：嚴重呼吸道阻塞 6 項指標為：咳嗽減弱或無咳嗽、呼吸更困難或無呼吸、高頻喘鳴聲（Stridor）、發紺、不能說話、全身癱軟。若非嚴重阻塞應鼓勵患者咳出異物。"
+  },
+  {
+    id: "q19", level: "EMT-1", flowId: "flow-K", flowLabel: "K.「異物哽塞」流程",
+    q: "曾經或正在發生呼吸道阻塞之傷病患，在「異物哽塞」流程中其氧氣治療方式應以何者為首選？",
+    options: ["NRM（非再吸入型高濃度氧氣面罩）為首選", "鼻導管低流量給氧", "無須給氧", "僅於 SpO2 < 85% 時給氧"],
+    answer: 0,
+    explain: "手冊頁碼 32（流程 K 註4）：曾經或正在發生之呼吸道阻塞之傷病患，氧氣治療方式應以 NRM 為首選，給高濃度氧氣治療；若呼吸動力不足則予 BVM 正壓給氧，並每 1 分鐘重評頸動脈及呼吸。"
+  },
+  {
+    id: "q20", level: "EMT-1", flowId: "flow-L", flowLabel: "L.「疑似缺血性胸痛」流程", revised: true,
+    q: "【114.12.18 新增】對於非創傷主訴胸痛病患，若懷疑為缺血性胸痛，應後送至何種責任醫院？且哪些族群常見「非典型症狀」（如噁心、上腹痛、暈眩）？",
+    options: ["急性冠心症急救責任醫院；常見於糖尿病病人、老年人、婦女", "創傷急救責任醫院；僅見於青壯年男性", "一般地區診所；常見於兒童", "精神科專責醫院；僅見於高血壓患者"],
+    answer: 0,
+    explain: "手冊頁碼 33（流程 L 流程圖、註1）：懷疑缺血性胸痛應送至「急性冠心症急救責任醫院」；非典型症狀（噁心、嘔吐、呼吸急促、暈眩、上腹痛等）常見於糖尿病病人、老年人、婦女等族群。"
+  },
+
+  // ---------- EMT-2 中級救護技術員進階（10 題） ----------
+  {
+    id: "q21", level: "EMT-2", flowId: "flow-G", flowLabel: "G.「意識不清」流程",
+    q: "低血糖（< 60 mg/dL 或 Low）病患在「意識不清」流程中，建立靜脈輸液後，限 EMT-2 以上可給予何種輸液治療？",
+    options: ["D10W（10% 葡萄糖水）治療", "D50W 2 支靜脈快速注射", "50% 硫酸鎂靜脈注射", "生理食鹽水 2000 ml 即可"],
+    answer: 0,
+    explain: "手冊頁碼 23（流程 G 註2）：儘量建立靜脈輸液，給予 D10W 治療（限 EMT2 以上）；D50W 2 支（每支 20ml）靜脈注射則為 EMTP 預立醫囑。"
+  },
+  {
+    id: "q22", level: "EMT-2", flowId: "flow-L", flowLabel: "L.「疑似缺血性胸痛」流程", revised: true,
+    q: "【114.12.18 新增】協助給予疑似缺血性胸痛病人既有之「硝化甘油片（NTG）舌下錠」，至少須具備何種技術員資格？且包含患者自服至多可給予幾次？",
+    options: ["限 EMT-2 以上；每 5 分鐘可再給一次，含自服至多 3 次", "EMT-1 即可；無次數限制", "限 EMT-P；至多 1 次", "限 EMT-2 以上；每 15 分鐘一次，至多 5 次"],
+    answer: 0,
+    explain: "手冊頁碼 34（流程 L 註2）：限 EMT2 以上才能協助給予；使病人躺或坐，取出既有 NTG 一顆置舌下不須咀嚼，若未緩解每 5 分鐘可再給一次，包含患者自行服用至多 3 次。"
+  },
+  {
+    id: "q23", level: "EMT-2", flowId: "flow-L", flowLabel: "L.「疑似缺血性胸痛」流程", revised: true,
+    q: "【114.12.18 新增】下列哪一項「屬於」協助給予 NTG 舌下錠的禁忌症（不可給予）？",
+    options: ["收縮壓 < 90 mmHg、脈搏 < 50 或 ≧ 100 次/分、服用中西壯陽藥或疑似右心衰竭", "收縮壓 130 mmHg 且脈搏 76 次/分", "有高血壓與高血脂過去病史", "病人目前採坐姿且意識清醒"],
+    answer: 0,
+    explain: "手冊頁碼 34（流程 L 註2）：NTG 禁忌症包含：(一) 收縮壓 < 90mmHg (二) 脈搏 < 50 或 ≧ 100 次/分 (三) 服用中西壯陽藥者 (四) 對 NTG 過敏 (五) 疑似右心衰竭（頸靜脈怒張、下肢嚴重水腫或心電圖顯示下心壁梗塞）。"
+  },
+  {
+    id: "q24", level: "EMT-2", flowId: "flow-L", flowLabel: "L.「疑似缺血性胸痛」流程", revised: true,
+    q: "【114.12.18 新增】協助病人服用 NTG 舌下錠時，為何應先使病人躺或坐？且應如何放置藥錠？",
+    options: ["避免使用時低血壓導致跌倒；置於病人舌下，不須咀嚼", "避免病人嘔吐；請病人咬碎後配溫水吞服", "利於聽診心音；置於臉頰內側咀嚼", "減少胸痛；直接吞服即可"],
+    answer: 0,
+    explain: "手冊頁碼 34（流程 L 註2）：使病人躺或坐，以避免使用時低血壓導致病人跌倒；取出病人既有的 NTG 舌下錠一顆，放置病人舌下，不須咀嚼。"
+  },
+  {
+    id: "q25", level: "EMT-2", flowId: "flow-F", flowLabel: "F.「心肺功能停止」流程",
+    q: "OHCA 現場有 EMT-2 以上人員出勤時，另一人於 CPR 不中斷下建立進階呼吸道，應優先建立何種呼吸道？若無法置入時次選擇為何？",
+    options: ["優先建立聲門上呼吸道（SGA）；無法置入次選擇才為口咽（須註明原因）", "優先建立口咽呼吸道；無法置入才改鼻咽", "皆優先由 EMT-2 執行氣管內管插管", "優先以鼻導管給氧不須置入輔助呼吸道"],
+    answer: 0,
+    explain: "手冊頁碼 22（流程 F 註7）：應施行袋瓣罩甦醒球給氧並建立聲門上呼吸道，若聲門上呼吸道無法置入，次選擇才為口咽（需註明原因）。"
+  },
+  {
+    id: "q26", level: "EMT-2", flowId: "flow-C", flowLabel: "C.「創傷」通用流程",
+    q: "依創傷與 OHCA 流程之「骨針（IO）使用須知」，其必要條件與適用時機為何？",
+    options: ["病人年齡需大於 18 歲；且經嘗試執行靜脈注射無法成功", "病人年齡大於 12 歲即可；可跳過靜脈注射直接施打", "無年齡限制；僅限意識清醒者", "病人年齡大於 65 歲；須先給予止血帶"],
+    answer: 0,
+    explain: "手冊頁碼 13（流程 C 註4）與頁碼 21（流程 F 註6）：骨針（IO）必要條件為病人年齡需大於 18 歲；適用時機為經嘗試執行靜脈注射無法成功。"
+  },
+  {
+    id: "q27", level: "EMT-2", flowId: "flow-C", flowLabel: "C.「創傷」通用流程",
+    q: "關於「骨針（IO）」施打禁忌症，同一部位在多少小時內不能重複施打？",
+    options: ["48 小時內", "12 小時內", "24 小時內", "72 小時內"],
+    answer: 0,
+    explain: "手冊頁碼 13、21（流程 C 註4、流程 F 註6）：骨針禁忌症包含施打位置骨折、感染或燒燙傷、無法定位、曾開刀或裝人工關節／義肢，以及 48 小時內同一部位不能重複施打。"
+  },
+  {
+    id: "q28", level: "EMT-2", flowId: "flow-F", flowLabel: "F.「心肺功能停止」流程",
+    q: "OHCA 病患經急救恢復自發性循環（ROSC）後，若測得收縮壓小於 90 mmHg，應如何給予輸液處置？",
+    options: ["給予生理食鹽水 500–1000 毫升快速滴注（無法測血壓得以動脈點替代）", "限制水分，不可給予任何靜脈輸液", "給予 D50W 2 支靜脈注射", "僅給予生理食鹽水 100 毫升慢速滴注"],
+    answer: 0,
+    explain: "手冊頁碼 22（流程 F 註8）：ROSC 後應測病人脈搏、血壓，若收縮壓小於 90 mmHg，應給予生理食鹽水 500–1000 毫升快速滴注；如無法測量血壓，得以動脈點測量替代；並得執行 12 導程心電圖。"
+  },
+  {
+    id: "q29", level: "EMT-2", flowId: "flow-H", flowLabel: "H.「過敏反應及過敏性休克」流程",
+    q: "過敏性休克之不穩定病患，在建立靜脈管路與輸液處置上，手冊註解建議為何？",
+    options: ["快速輸注生理食鹽水，可考慮 2 條大口徑靜脈管路輸液並予以加壓輸入", "僅建立 1 條小口徑管路慢速滴注維持通暢", "以 D10W 快速輸注", "禁止建立靜脈管路"],
+    answer: 0,
+    explain: "手冊頁碼 26（流程 H 註3）：快速輸注生理食鹽水，可考慮 2 條大口徑靜脈管路輸液並予以加壓輸入。"
+  },
+  {
+    id: "q30", level: "EMT-2", flowId: "flow-D", flowLabel: "D.「車內照護」通用流程",
+    q: "送醫途中車上目擊 OHCA 患者時，車廂與駕駛人員之正確處置為何？",
+    options: ["後座立即開始 CPR，視路況找安全處停車，駕駛下車協助 AED 分析（途中以停車 1 次為限）", "不停車也不做 CPR，直接全速開往醫院", "每 2 分鐘停車一次分析心律直到醫院", "等抵達急診室再開始 CPR 與 AED 分析"],
+    answer: 0,
+    explain: "手冊頁碼 16（流程 D 註2）：送醫途中車上目擊 OHCA 患者，後座立即開始 CPR，視路況尋找安全處停車，駕駛下車協助進行 AED 分析（送醫途中以停車 1 次為限），並視情況給予必要處置儘速送醫。"
+  },
+
+  // ---------- EMT-P 高級救護技術員預立醫囑與進階（14 題） ----------
+  {
+    id: "q31", level: "EMT-P", flowId: "flow-C", flowLabel: "C.「創傷」通用流程", revised: true,
+    q: "【114.12.18 修訂】EMTP 遇創傷出血性休克且符合適應症、無禁忌症之患者，依預立醫囑給予 Tranexamic acid（TXA）之劑量與給藥方式（擇一）為何？",
+    options: ["抽取 1,000mg 加入 N/S 500 ml 全速滴注，或 2g IV slow push", "僅能 500mg 加入 N/S 100 ml 滴注 30 分鐘", "1g 肌肉注射（IM）", "300mg IV push，每 5 分鐘重複一次"],
+    answer: 0,
+    explain: "手冊頁碼 13（流程 C 註4，114.12.18 修訂）：使用劑量以下擇一：a. 抽取 1,000mg Tranexamic acid 加入 N/S 500 ml，全速滴注。b. 2g，IV slow push（114.12.18 新增）。"
+  },
+  {
+    id: "q32", level: "EMT-P", flowId: "flow-C", flowLabel: "C.「創傷」通用流程", revised: true,
+    q: "EMTP 給予創傷出血性休克患者 Tranexamic acid（TXA）時，其適應症要求創傷發生須在幾小時以內？且生命徵象條件為何？",
+    options: ["創傷發生 3 小時以內；收縮壓 < 90 mmHg 或心跳 ≧ 120 次/分鐘", "創傷發生 6 小時以內；收縮壓 < 100 mmHg", "創傷發生 1 小時以內；心跳 ≧ 100 次/分鐘", "無時間限制；只要有外傷出血即可"],
+    answer: 0,
+    explain: "手冊頁碼 13（流程 C 註4）：TXA 適應症須全部符合：a. 符合出血性休克臨床表現 b. 無法使用止血帶或壓迫無效之創傷 c. 收縮壓 < 90mmHg 或心跳 ≧ 120 次/分鐘 d. 創傷發生 3 小時以內。"
+  },
+  {
+    id: "q33", level: "EMT-P", flowId: "flow-C", flowLabel: "C.「創傷」通用流程",
+    q: "下列何者屬於 EMTP 給予 Tranexamic acid（TXA）之「禁忌症」？",
+    options: ["正在接受凝血酶（Thrombin）給藥的病人，或對 tranexamic acid 過敏", "病人年齡大於 65 歲", "創傷發生 2 小時內之腹部內出血", "收縮壓 82 mmHg 且心跳 128 次/分"],
+    answer: 0,
+    explain: "手冊頁碼 13（流程 C 註4）：TXA 禁忌症需全部排除：a. 正在接受凝血酶（Thrombin）給藥的病人 b. 對 tranexamic acid 過敏。"
+  },
+  {
+    id: "q34", level: "EMT-P", flowId: "flow-F", flowLabel: "F.「心肺功能停止」流程",
+    q: "EMTP 執行 OHCA 流程時，建立周邊血管路徑（IV/IO）後，Epinephrine 預立醫囑給藥劑量與間隔為何？",
+    options: ["每 3–5 分鐘給予 Epinephrine 1mg IV push", "每 1 分鐘給予 Epinephrine 0.3mg IM", "僅給一次 Epinephrine 5mg IV", "每 10 分鐘給予 Epinephrine 2mg IV"],
+    answer: 0,
+    explain: "手冊頁碼 20–21（流程 F 流程圖、註6）：於建立周邊血管路徑（IV/IO）後，每 3 至 5 分鐘給予 Epinephrine 1mg IV push。"
+  },
+  {
+    id: "q35", level: "EMT-P", flowId: "flow-F", flowLabel: "F.「心肺功能停止」流程",
+    q: "OHCA 可電擊心律患者經 AED 電擊二次後，倘若用藥效果不彰，EMTP 依預立醫囑可考慮給予 Amiodarone，其首次與後續視必要劑量為何？",
+    options: ["第一次 300mg 靜脈快速注射，視必要每次 150mg 靜脈快速注射", "第一次 150mg，後續每次 300mg", "每次固定 500mg 靜脈慢速滴注", "首次 100mg 肌肉注射"],
+    answer: 0,
+    explain: "手冊頁碼 20–21（流程 F 流程圖、註6）：經 AED 電擊二次，倘若以上用藥效果不彰，可考慮給予 Amiodarone（第一次 300mg 靜脈快速注射，然後視必要每次 150mg 靜脈快速注射）。"
+  },
+  {
+    id: "q36", level: "EMT-P", flowId: "flow-G", flowLabel: "G.「意識不清」流程",
+    q: "針對血糖 < 60 mg/dL 或顯示 Low 之意識不清病患，EMTP 依預立醫囑可給予何種靜脈注射處置？",
+    options: ["D50W 2 支（每支 20ml）靜脈注射", "D50W 5 支肌肉注射", "Epinephrine 1mg IVP", "Tranexamic acid 1g IV"],
+    answer: 0,
+    explain: "手冊頁碼 23（流程 G 註2）：EMTP 得依據事先訂定之醫囑，給予 D50W 2 支（每支 20ml）靜脈注射。"
+  },
+  {
+    id: "q37", level: "EMT-P", flowId: "flow-H", flowLabel: "H.「過敏反應及過敏性休克」流程", revised: true,
+    q: "【114.12.18 修訂】EMTP 遇確認因哪些作用導致之過敏性休克，得依預立醫囑給予腎上腺素？且成人劑量與途徑為何？",
+    options: ["食物、藥物、動物或植物作用；成人 0.3mg 肌肉注射（IM）", "僅限蜜蜂叮咬（動物作用）；成人 1mg 靜脈注射（IV）", "僅限植物與動物作用；成人 0.5mg 皮下注射", "所有不明原因低血壓；成人 0.1mg 口服"],
+    answer: 0,
+    explain: "手冊頁碼 26（流程 H 註3，114.12.18 修訂）：開放食物過敏及藥物過敏施打 Epinephrine！確認因食物、藥物、動物或植物作用導致過敏性休克，EMTP 得給予腎上腺素成人 0.3mg 肌肉注射，到院後主動告知醫護人員並交由醫療指導醫師核簽。"
+  },
+  {
+    id: "q38", level: "EMT-P", flowId: "flow-I", flowLabel: "I.「氣喘」流程", revised: true,
+    q: "【114.12.18 修訂】關於 EMT-P 執行氣喘「氣霧治療」預立醫療流程之 5 項要件清單，114.12.18 最新修訂刪除了下列哪一項要件？",
+    options: ["刪除了「每分鐘心跳數 120 以下」要件", "刪除了「呼吸聲有哮鳴音」要件", "刪除了「呼吸道暢通無異物」要件", "刪除了「無氣霧治療藥物過敏」要件"],
+    answer: 0,
+    explain: "手冊頁碼 2（修改歷程 114.12.18）與頁碼 28（流程 I 註2）：114.12.18 修訂刪除「每分鐘心跳數 120 以下」要件；現行 5 項要件為：呼吸道暢通無異物、呼吸動力足夠、呼吸聲有哮鳴音、大於 1 歲（1–2 歲劑量減半）、無氣霧治療藥物過敏。"
+  },
+  {
+    id: "q39", level: "EMT-P", flowId: "flow-I", flowLabel: "I.「氣喘」流程", revised: true,
+    q: "EMT-P 於車上給予氣喘病患氣霧治療之標準成人劑量、氧氣流量與 1–2 歲幼童調整原則為何？",
+    options: ["2.5mg Albuterol + 可混和 Ipratropium 0.5mg 至 4ml，O2 6L/min；1–2 歲給 1/2 藥物劑量但仍稀釋至 4ml", "5mg Albuterol，O2 15L/min；1–2 歲禁止使用", "1mg Epinephrine 稀釋至 10ml，O2 2L/min", "須於現場完成全部氣霧治療後再上車送醫"],
+    answer: 0,
+    explain: "手冊頁碼 28（流程 I 註2）：2.5mg Albuterol 溶於 0.9% N/S，可與 Ipratropium 0.5mg 混和至 4ml，氧氣流量 6 公升/分；1–2 歲給 1/2 藥物劑量但仍以 N/S 稀釋至總量 4ml；此治療應與運送同時進行，不可延遲送醫。"
+  },
+  {
+    id: "q40", level: "EMT-P", flowId: "flow-J", flowLabel: "J.「成人氣管內管插管」流程",
+    q: "依「成人氣管內管插管」流程（僅限本局 EMTP），該處置僅限用於哪類患者？且須備有何種確認設備方可施行？",
+    options: ["僅限 OHCA 患者；且須備有 Et-CO2（波形二氧化碳監測）或食道偵測器（EDD）", "適用於所有意識不清患者；僅靠聽診即可", "適用於嚴重氣喘患者；須備有血氧機即可", "適用於所有創傷患者；無設備限制"],
+    answer: 0,
+    explain: "手冊頁碼 29–30（流程 J 註1）：僅限用於心肺功能停止（OHCA）患者，且須於備有 Capnography（Et-CO2）或食道偵測器（EDD）實施插管位置確認之前提下方可施行。"
+  },
+  {
+    id: "q41", level: "EMT-P", flowId: "flow-J", flowLabel: "J.「成人氣管內管插管」流程",
+    q: "EMTP 執行成人氣管內管插管時，嘗試次數上限、單次插管時間限制，以及插管失敗後的處置為何？",
+    options: ["至多嘗試 1 次、插管時間應小於 30 秒；失敗後移除並正壓給氧，改置入聲門上呼吸道", "至多嘗試 3 次、時間小於 60 秒；失敗改口咽呼吸道", "不限嘗試次數、時間小於 45 秒；直到成功為止", "至多嘗試 2 次、時間小於 20 秒；失敗改鼻導管"],
+    answer: 0,
+    explain: "手冊頁碼 29–30（流程 J 流程圖、註1、註2）：嘗試氣管內插管至多一次，插管時間應小於 30 秒，插管失敗後應予 BVM 正壓給氣並改施行聲門上呼吸道置入。"
+  },
+  {
+    id: "q42", level: "EMT-P", flowId: "flow-K", flowLabel: "K.「異物哽塞」流程",
+    q: "對於無意識且通氣有阻力之異物哽塞患者，除了與 CPR 同方式胸部按壓外，EMTP 可考慮使用何種進階器材排除異物？",
+    options: ["以喉鏡查看是否有可見異物，如有則以異物夾（Magill forceps）夾出", "直接盲目以手指深入咽喉摳挖", "給予 Epinephrine 肌肉注射", "使用骨針建立輸液"],
+    answer: 0,
+    explain: "手冊頁碼 31–32（流程 K 流程圖、註2）：EMTP 進階異物哽塞處置：可考慮以喉鏡查看是否有可見異物，如有則以異物夾（Magill forceps）將之夾出。"
+  },
+  {
+    id: "q43", level: "EMT-P", flowId: "flow-L", flowLabel: "L.「疑似缺血性胸痛」流程", revised: true,
+    q: "【114.12.18 新增】疑似缺血性胸痛病人操作流程中，EMTP 依預立醫囑給予 Aspirin 之劑量與口服方式為何？",
+    options: ["Aspirin 300–325mg PO，為加速達到血中劑量，可嚼碎或打開膠囊口服", "Aspirin 100mg 整顆吞服不可嚼碎", "Aspirin 500mg 靜脈注射", "Aspirin 81mg 舌下含片"],
+    answer: 0,
+    explain: "手冊頁碼 34（流程 L 註3，114.12.18 新增）：限 EMTP 才能給予；Aspirin 300–325mg PO，為加速達到血中劑量，可嚼碎或打開膠囊口服。"
+  },
+  {
+    id: "q44", level: "EMT-P", flowId: "flow-L", flowLabel: "L.「疑似缺血性胸痛」流程", revised: true,
+    q: "【114.12.18 新增】下列何者為 EMTP 給予疑似缺血性胸痛病人 Aspirin 預立醫囑之「禁忌症」？",
+    options: ["病人對阿斯匹林類過敏，或疑似活動性出血（如體表出血點、大片瘀血等）", "病人收縮壓 135 mmHg", "病人有糖尿病病史", "病人年滿 70 歲"],
+    answer: 0,
+    explain: "手冊頁碼 34（流程 L 註3）：Aspirin 禁忌症為：(一) 病人對阿斯匹林類過敏 (二) 疑似活動性出血，如：體表出血點、大片瘀血等。"
+  }
+];
+
+// ============================================================================
 // 應用程式狀態與核心引擎
 // ============================================================================
 const state = {
@@ -1759,7 +2053,17 @@ const state = {
   activeNodeId: null,
   wtStep: null,
   wtTrail: [],
-  dutySelectedId: "d1"
+  dutySelectedId: "d1",
+  quiz: {
+    phase: "setup", // "setup" | "active" | "summary"
+    level: "EMT-1", // "EMT-1" | "EMT-2" | "EMT-P"
+    scope: "all",   // "all" | "tier_only" | "revised"
+    count: 10,
+    questions: [],
+    idx: 0,
+    answered: null, // selected shuffled option index
+    records: []     // { q, chosenText, correctText, isCorrect }
+  }
 };
 
 const $ = (sel) => document.querySelector(sel);
@@ -1785,6 +2089,7 @@ function renderSidebar() {
   let html = `
     <div class="nav-group-label">手冊總覽</div>
     ${mkBtn("home", "首", "手冊總則與快速導覽")}
+    ${mkBtn("quiz", "考", "流程抽考模式", '<span class="tag-emtp">分級</span>')}
     ${mkBtn("history", "修", "修改歷程 (104–114)", '<span class="tag-rev">114.12.18</span>')}
     ${mkBtn("part1", "壹", "緊急救護勤務作業程序")}
     <div class="nav-group-label">貳、通用流程（A–E）</div>
@@ -1866,6 +2171,8 @@ function renderPage(highlightNoteId = null) {
   const main = $("#mainContent");
   if (state.currentPage === "home") {
     renderHome(main);
+  } else if (state.currentPage === "quiz") {
+    renderQuiz(main);
   } else if (state.currentPage === "history") {
     renderHistory(main);
   } else if (state.currentPage === "part1") {
@@ -1874,6 +2181,293 @@ function renderPage(highlightNoteId = null) {
     const flow = FLOWS.find(f => f.id === state.currentPage);
     if (flow) renderFlow(main, flow, highlightNoteId);
   }
+}
+
+// ===== 分級流程抽考模式 =====
+function shuffleArray(arr) {
+  const copy = arr.slice();
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function getQuizPool(level, scope) {
+  const rank = { "EMT-1": 1, "EMT-2": 2, "EMT-P": 3 };
+  const targetRank = rank[level] || 1;
+  let pool = QUIZ_BANK.filter(q => {
+    if (scope === "tier_only") return q.level === level;
+    return rank[q.level] <= targetRank;
+  });
+  if (scope === "revised") {
+    pool = pool.filter(q => q.revised);
+  }
+  return pool;
+}
+
+function startQuiz(customList = null) {
+  const qz = state.quiz;
+  const source = customList || shuffleArray(getQuizPool(qz.level, qz.scope));
+  const limit = customList ? source.length : (qz.count === "all" ? source.length : Math.min(qz.count, source.length));
+  qz.questions = source.slice(0, limit).map(item => {
+    const taggedOpts = item.options.map((text, idx) => ({ text, isCorrect: idx === item.answer }));
+    const shuffled = shuffleArray(taggedOpts);
+    return { ...item, shuffledOpts: shuffled };
+  });
+  qz.idx = 0;
+  qz.answered = null;
+  qz.records = [];
+  qz.phase = "active";
+  renderPage();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderQuiz(main) {
+  const qz = state.quiz;
+
+  if (qz.phase === "setup") {
+    const c1 = getQuizPool("EMT-1", "all").length;
+    const c2 = getQuizPool("EMT-2", "all").length;
+    const cP = getQuizPool("EMT-P", "all").length;
+    const activePool = getQuizPool(qz.level, qz.scope);
+
+    const levels = [
+      { id: "EMT-1", cls: "emt1", name: "初級救護技術員（EMT-1）", desc: "涵蓋勤務程序、現場安全、非創傷／創傷基礎評估、車內照護、到院交接、基本 OHCA、異物哽塞與胸痛識別。", count: c1 },
+      { id: "EMT-2", cls: "emt2", name: "中級救護技術員（EMT-2）", desc: "包含 EMT-1 全部範圍，另加 SGA 呼吸道、靜脈輸液、骨針須知、D10W、ROSC 輸液與協助給予 NTG 舌下錠。", count: c2 },
+      { id: "EMT-P", cls: "emtp", name: "高級救護技術員（EMT-P）", desc: "包含 EMT-1／EMT-2 全部範圍，另加 TXA、Epinephrine、Amiodarone、D50W、氣霧治療、氣管內管插管與 Aspirin 預立醫囑。", count: cP }
+    ];
+
+    const scopes = [
+      { id: "all", label: `完整範圍（含基礎題，共 ${getQuizPool(qz.level, "all").length} 題）` },
+      ...(qz.level !== "EMT-1" ? [{ id: "tier_only", label: `僅考 ${qz.level} 進階專屬題（共 ${getQuizPool(qz.level, "tier_only").length} 題）` }] : []),
+      { id: "revised", label: `114.12.18 最新修訂專題（共 ${getQuizPool(qz.level, "revised").length} 題）` }
+    ];
+
+    if (!scopes.some(s => s.id === qz.scope)) qz.scope = "all";
+    const poolLen = getQuizPool(qz.level, qz.scope).length;
+
+    main.innerHTML = `
+      <div class="page-header">
+        <div class="page-title-wrap">
+          <div class="page-kicker">114.12.18 版官方手冊題庫｜隨機抽題與選項洗牌</div>
+          <h2 class="page-title">📝 分級流程抽考模式</h2>
+        </div>
+        <div class="page-actions">
+          ${state.historyStack.length ? `<button class="btn btn-sm" id="backBtn">← 返回</button>` : ""}
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">步驟 1：選擇救護技術員級別</div>
+        <div class="quiz-level-grid">
+          ${levels.map(lv => `
+            <button class="quiz-level-card ${qz.level === lv.id ? "selected" : ""}" data-q-level="${lv.id}">
+              <span class="ql-badge ${lv.cls}">${lv.id}</span>
+              <div class="ql-title">${lv.name}</div>
+              <div class="ql-desc">${lv.desc}</div>
+              <div class="ql-count">完整題庫：${lv.count} 題</div>
+            </button>
+          `).join("")}
+        </div>
+
+        <div class="card-title" style="margin-top:8px;">步驟 2：選擇出題範圍</div>
+        <div class="quiz-pill-row">
+          ${scopes.map(sc => `
+            <button class="quiz-pill ${qz.scope === sc.id ? "selected" : ""}" data-q-scope="${sc.id}">${sc.label}</button>
+          `).join("")}
+        </div>
+
+        <div class="card-title" style="margin-top:8px;">步驟 3：選擇抽考題數</div>
+        <div class="quiz-pill-row">
+          ${[5, 10, 20, "all"].map(cnt => {
+            const label = cnt === "all" ? `全部抽考（${poolLen} 題）` : `${cnt} 題`;
+            return `<button class="quiz-pill ${qz.count === cnt ? "selected" : ""}" data-q-count="${cnt}">${label}</button>`;
+          }).join("")}
+        </div>
+
+        <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+          <button class="btn btn-teal" id="startQuizBtn" style="min-height:48px;padding:10px 24px;font-size:15px;" ${poolLen === 0 ? "disabled" : ""}>
+            開始 ${qz.level} 流程抽考（本次共 ${qz.count === "all" ? poolLen : Math.min(qz.count, poolLen)} 題）→
+          </button>
+          <span style="font-size:12.5px;color:var(--slate-500);">所有題目與解析均嚴格依據 114.12.18 版手冊內容。</span>
+        </div>
+      </div>
+    `;
+
+    const backBtn = $("#backBtn");
+    if (backBtn) backBtn.addEventListener("click", goBack);
+    main.querySelectorAll("[data-q-level]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        qz.level = btn.dataset.qLevel;
+        if (qz.level === "EMT-1" && qz.scope === "tier_only") qz.scope = "all";
+        renderQuiz(main);
+      });
+    });
+    main.querySelectorAll("[data-q-scope]").forEach(btn => {
+      btn.addEventListener("click", () => { qz.scope = btn.dataset.qScope; renderQuiz(main); });
+    });
+    main.querySelectorAll("[data-q-count]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        qz.count = btn.dataset.qCount === "all" ? "all" : Number(btn.dataset.qCount);
+        renderQuiz(main);
+      });
+    });
+    const startBtn = $("#startQuizBtn");
+    if (startBtn) startBtn.addEventListener("click", () => startQuiz());
+    return;
+  }
+
+  if (qz.phase === "active") {
+    const item = qz.questions[qz.idx];
+    const total = qz.questions.length;
+    const pct = Math.round(((qz.idx + (qz.answered !== null ? 1 : 0)) / total) * 100);
+    const keys = ["A", "B", "C", "D"];
+    const lvlCls = item.level === "EMT-1" ? "emt1" : (item.level === "EMT-2" ? "emt2" : "emtp");
+    const chosenOpt = qz.answered !== null ? item.shuffledOpts[qz.answered] : null;
+
+    main.innerHTML = `
+      <div class="page-header">
+        <div class="page-title-wrap">
+          <div class="page-kicker">
+            <span class="ql-badge ${lvlCls}">應考級別：${qz.level}</span>
+            <span>•</span>
+            <span>本題適用：${item.level}</span>
+            <span>•</span>
+            <span>${escapeHtml(item.flowLabel)}</span>
+            ${item.revised ? `<span class="tag-rev">114.12.18 修訂／新增</span>` : ""}
+          </div>
+          <h2 class="page-title">第 ${qz.idx + 1} / ${total} 題</h2>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-sm" id="quitQuizBtn">✕ 結束並回設定</button>
+        </div>
+      </div>
+
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
+
+      <div class="card">
+        <p class="quiz-q-text">${escapeHtml(item.q)}</p>
+        <div class="quiz-options">
+          ${item.shuffledOpts.map((opt, i) => {
+            let cls = "";
+            if (qz.answered !== null) {
+              if (opt.isCorrect) cls = "correct";
+              else if (i === qz.answered) cls = "wrong";
+            }
+            return `
+              <button class="quiz-opt ${cls}" data-opt-i="${i}" ${qz.answered !== null ? "disabled" : ""}>
+                <span class="quiz-opt-key">${keys[i]}</span>
+                <span>${escapeHtml(opt.text)}</span>
+              </button>
+            `;
+          }).join("")}
+        </div>
+
+        ${qz.answered !== null ? `
+          <div class="quiz-feedback ${chosenOpt.isCorrect ? "" : "wrong"}">
+            <div style="font-weight:800;font-size:15px;margin-bottom:6px;color:${chosenOpt.isCorrect ? "var(--teal-700)" : "var(--red-700)"};">
+              ${chosenOpt.isCorrect ? "✔ 回答正確！" : "✖ 回答錯誤，請參考手冊正確處置："}
+            </div>
+            <div style="font-size:13.5px;color:var(--slate-700);white-space:pre-line;">${escapeHtml(item.explain)}</div>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+              <button class="btn btn-primary" id="nextQBtn" style="min-height:44px;flex:1 1 180px;">
+                ${qz.idx + 1 < total ? "下一題 →" : "查看測驗成績與錯題解析 →"}
+              </button>
+              <button class="btn" id="reviewFlowBtn" style="min-height:44px;">前往「${escapeHtml(item.flowLabel)}」複習 ↗</button>
+            </div>
+          </div>
+        ` : ""}
+      </div>
+    `;
+
+    $("#quitQuizBtn").addEventListener("click", () => { qz.phase = "setup"; renderQuiz(main); });
+    main.querySelectorAll("[data-opt-i]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (qz.answered !== null) return;
+        const chosenIdx = Number(btn.dataset.optI);
+        qz.answered = chosenIdx;
+        const chosen = item.shuffledOpts[chosenIdx];
+        const correct = item.shuffledOpts.find(o => o.isCorrect);
+        qz.records.push({
+          q: item,
+          chosenText: chosen.text,
+          correctText: correct.text,
+          isCorrect: chosen.isCorrect
+        });
+        renderQuiz(main);
+      });
+    });
+    const nextBtn = $("#nextQBtn");
+    if (nextBtn) nextBtn.addEventListener("click", () => {
+      if (qz.idx + 1 < total) {
+        qz.idx += 1;
+        qz.answered = null;
+      } else {
+        qz.phase = "summary";
+      }
+      renderQuiz(main);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    const revBtn = $("#reviewFlowBtn");
+    if (revBtn) revBtn.addEventListener("click", () => navigate(item.flowId));
+    return;
+  }
+
+  // phase === "summary"
+  const total = qz.records.length;
+  const correctCnt = qz.records.filter(r => r.isCorrect).length;
+  const rate = total ? Math.round((correctCnt / total) * 100) : 0;
+  const wrongRecords = qz.records.filter(r => !r.isCorrect);
+
+  main.innerHTML = `
+    <div class="page-header">
+      <div class="page-title-wrap">
+        <div class="page-kicker">應考級別：${qz.level}｜測驗結算</div>
+        <h2 class="page-title">流程抽考成績報告</h2>
+      </div>
+    </div>
+
+    <div class="quiz-score-hero">
+      <div style="font-size:14px;color:#dbeafe;margin-bottom:4px;">${qz.level} 流程抽考結果</div>
+      <div class="quiz-score-num">${rate} 分</div>
+      <div style="font-size:15px;margin-top:6px;">答對 <strong>${correctCnt}</strong> / ${total} 題（答錯 ${wrongRecords.length} 題）</div>
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+        ${wrongRecords.length > 0 ? `<button class="btn btn-danger" id="retryWrongBtn">↻ 僅重考答錯題目（${wrongRecords.length} 題）</button>` : ""}
+        <button class="btn btn-teal" id="retryAllBtn">🔀 再抽一次（重新洗牌）</button>
+        <button class="btn" id="changeLevelBtn">更換級別／範圍</button>
+      </div>
+    </div>
+
+    ${wrongRecords.length === 0 ? `
+      <div class="card" style="text-align:center;border-left:4px solid var(--teal-600);background:var(--teal-50);">
+        <div style="font-size:18px;font-weight:800;color:var(--teal-700);">🎉 恭喜全數答對！</div>
+        <p style="margin:6px 0 0;font-size:14px;color:var(--slate-700);">您已熟練掌握本次抽考之宜蘭縣到院前緊急救護作業程序（114.12.18 版）。</p>
+      </div>
+    ` : `
+      <div class="card">
+        <div class="card-title" style="color:var(--red-700);">錯題解析與手冊複習（共 ${wrongRecords.length} 題）</div>
+        ${wrongRecords.map((r, i) => `
+          <div class="quiz-wrong-item">
+            <div style="font-size:12px;color:var(--slate-500);margin-bottom:4px;">第 ${i + 1} 錯題｜${escapeHtml(r.q.flowLabel)}（${r.q.level}）</div>
+            <div style="font-weight:700;font-size:14.5px;color:var(--slate-900);margin-bottom:8px;">${escapeHtml(r.q.q)}</div>
+            <div style="font-size:13px;color:var(--red-700);margin-bottom:4px;">✖ 您的作答：${escapeHtml(r.chosenText)}</div>
+            <div style="font-size:13px;color:var(--teal-700);font-weight:700;margin-bottom:6px;">✔ 正確答案：${escapeHtml(r.correctText)}</div>
+            <div style="font-size:13px;color:var(--slate-600);background:var(--slate-50);padding:8px 10px;border-radius:6px;margin-bottom:8px;">${escapeHtml(r.q.explain)}</div>
+            <button class="btn btn-sm btn-primary" data-jump="${r.q.flowId}">前往「${escapeHtml(r.q.flowLabel)}」複習 ↗</button>
+          </div>
+        `).join("")}
+      </div>
+    `}
+  `;
+
+  const retryWrong = $("#retryWrongBtn");
+  if (retryWrong) retryWrong.addEventListener("click", () => startQuiz(shuffleArray(wrongRecords.map(r => r.q))));
+  $("#retryAllBtn").addEventListener("click", () => startQuiz());
+  $("#changeLevelBtn").addEventListener("click", () => { qz.phase = "setup"; renderQuiz(main); });
+  main.querySelectorAll("[data-jump]").forEach(btn => {
+    btn.addEventListener("click", () => navigate(btn.dataset.jump));
+  });
 }
 
 function renderHome(main) {
@@ -1896,11 +2490,14 @@ function renderHome(main) {
   main.innerHTML = `
     <div class="card hero-card">
       <h1>${escapeHtml(MANUAL_META.title)}</h1>
-      <p>互動式流程圖、逐步決策引導、預立醫囑檢核表與全文檢索系統（100% 依據 114.12.18 版官方 PDF 手冊製作）</p>
+      <p>互動式流程圖、逐步決策引導、分級流程抽考與全文檢索系統（100% 依據 114.12.18 版官方 PDF 手冊製作）</p>
       <div class="hero-meta">
         <span class="hero-pill">版本：${MANUAL_META.version}</span>
         <span class="hero-pill">涵蓋 壹、勤務程序 ＋ 貳、流程 A–L</span>
         <span class="hero-pill">支援桌機 / 平板 / 手機自適應操作</span>
+      </div>
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;">
+        <button class="btn btn-teal" data-jump="quiz" style="font-size:14.5px;">📝 進入分級流程抽考模式（EMT-1 / EMT-2 / EMT-P）</button>
       </div>
     </div>
 
@@ -2154,7 +2751,6 @@ function renderFlow(main, flow, highlightNoteId = null) {
       </div>
 
       <div class="notes-panel" id="notesPanel">
-        ${(flow.checklists || []).map(cl => renderChecklistHtml(cl)).join("")}
         ${flow.notes.map(n => `
           <div class="note-card ${n.revised ? "rev-note" : ""} ${highlightNoteId === n.id ? "highlight" : ""}" id="note-${n.id}" data-note-id="${n.id}">
             <div class="note-head">
@@ -2171,7 +2767,6 @@ function renderFlow(main, flow, highlightNoteId = null) {
   `;
 
   bindZoomControls(flow.viewBox[0], flow.viewBox[1]);
-  bindChecklists(flow.checklists || []);
 
   const backBtn = $("#backBtn");
   if (backBtn) backBtn.addEventListener("click", goBack);
@@ -2329,88 +2924,6 @@ function bindWalkthroughEvents(main, flow) {
   });
   main.querySelectorAll("[data-wt-jump]").forEach(btn => {
     btn.addEventListener("click", () => navigate(btn.dataset.wtJump, { mode: "walkthrough" }));
-  });
-}
-
-// ===== 互動式檢核清單 =====
-function renderChecklistHtml(cl) {
-  let body = "";
-  if (cl.mode === "ind_contra") {
-    body = `
-      <div class="cl-group-label" style="color:var(--teal-700);">✔ 適應症／必要條件（須全部符合）</div>
-      ${cl.indications.map((txt, i) => `
-        <label class="cl-item"><input type="checkbox" data-cl="${cl.id}" data-group="ind" value="${i}"><span>${escapeHtml(txt)}</span></label>
-      `).join("")}
-      <div class="cl-group-label" style="color:var(--red-700);">✖ 禁忌症（須全部排除；如有請勾選）</div>
-      ${cl.contraindications.map((txt, i) => `
-        <label class="cl-item"><input type="checkbox" data-cl="${cl.id}" data-group="contra" value="${i}"><span>${escapeHtml(txt)}</span></label>
-      `).join("")}
-    `;
-  } else {
-    body = cl.items.map((txt, i) => `
-      <label class="cl-item"><input type="checkbox" data-cl="${cl.id}" data-group="item" value="${i}"><span>${escapeHtml(txt)}</span></label>
-    `).join("");
-  }
-
-  return `
-    <div class="checklist-card" id="box-${cl.id}">
-      <div class="cl-title">
-        <span>☑ ${escapeHtml(cl.title)}</span>
-        <button class="btn btn-sm" data-cl-reset="${cl.id}" style="min-height:30px;padding:2px 8px;font-size:11.5px;">清除</button>
-      </div>
-      <p class="cl-sub">${escapeHtml(cl.sub)}</p>
-      ${body}
-      <div class="cl-status info" id="status-${cl.id}"></div>
-    </div>
-  `;
-}
-
-function bindChecklists(checklists) {
-  const evalCl = (cl) => {
-    const statusEl = $(`#status-${cl.id}`);
-    if (!statusEl) return;
-    if (cl.mode === "any") {
-      const checked = document.querySelectorAll(`input[data-cl="${cl.id}"]:checked`).length;
-      statusEl.className = `cl-status ${checked > 0 ? "warn" : "info"}`;
-      statusEl.textContent = checked > 0 ? cl.msgMatch : cl.msgNone;
-    } else if (cl.mode === "all") {
-      const total = cl.items.length;
-      const checked = document.querySelectorAll(`input[data-cl="${cl.id}"]:checked`).length;
-      statusEl.className = `cl-status ${checked === total ? "ok" : "info"}`;
-      statusEl.style.whiteSpace = "pre-line";
-      statusEl.textContent = checked === total ? cl.msgAll : `${cl.msgIncomplete}（目前符合 ${checked}/${total} 項）`;
-    } else if (cl.mode === "contra_only") {
-      const checked = document.querySelectorAll(`input[data-cl="${cl.id}"]:checked`).length;
-      statusEl.className = `cl-status ${checked > 0 ? "warn" : "ok"}`;
-      statusEl.textContent = checked > 0 ? cl.msgWarn : cl.msgSafe;
-    } else if (cl.mode === "ind_contra") {
-      const indTotal = cl.indications.length;
-      const indChecked = document.querySelectorAll(`input[data-cl="${cl.id}"][data-group="ind"]:checked`).length;
-      const contraChecked = document.querySelectorAll(`input[data-cl="${cl.id}"][data-group="contra"]:checked`).length;
-      statusEl.style.whiteSpace = "pre-line";
-      if (contraChecked > 0) {
-        statusEl.className = "cl-status warn";
-        statusEl.textContent = cl.msgContra;
-      } else if (indChecked === indTotal) {
-        statusEl.className = "cl-status ok";
-        statusEl.textContent = cl.msgOk;
-      } else {
-        statusEl.className = "cl-status info";
-        statusEl.textContent = `${cl.msgIncomplete}（適應症已符合 ${indChecked}/${indTotal} 項）`;
-      }
-    }
-  };
-
-  checklists.forEach(cl => {
-    evalCl(cl);
-    document.querySelectorAll(`input[data-cl="${cl.id}"]`).forEach(inp => {
-      inp.addEventListener("change", () => evalCl(cl));
-    });
-    const resetBtn = document.querySelector(`[data-cl-reset="${cl.id}"]`);
-    if (resetBtn) resetBtn.addEventListener("click", () => {
-      document.querySelectorAll(`input[data-cl="${cl.id}"]`).forEach(inp => { inp.checked = false; });
-      evalCl(cl);
-    });
   });
 }
 
@@ -2627,7 +3140,7 @@ document.addEventListener("click", (e) => {
 // 啟動頁面（支援安全讀取 URL hash，例如 #flow-F，不影響 Google 協作平台內嵌）
 try {
   const initHash = (window.location.hash || "").replace(/^#/, "");
-  if (initHash && (initHash === "home" || initHash === "history" || initHash === "part1" || FLOWS.some(f => f.id === initHash))) {
+  if (initHash && (initHash === "home" || initHash === "quiz" || initHash === "history" || initHash === "part1" || FLOWS.some(f => f.id === initHash))) {
     state.currentPage = initHash;
     const initFlow = FLOWS.find(f => f.id === initHash);
     if (initFlow && initFlow.walkthrough) {
